@@ -16,7 +16,9 @@ module.exports = function(grunt) {
 	grunt.registerTask('production', 'Build assets for production', [
 		'concurrent:images',
 		'rebuild',
+		'ngAnnotate',
 		'useminPrepare',
+		'ngtemplates',
 		'concat',
 		'copy',
 		'minify',
@@ -32,7 +34,6 @@ module.exports = function(grunt) {
 	]);
 
 	grunt.registerTask('lint', 'Lint the files', [
-		'phplint',
 		'tslint',
 		'scsslint',
 		'csslint',
