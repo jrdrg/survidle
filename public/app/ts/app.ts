@@ -2,4 +2,12 @@ var app = angular.module('survidle', [
 
 ]);
 
+// Controllers
+//////////////////////////////////////////////////////////////////////
+
 app.controller('GameController', Survidle.Controllers.GameController);
+
+// Directives
+//////////////////////////////////////////////////////////////////////
+
+app.directive('status', Survidle.Directives.Status.instance);

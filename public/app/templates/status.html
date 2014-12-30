@@ -1,0 +1,7 @@
+<span class="status__label label label-default">{{ label }}</span>
+<div class="status progress" ng-if="max">
+	<span class="progress-bar" style="width: {{ value }}%"></span>
+</div>
+<div class="status progress status--bare" ng-if="!max">
+	{{ value }}
+</div>

@@ -4,24 +4,33 @@
 	<meta charset="UTF-8">
 	<title>Survidle</title>
 	<!-- build:css public/builds/css/styles.css -->
+	<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,400italic' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="public/components/bootstrap/dist/css/bootstrap.css" />
+	<link rel="stylesheet" href="public/app/css/styles.css" />
 	<!-- endbuild -->
 </head>
 <body ng-app="survidle" ng-controller="GameController">
-	<div class="container">
-		<div class="page-header">
-			<h1>Survidle</h1>
-		</div>
 
-		<p id="context">
-			Health: {{ game.player.life }}/10
-		</p>
+	<header class="layout-header">
+		<h1>Survidle</h1>
+	</header>
 
-	</div>
+	<section class="layout-status">
+		<status label="Day" value="game.world.day"></status>
+		<status label="Health" max="10" value="game.player.life"></status>
+		<status label="Hunger" max="10" value="game.player.hunger"></status>
+	</section>
+
+	<main class="layout-content">
+		<p>You wake up alone in a dark forest</p>
+	</main>
+
 	<!-- build:js public/builds/js/scripts.js -->
 	<script src="public/components/angular/angular.js"></script>
 	<script src="public/app/js/Controllers/GameController.js"></script>
+	<script src="public/app/js/Directives/Status.js"></script>
 	<script src="public/app/js/Entities/Player.js"></script>
+	<script src="public/app/js/Entities/World.js"></script>
 	<script src="public/app/js/app.js"></script>
 	<!-- endbuild -->
 </body>
