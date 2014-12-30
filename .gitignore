@@ -1,6 +1,7 @@
 # Dependencies
 node_modules
 public/components
+public/app/ts/_definitions
 
 # Cached and compiled
 .tmp
