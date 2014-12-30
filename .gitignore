@@ -1,0 +1,10 @@
+# Dependencies
+node_modules
+public/components
+
+# Cached and compiled
+.tmp
+.sass-cache
+public/app/css
+public/app/js
+public/builds
