@@ -7,16 +7,21 @@
 	<link rel="stylesheet" href="public/components/bootstrap/dist/css/bootstrap.css" />
 	<!-- endbuild -->
 </head>
-<body>
+<body ng-app="survidle" ng-controller="GameController">
 	<div class="container">
 		<div class="page-header">
 			<h1>Survidle</h1>
 		</div>
-		<div id="survidle"></div>
+
+		<p id="context">
+			Health: {{ game.player.life }}/10
+		</p>
+
 	</div>
 	<!-- build:js public/builds/js/scripts.js -->
-	<script src="public/components/phaser/build/phaser.js"></script>
-	<script src="public/app/js/Scenes/Boot.js"></script>
+	<script src="public/components/angular/angular.js"></script>
+	<script src="public/app/js/Controllers/GameController.js"></script>
+	<script src="public/app/js/Entities/Player.js"></script>
 	<script src="public/app/js/app.js"></script>
 	<!-- endbuild -->
 </body>
