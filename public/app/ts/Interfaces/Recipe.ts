@@ -4,4 +4,5 @@ interface Recipe {
 	description: string;
 	ingredients: any;
 	required: string;
+	skills?: any;
 }

@@ -64,12 +64,6 @@ module Controllers {
 		////////////////////////////// SCENERIES /////////////////////////////
 		//////////////////////////////////////////////////////////////////////
 
-		happened(key: number, event: Event, foo, $scope): boolean {
-			console.log(key, event, foo, $scope);
-			return true;
-			return this.$scope.$eval(event.when);
-		}
-
 		getScenery() {
 			return this.sceneries[this.scenery];
 		}
@@ -95,7 +89,17 @@ module Controllers {
 		////////////////////////////// HELPERS ///////////////////////////////
 		//////////////////////////////////////////////////////////////////////
 
-		skillProgress(level): number {
+		/**
+		 * Get a Recipe by its key
+		 */
+		getRecipeByKey(key: string): Recipe {
+			return <Recipe> _.find(this.$scope.recipes, {key: key});
+		}
+
+		/**
+		 * Compute the progress of a skill in %
+		 */
+		skillProgress(level: number): number {
 			return Math.round((level - Math.floor(level)) * 100);
 		}
 

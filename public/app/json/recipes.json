@@ -6,6 +6,9 @@
     "required": "gatherWood",
     "ingredients": {
       "wood": 10
+    },
+    "skills": {
+      "masonry": 2
     }
   },
   {
@@ -15,6 +18,9 @@
     "required": "gatherWood",
     "ingredients": {
       "wood": 20
+    },
+    "skills": {
+      "gathering": 2
     }
   }
 ]

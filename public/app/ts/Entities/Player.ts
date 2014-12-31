@@ -37,6 +37,7 @@ module Entities {
 		 */
 		skills = {
 			gathering: 1,
+			masonry: 1,
 		};
 
 		/**

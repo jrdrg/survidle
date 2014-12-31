@@ -28,19 +28,34 @@ module Entities.Sceneries {
 			this.gatherWithSkill('food', 'gathering');
 		}
 
+		/**
+		 * Chop down some woods
+		 */
 		gatherWood() {
-			this.gatherWithSkill('wood', 'gathering');
+			this.gatherWithSkill('wood', 'masonry');
 		}
 
 		//////////////////////////////////////////////////////////////////////
 		////////////////////////////// HELPERS ///////////////////////////////
 		//////////////////////////////////////////////////////////////////////
 
+		/**
+		 * Gather something, taking into account
+		 * skills and tools
+		 */
 		gatherWithSkill(item: string, skill: string) {
 			var probability = this.game.player.skills[skill];
 			if (!this.game.player.inventory[item]) {
 				this.game.player.inventory[item] = 0;
 			}
+
+			// Add tools effects
+			_.each(this.game.player.inventory, (quantity, item) => {
+				var tool = this.game.getRecipeByKey(item);
+				if (quantity && typeof tool !== 'undefined') {
+					probability *= tool.skills[skill] || 1;
+				}
+			});
 
 			// Update skill and inventory
 			this.game.player.skills[skill] += 0.01;
