@@ -42,9 +42,12 @@ module Entities {
 		 */
 		getInventoryCapacity() {
 			var capacity = this.inventoryCapacity;
-			if (this.has('basket')) {
-				capacity += 40;
-			}
+			var holders = {basket: 40, cabin: 100};
+			_.each(holders, (modifier: number, holder: string) => {
+				if (this.has(holder)) {
+					capacity += modifier;
+				}
+			});
 
 			return capacity;
 		}

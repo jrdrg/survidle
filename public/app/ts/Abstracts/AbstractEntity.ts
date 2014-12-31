@@ -60,8 +60,12 @@ module Abstracts {
 		 * skills and tools
 		 */
 		gatherWithSkill(item: string, skill: string) {
+			if (!this.skills[skill]) {
+				this.skills[skill] = 1;
+			}
+
 			var probability = this.skills[skill] * this.getSkillModifier(skill);
-			if (!this.inventory[item]) {
+			if (typeof this.inventory[item] == 'undefined') {
 				this.inventory[item] = 0;
 			}
 
@@ -70,8 +74,11 @@ module Abstracts {
 			this.inventory[item] += Math.round(probability);
 		}
 
+		/**
+		 * Update the experience of a skill
+		 */
 		updateSkillWithExperience(skill: string, experience = 0.01) {
-			this.skills[skill] += 0.01;
+			this.skills[skill] += experience;
 		}
 
 		/**
@@ -170,6 +177,7 @@ module Abstracts {
 		getInventorySize: () => number;
 		hasEmptyInventory: () => boolean;
 		hasInventoryFull: () => boolean;
+		addMultipleItems: (items: any, multiplier?: number) => void;
 
 	}
 }

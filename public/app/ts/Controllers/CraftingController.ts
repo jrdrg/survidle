@@ -5,6 +5,15 @@ module Controllers {
 
 		}
 
+		isUnlocked(recipe: Recipe) {
+			var stage = recipe.required || 'gatherWood';
+			if (!this.$scope.game.stages[stage]) {
+				return false;
+			}
+
+			return !this.$scope.player.has(recipe.key) || recipe.multiple;
+		}
+
 		/**
 		 * Check if the player can craft a recipe
 		 */
@@ -30,7 +39,11 @@ module Controllers {
 			});
 
 			// Add item to inventory
-			this.$scope.player.inventory[recipe.key] = 1;
+			if (!this.$scope.player.inventory[recipe.key]) {
+				this.$scope.player.inventory[recipe.key] = 0;
+			}
+
+			this.$scope.player.inventory[recipe.key]++;
 			this.$scope.player.tools.push(recipe);
 		}
 

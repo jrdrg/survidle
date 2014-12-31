@@ -6,7 +6,8 @@ module Entities.Sceneries {
 			{method: 'lookUp', label: 'Look up', unlock: 'game.stages.lookAround', once: true},
 			{method: 'gatherFood', label: 'Gather food', unlock: 'game.stages.lookAround', condition: '!player.hasInventoryFull()'},
 			{method: 'gatherWood', label: 'Gather wood', unlock: 'game.stages.gatherFood', condition: '!player.hasInventoryFull()'},
-			{method: 'eatFood', label: 'Eat food', unlock: 'game.stages.gatherFood', condition: "game.player.has('food')"},
+			{method: 'gatherIron', label: 'Gather iron', unlock: "player.has('woodenPickaxe')", condition: '!player.hasInventoryFull()'},
+			{method: 'eatFood', label: 'Eat food', unlock: 'game.stages.gatherFood', condition: "player.has('food')"},
 		];
 
 		//////////////////////////////////////////////////////////////////////
@@ -29,6 +30,10 @@ module Entities.Sceneries {
 		 */
 		gatherFood() {
 			this.game.player.gatherWithSkill('food', 'gathering');
+		}
+
+		gatherIron() {
+			this.game.player.gatherWithSkill('iron', 'mining');
 		}
 
 		/**

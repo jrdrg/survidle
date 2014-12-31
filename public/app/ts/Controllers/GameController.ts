@@ -163,8 +163,20 @@ module Controllers {
 				this.world.entities.push(encounter);
 			}
 
+			// Revenues
+			this.computeRevenues();
+
 			this.world.getAliveEntities().forEach((entity: Abstracts.AbstractEntity) => {
 				entity.onCycle(this);
+			});
+		}
+
+		computeRevenues() {
+			_.each(this.player.inventory, (quantity: number, item: string) => {
+				var recipe = this.getRecipeByKey(item);
+				if (recipe && recipe.revenues) {
+					this.player.addMultipleItems(recipe.revenues, quantity);
+				}
 			});
 		}
 

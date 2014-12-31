@@ -2,7 +2,13 @@ interface Recipe {
 	key: string;
 	name: string;
 	description: string;
+
+	// Options
+	required?: string;
+	multiple?: boolean;
+
+	// Statistics
 	ingredients: any;
-	required: string;
 	skills?: any;
+	revenues?: any;
 }

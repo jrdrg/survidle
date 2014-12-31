@@ -11,6 +11,23 @@ class HasInventory {
 	inventoryCapacity: number;
 
 	/**
+	 * Add multiple objects to the inventory
+	 */
+	addMultipleItems(items: any, multiplier: number = 1) {
+		_.each(items, (quantity: number, item: string) => {
+			if (typeof this.inventory[item] === 'undefined') {
+				this.inventory[item] = 0;
+			}
+
+			if (this.hasInventoryFull()) {
+				return;
+			}
+
+			this.inventory[item] += quantity * multiplier;
+		});
+	}
+
+	/**
 	 * Whether the entity has at least X
 	 * of something
 	 */

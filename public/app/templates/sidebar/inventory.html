@@ -2,6 +2,6 @@
 	<h4 class="list-group-item-heading">Inventory ({{ player.getInventoryCapacity() }})</h4>
 </header>
 <p ng-click="player.drop(item)" bs-tooltip="tooltip" data-placement="left" title="Click to drop" class="inventory__item list-group-item" ng-repeat="(item, quantity) in player.inventory">
-	<span class="badge">{{ quantity }}</span>
-	{{ item|title }}
+	<span class="badge">{{ Math.floor(quantity) }}</span>
+	{{ game.getRecipeByKey(item).name || item|title }}
 </p>
