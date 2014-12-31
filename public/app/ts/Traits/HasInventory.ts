@@ -8,20 +8,20 @@ class HasInventory {
 	inventoryCapacity: number;
 
 	/**
-	 * Whether the entity has at least one
+	 * Whether the entity has at least X
 	 * of something
-	 *
-	 * @param item
-	 * @returns {boolean}
 	 */
-	has(item: string) {
-		return this.inventory[item] > 0;
+	has(item: string, required?: number): boolean {
+		console.log(typeof required);
+		required = required || 1;
+
+		return this.inventory[item] >= required;
 	}
 
 	/**
-	 * @returns {number}
+	 * Get the current inventory size
 	 */
-	getInventorySize() {
+	getInventorySize(): number {
 		return _.reduce(this.inventory, function (a: number, b: number) {
 			return a + b;
 		})
@@ -29,19 +29,15 @@ class HasInventory {
 
 	/**
 	 * Whether the inventory is empty or not
-	 *
-	 * @returns {boolean}
 	 */
-	hasEmptyInventory() {
+	hasEmptyInventory(): boolean {
 		return this.getInventorySize() <= 0;
 	}
 
 	/**
 	 * Whether the inventory is full or not
-	 *
-	 * @returns {boolean}
 	 */
-	hasInventoryFull() {
+	hasInventoryFull(): boolean {
 		return this.getInventorySize() >= this.inventoryCapacity;
 	}
 

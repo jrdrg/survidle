@@ -15,6 +15,7 @@ app.controller('NavigationController', Controllers.NavigationController);
 //////////////////////////////////////////////////////////////////////
 
 app.directive('status', Directives.Status.instance);
+app.directive('recipe', Directives.Recipe.instance);
 
 // Filters
 //////////////////////////////////////////////////////////////////////

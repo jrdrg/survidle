@@ -21,9 +21,24 @@ module Entities {
 		 */
 		inventory = {
 			food: 0,
+			wood: 10,
 		};
 
+		/**
+		 * The inventory capacity
+		 *
+		 * @type {number}
+		 */
 		inventoryCapacity = 20;
+
+		/**
+		 * The player's skills
+		 *
+		 * @type {any}
+		 */
+		skills = {
+			gathering: 1,
+		};
 
 		/**
 		 * @param name
@@ -32,6 +47,11 @@ module Entities {
 			this.age = Math.floor((Math.random() * 30) + 16);
 		}
 
+		/**
+		 * Whether the player is hungry or not
+		 *
+		 * @returns {boolean}
+		 */
 		isHungry() {
 			return this.hunger > 0.25;
 		}
@@ -39,7 +59,7 @@ module Entities {
 		// Interface
 		//////////////////////////////////////////////////////////////////////
 
-		has: (item: string) => boolean;
+		has: (item: string, number?: number) => boolean;
 		getInventorySize: () => number;
 		hasEmptyInventory: () => boolean;
 		hasInventoryFull: () => boolean;

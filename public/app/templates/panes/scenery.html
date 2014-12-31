@@ -11,6 +11,12 @@
 		<li class="animate--fade-in" ng-show="player.isHungry()">You feel pretty hungry.</li>
 		<li class="animate--fade-in" ng-show="player.hasInventoryFull()">Your pockets are full.</li>
 	</ul>
+
+	<div ng-if="player.has('wood')">
+		<h4>Crafting</h4>
+
+		<recipe name="Wooden axe" ingredients="{wood: 10}"></recipe>
+	</div>
 </main>
 
 <aside class="layout-aside list-group animate--fade-in" ng-show="game.world.cycle > 3">

@@ -9,7 +9,7 @@
 }
 
 .layout-content {
-	flex: 3;
+	width: 75%;
 
 	p:last-child {
 		margin-bottom: 0;
@@ -17,6 +17,7 @@
 }
 
 .layout-aside {
-	flex: 1;
+	margin-left: 2rem;
+	width: 25%;
 	color: black;
 }

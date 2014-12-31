@@ -1,0 +1,17 @@
+.recipe {
+	width: 20rem;
+	background: rgba(black, 0.25);
+	cursor: pointer;
+
+	h3 {
+		background: rgba(black, 0.25);
+		text-align: center;
+		padding: 0.25em;
+	}
+
+	ul, li {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+	}
+}
