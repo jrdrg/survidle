@@ -12,7 +12,7 @@ Number.prototype.decrement = function (by: number = 1, minimum = 0) {
 	return Math.max(minimum, this - by);
 };
 
-Number.prototype.increment = function (by: number = 1, maximum = 0) {
+Number.prototype.increment = function (by: number = 1, maximum = 1) {
 	return Math.min(maximum, this + by);
 };
 

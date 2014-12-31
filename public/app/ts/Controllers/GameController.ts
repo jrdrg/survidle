@@ -49,7 +49,7 @@ module Controllers {
 			var name = 'Foobar';
 			this.world = new Entities.World();
 			this.player = new Entities.Player(name);
-			this.encounters = new Services.EncountersManager(this.player);
+			this.encounters = new Services.EncountersManager(this.player, this.world);
 
 			// Bind entities
 			this.world.entities.push(this.player);
@@ -96,7 +96,7 @@ module Controllers {
 				this.world.entities.push(encounter);
 			}
 
-			this.world.entities.forEach((entity: Abstracts.AbstractEntity) => {
+			this.world.getAliveEntities().forEach((entity: Abstracts.AbstractEntity) => {
 				entity.onCycle(this);
 			});
 		}

@@ -35,8 +35,32 @@ module Entities {
 		entities = [];
 
 		//////////////////////////////////////////////////////////////////////
+		////////////////////////////// ENTITIES //////////////////////////////
+		//////////////////////////////////////////////////////////////////////
+
+		getAliveEntities() {
+			return _.filter(this.entities, function (entity: Abstracts.AbstractEntity) {
+				return !entity.isDead();
+			});
+		}
+
+		//////////////////////////////////////////////////////////////////////
 		//////////////////////////// DATE AND TIME ///////////////////////////
 		//////////////////////////////////////////////////////////////////////
+
+		/**
+		 * Check if it's night or not
+		 */
+		isNighttime(): boolean {
+			return this.getCurrentHour() > 18;
+		}
+
+		/**
+		 * Get the current hour
+		 */
+		getCurrentHour(): number {
+			return this.cycle + 12 - (this.cyclesPerDay * this.day);
+		}
 
 		/**
 		 * Get the current time in a human readable format
@@ -47,8 +71,7 @@ module Entities {
 			}
 
 			// Add padding to hour
-			var hour = (this.cycle + 12 - (this.cyclesPerDay * this.day));
-			hour = hour.leftPadding(2);
+			var hour = this.getCurrentHour().leftPadding(2);
 
 			return this.day + ', ' + hour + ':00'
 		}

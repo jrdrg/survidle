@@ -27,7 +27,7 @@ module Abstracts {
 		inventoryCapacity = 25;
 
 		/**
-		 * The player's skills
+		 * The entity's skills
 		 *
 		 * @type {any}
 		 */
@@ -127,12 +127,19 @@ module Abstracts {
 		//////////////////////////////////////////////////////////////////////
 
 		/**
-		 * Whether the player is hungry or not
+		 * Whether the entity is hungry or not
 		 *
 		 * @returns {boolean}
 		 */
 		isHungry() {
 			return this.survival.hunger > 0.25;
+		}
+
+		/**
+		 * Whethet the entity is dead
+		 */
+		isDead(): boolean {
+			return this.survival.life <= 0;
 		}
 
 		/**

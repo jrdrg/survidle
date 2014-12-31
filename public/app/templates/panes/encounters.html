@@ -1,7 +1,5 @@
 <main class="layout-content">
-	<p ng-if="!world.encounters.current">You are forever alone.</p>
-
-	<div class="media enemy" ng-repeat="entity in world.entities | filter:{name: '!'+player.name}">
+	<div class="media enemy" ng-repeat="entity in world.getAliveEntities()">
 		<a class="media-left" href="#">
 			<img src="http://placehold.it/64x64">
 		</a>
