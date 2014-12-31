@@ -12,7 +12,6 @@ module Entities {
 		survival = {
 			life: 1,
 			hunger: 0.5,
-			warmth: 1,
 		};
 
 		/**

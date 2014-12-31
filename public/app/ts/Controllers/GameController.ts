@@ -82,7 +82,6 @@ module Controllers {
 
 			// Compute basic needs
 			this.player.survival.hunger = this.player.survival.hunger.increment(this.computeNeedGain(30), 1);
-			this.player.survival.warmth = this.player.survival.warmth.decrement(this.computeNeedGain(1), 0);
 
 			// Compute maluses
 			if (this.player.survival.hunger >= 1) {
