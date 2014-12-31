@@ -1,0 +1,26 @@
+.status {
+	width: 10rem;
+	margin-right: 1rem;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+
+	&--bare {
+		background: darken($status-background, 5);
+		color: white;
+	}
+
+	&, &__label {
+		display: inline-block;
+		margin: 0;
+		vertical-align: top;
+		line-height: 1.4;
+	}
+
+	&__label {
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
+		position: relative;
+		left: 3px;
+		box-shadow: inset -2px 0 5px rgba(black, 0.25);
+	}
+}

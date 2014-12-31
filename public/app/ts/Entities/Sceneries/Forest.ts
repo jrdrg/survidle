@@ -20,6 +20,7 @@ module Entities.Sceneries {
 			var player = this.game.player;
 
 			player.inventory.food = player.inventory.food.decrement(1);
+			player.survival.life = player.survival.life.increment(0.2);
 			player.survival.hunger = player.survival.hunger.decrement(0.1);
 		}
 
@@ -27,33 +28,14 @@ module Entities.Sceneries {
 		 * Gather some food from the forest
 		 */
 		gatherFood() {
-			this.gatherWithSkill('food', 'gathering');
+			this.game.player.gatherWithSkill('food', 'gathering');
 		}
 
 		/**
 		 * Chop down some woods
 		 */
 		gatherWood() {
-			this.gatherWithSkill('wood', 'masonry');
-		}
-
-		//////////////////////////////////////////////////////////////////////
-		////////////////////////////// HELPERS ///////////////////////////////
-		//////////////////////////////////////////////////////////////////////
-
-		/**
-		 * Gather something, taking into account
-		 * skills and tools
-		 */
-		gatherWithSkill(item: string, skill: string) {
-			var probability = this.game.player.skills[skill] * this.game.player.getSkillModifier(skill);
-			if (!this.game.player.inventory[item]) {
-				this.game.player.inventory[item] = 0;
-			}
-
-			// Update skill and inventory
-			this.game.player.skills[skill] += 0.01;
-			this.game.player.inventory[item] += Math.round(probability);
+			this.game.player.gatherWithSkill('wood', 'masonry');
 		}
 
 	}

@@ -24,7 +24,7 @@
 	<section ng-controller="NavigationController as navigation">
 		<nav class="layout-navigation">
 			<ul class="nav nav-tabs nav-justified">
-				<li ng-repeat="pane in navigation.available" ng-class="{active: navigation.current == pane.key}"><a href="#" ng-click="navigation.current = pane.key">{{ pane.label }}</a></li>
+				<li ng-repeat="pane in navigation.available" ng-class="{active: navigation.current == pane.key}"><a href="#" ng-click="navigation.current = pane.key">{{ pane.key == 'encounters' ? pane.label + ' (' +game.world.entities.length+ ')' : pane.label }}</a></li>
 			</ul>
 		</nav>
 
@@ -49,6 +49,7 @@
 	<script src="public/app/js/Directives/Recipe.js"></script>
 	<script src="public/app/js/Directives/Status.js"></script>
 	<script src="public/app/js/Entities/Player.js"></script>
+	<script src="public/app/js/Entities/Enemy.js"></script>
 	<script src="public/app/js/Entities/Sceneries/Forest.js"></script>
 	<script src="public/app/js/Entities/World.js"></script>
 	<script src="public/app/js/Services/EncountersManager.js"></script>

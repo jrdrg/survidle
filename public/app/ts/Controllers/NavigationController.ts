@@ -13,7 +13,7 @@ module Controllers {
 		 */
 		available = [
 			{key: 'scenery', label: 'The Forest'},
-			{key: 'encounter', label: 'Encounters'},
+			{key: 'encounters', label: 'Encounters'},
 			{key: 'character', label: 'Who you are'},
 		];
 

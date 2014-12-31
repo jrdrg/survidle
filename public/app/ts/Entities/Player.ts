@@ -28,7 +28,7 @@ module Entities {
 		 * @param name
 		 */
 		constructor(public name: string) {
-			super();
+			super(name);
 
 			this.age = Math.floor((Math.random() * 30) + 16);
 		}
@@ -47,42 +47,6 @@ module Entities {
 			}
 
 			return capacity;
-		}
-
-		//////////////////////////////////////////////////////////////////////
-		/////////////////////////////// SKILLS ///////////////////////////////
-		//////////////////////////////////////////////////////////////////////
-
-		/**
-		 * Get the tools affecting a skill
-		 */
-		getSkillBonuses(skill: string): Recipe[] {
-			var bonuses = [];
-			if (!this.tools.length) {
-				return [];
-			}
-
-			_.each(this.tools, (recipe: Recipe) => {
-				var bonus = recipe.skills[skill];
-				if (typeof bonus !== 'undefined') {
-					bonuses.push(recipe);
-				}
-			});
-
-			return bonuses;
-		}
-
-		/**
-		 * Get the modifier affecting a skill
-		 */
-		getSkillModifier(skill: string): number {
-			var modifier = 1;
-			var bonuses = this.getSkillBonuses(skill);
-			_.each(bonuses, function (recipe: Recipe) {
-				modifier *= recipe.skills[skill];
-			});
-
-			return modifier;
 		}
 
 	}

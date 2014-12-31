@@ -90,10 +90,14 @@ module Controllers {
 			this.world.passDays();
 
 			// Trigger encounters
-			this.encounters.triggerEncounters();
+			var encounter;
+			if (encounter = this.encounters.triggerEncounters()) {
+				this.encounters.current = encounter;
+				this.world.entities.push(encounter);
+			}
 
-			this.world.entities.forEach(function (entity: Abstracts.AbstractEntity) {
-				entity.onCycle();
+			this.world.entities.forEach((entity: Abstracts.AbstractEntity) => {
+				entity.onCycle(this);
 			});
 		}
 

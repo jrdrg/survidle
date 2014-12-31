@@ -1,0 +1,14 @@
+<main class="layout-content">
+	<p ng-if="!world.encounters.current">You are forever alone.</p>
+
+	<div class="media enemy" ng-repeat="entity in world.entities | filter:{name: '!'+player.name}">
+		<a class="media-left" href="#">
+			<img src="http://placehold.it/64x64">
+		</a>
+
+		<div class="media-body">
+			<h4 class="media-heading">{{ entity.name }}</h4>
+			<status class="animate--fade-in" label="{{ stat|title }}" max="10" ng-repeat="(stat, current) in entity.survival" value="current"></status>
+		</div>
+	</div>
+</main>

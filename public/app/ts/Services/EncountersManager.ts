@@ -17,8 +17,9 @@ module Services {
 				return;
 			}
 
-			if (chance.bool({likelihood: 30})) {
-
+			if (chance.bool({likelihood: 5})) {
+				var enemy = new Entities.Enemy('Direwolf');
+				enemy.survival.hunger = chance.floating({min: 0, max: 1});
 			}
 		}
 
