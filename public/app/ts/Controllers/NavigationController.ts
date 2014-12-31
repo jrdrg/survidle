@@ -14,7 +14,7 @@ module Controllers {
 		 * @returns {string}
 		 */
 		getTemplate() {
-			return 'public/app/templates/panes/' +this.current+ '.html';
+			return 'public/app/templates/panes/' + this.current + '.html';
 		}
 
 	}

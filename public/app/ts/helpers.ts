@@ -4,7 +4,7 @@ function applyMixins(derivedCtor: any, baseCtors: any[], override: string[]) {
 			if (override.indexOf(name) === -1) {
 				derivedCtor.prototype[name] = baseCtor.prototype[name];
 			}
-		})
+		});
 	});
 }
 

@@ -38,7 +38,7 @@ class HasInventory {
 	getInventorySize(): number {
 		return _.reduce(this.inventory, function (a: number, b: number) {
 			return a + b;
-		})
+		});
 	}
 
 	/**
