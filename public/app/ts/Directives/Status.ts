@@ -15,15 +15,15 @@ module Directives {
 		 * @type {any}
 		 */
 		scope = {
-			label   : '@',
-			max: '@',
+			label: '@',
+			max  : '@',
 			value: '=',
 		};
 
 		/**
 		 * Bind Math to the scope
 		 */
-		link = function($scope) {
+		link = function ($scope) {
 			$scope.round = Math.round;
 		};
 

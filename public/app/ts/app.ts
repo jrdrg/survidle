@@ -27,15 +27,16 @@ app.filter('title', Filters.Title);
 ////////////////////////////// BOOTING ///////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-app.run(function($http: ng.IHttpService, $rootScope) {
+app.run(function ($http: ng.IHttpService, $rootScope) {
+	var data = 'public/app/json';
 
 	// Fetch recipes
-	$http.get('public/app/json/recipes.json').then(function(response) {
+	$http.get(data + '/recipes.json').then(function (response) {
 		$rootScope.recipes = response.data;
 	});
 
 	// Fetch events
-	$http.get('public/app/json/events.json').then(function(response) {
+	$http.get(data + '/events.json').then(function (response) {
 		$rootScope.events = response.data;
 	});
 

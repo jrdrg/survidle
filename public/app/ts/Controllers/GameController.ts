@@ -28,7 +28,7 @@ module Controllers {
 		 */
 		stages = {
 			lookAround: false,
-			lookUp: false,
+			lookUp    : false,
 			gatherFood: false,
 		};
 

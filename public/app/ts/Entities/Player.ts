@@ -10,7 +10,7 @@ module Entities {
 		 * The survival stats
 		 */
 		survival = {
-			life: 1,
+			life  : 1,
 			hunger: 0.5,
 		};
 
