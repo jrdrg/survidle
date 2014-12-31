@@ -27,16 +27,16 @@
 	<span class="list-group-item list-group-item-info">
 		<h4 class="list-group-item-heading">Actions</h4>
 	</span>
-	<a href="#" ng-click="game.getScenery().act(key)" ng-repeat="(key, action) in game.getScenery().getActions()" ng-show="{{ action.unlock || true }}" ng-disabled="{{ action.condition || true }}" class="list-group-item">{{ action.label }}</a>
+	<a href="#" ng-click="game.getScenery().act(key, action.condition)" ng-repeat="(key, action) in game.getScenery().getActions()" ng-show="{{ action.unlock || true }}" ng-disabled="{{ action.condition || true }}" class="list-group-item">{{ action.label }}</a>
 
 	<section ng-hide="player.hasEmptyInventory()">
 		<span class="list-group-item list-group-item-info">
 			<h4 class="list-group-item-heading">Inventory</h4>
 		</span>
-		<span class="list-group-item" ng-repeat="(item, quantity) in player.inventory">
+		<p ng-click="player.drop(item)" bs-tooltip="tooltip" data-placement="left" title="Click to drop" class="list-group-item" ng-repeat="(item, quantity) in player.inventory">
 			<span class="badge">{{ quantity }}</span>
 			{{ item|title }}
-		</span>
+		</p>
 	</section>
 </aside>
 

@@ -59,6 +59,7 @@ module Entities {
 		//////////////////////////////////////////////////////////////////////
 
 		has: (item: string, required?: number) => boolean;
+		drop: (item: string) => void;
 		getInventorySize: () => number;
 		hasEmptyInventory: () => boolean;
 		hasInventoryFull: () => boolean;

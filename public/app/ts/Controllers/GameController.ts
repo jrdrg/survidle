@@ -35,7 +35,7 @@ module Controllers {
 		/**
 		 * @param $scope
 		 */
-		constructor($scope, $interval: ng.IIntervalService) {
+		constructor(public $scope, $interval: ng.IIntervalService) {
 			$scope.game = this;
 			$scope.Math = Math;
 

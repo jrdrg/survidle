@@ -1,5 +1,6 @@
 <article class="recipe" ng-click="$parent.crafting.craft(recipe)" ng-if="!player.has(recipe.key) && game.stages[recipe.required]">
 	<h3>{{ recipe.name }}</h3>
+	<p>{{ recipe.description }}</p>
 	<ul>
 		<li ng-repeat="(ingredient, required) in recipe.ingredients">
 			{{ ingredient|title }}

@@ -21,14 +21,14 @@ module Abstracts {
 
 		/**
 		 * Call an action on the scenery
-		 *
-		 * @param action
-		 * @returns {any}
 		 */
-		act(index: number) {
-			var action = this.actions[index];
+		act(index: number, condition = 'true'): void {
+			if (!this.game.$scope.$eval(condition)) {
+				return;
+			}
 
 			// Remove one-time actions after use
+			var action = this.actions[index];
 			if (action.once) {
 				delete this.actions[index];
 				this.actions = _.values(this.actions);

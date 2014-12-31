@@ -6,10 +6,10 @@ function applyMixins(derivedCtor: any, baseCtors: any[]) {
 	});
 }
 
-Number.prototype.decrement = function (by: number, minimum = 0) {
+Number.prototype.decrement = function (by: number = 1, minimum = 0) {
 	return Math.max(minimum, this - by);
 };
 
-Number.prototype.increment = function (by: number, maximum = 0) {
+Number.prototype.increment = function (by: number = 1, maximum = 0) {
 	return Math.min(maximum, this + by);
 };

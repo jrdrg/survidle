@@ -2,6 +2,7 @@
   {
     "key": "woodenAxe",
     "name": "Wooden axe",
+    "description": "Cuts wood, more or less",
     "required": "gatherWood",
     "ingredients": {
       "wood": 10

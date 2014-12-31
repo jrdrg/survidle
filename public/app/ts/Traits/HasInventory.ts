@@ -16,6 +16,13 @@ class HasInventory {
 	}
 
 	/**
+	 * Drop an item from the inventory
+	 */
+	drop(item: string) {
+		this.inventory[item] = this.inventory[item].decrement();
+	}
+
+	/**
 	 * Get the current inventory size
 	 */
 	getInventorySize(): number {
