@@ -24,8 +24,7 @@
 	<section ng-controller="NavigationController as navigation">
 		<nav class="layout-navigation">
 			<ul class="nav nav-tabs nav-justified">
-				<li ng-class="{active: navigation.current == 'scenery'}"><a href="#" ng-click="navigation.current = 'scenery'">The Forest</a></li>
-				<li ng-class="{active: navigation.current == 'character'}"><a href="#" ng-click="navigation.current = 'character'">What you know</a></li>
+				<li ng-repeat="pane in navigation.available" ng-class="{active: navigation.current == pane.key}"><a href="#" ng-click="navigation.current = pane.key">{{ pane.label }}</a></li>
 			</ul>
 		</nav>
 

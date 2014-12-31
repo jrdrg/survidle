@@ -96,7 +96,7 @@ module Entities {
 		getSkillBonuses(skill: string): Recipe[] {
 			var bonuses = [];
 			if (!this.tools.length) {
-				return;
+				return [];
 			}
 
 			_.each(this.tools, (recipe: Recipe) => {

@@ -9,6 +9,15 @@ module Controllers {
 		current = 'scenery';
 
 		/**
+		 * The available panes
+		 */
+		available = [
+			{key: 'scenery', label: 'The Forest'},
+			{key: 'encounter', label: 'Encounters'},
+			{key: 'character', label: 'Who you are'},
+		];
+
+		/**
 		 * Get the current template
 		 *
 		 * @returns {string}

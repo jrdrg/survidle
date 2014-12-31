@@ -65,7 +65,10 @@ module Controllers {
 		////////////////////////////// SCENERIES /////////////////////////////
 		//////////////////////////////////////////////////////////////////////
 
-		getScenery() {
+		/**
+		 * Get the current scenery
+		 */
+		getScenery(): Abstracts.AbstractScenery {
 			return this.sceneries[this.scenery];
 		}
 
