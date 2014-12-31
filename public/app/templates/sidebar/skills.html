@@ -1,0 +1,12 @@
+<header class="list-group-item">
+	<h4 class="list-group-item-heading">Skills</h4>
+</header>
+<div class="list-group-item" ng-repeat="(skill, level) in player.skills">
+	{{ skill|title }} - LVL{{ Math.floor(level) }}<br>
+	<p ng-repeat="bonus in player.getSkillBonuses(skill)">
+		<span class="label label-success">x{{ bonus.skills[skill] }}</span> from <strong>{{ bonus.name }}</strong>
+	</p>
+	<div class="progress">
+		<span class="progress-bar" style="width: {{ game.skillProgress(level) }}%"></span>
+	</div>
+</div>
