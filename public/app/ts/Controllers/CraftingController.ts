@@ -34,5 +34,12 @@ module Controllers {
 			this.$scope.player.tools.push(recipe);
 		}
 
+		/**
+		 * Get the cost of a recipe
+		 */
+		recipeCost(recipe: Recipe): number {
+			return _.sum(recipe.ingredients);
+		}
+
 	}
 }
