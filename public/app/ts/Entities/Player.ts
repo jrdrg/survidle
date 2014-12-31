@@ -24,6 +24,11 @@ module Entities {
 		};
 
 		/**
+		 * The available tools
+		 */
+		tools: Recipe[] = [];
+
+		/**
 		 * The base inventory capacity
 		 *
 		 * @type {number}
@@ -37,7 +42,7 @@ module Entities {
 		 */
 		skills = {
 			gathering: 1,
-			masonry: 1,
+			masonry  : 1,
 		};
 
 		/**
@@ -56,6 +61,10 @@ module Entities {
 			return this.hunger > 0.25;
 		}
 
+		//////////////////////////////////////////////////////////////////////
+		////////////////////////////// INVENTORY /////////////////////////////
+		//////////////////////////////////////////////////////////////////////
+
 		/**
 		 * Get the inventory capacity
 		 */
@@ -66,6 +75,42 @@ module Entities {
 			}
 
 			return capacity;
+		}
+
+		//////////////////////////////////////////////////////////////////////
+		/////////////////////////////// SKILLS ///////////////////////////////
+		//////////////////////////////////////////////////////////////////////
+
+		/**
+		 * Get the tools affecting a skill
+		 */
+		getSkillBonuses(skill: string): Recipe[] {
+			var bonuses = [];
+			if (!this.tools.length) {
+				return;
+			}
+
+			_.each(this.tools, (recipe: Recipe) => {
+				var bonus = recipe.skills[skill];
+				if (typeof bonus !== 'undefined') {
+					bonuses.push(recipe);
+				}
+			});
+
+			return bonuses;
+		}
+
+		/**
+		 * Get the modifier affecting a skill
+		 */
+		getSkillModifier(skill: string): number {
+			var modifier = 1;
+			var bonuses = this.getSkillBonuses(skill);
+			_.each(bonuses, function (recipe: Recipe) {
+				modifier *= recipe.skills[skill];
+			});
+
+			return modifier;
 		}
 
 		// Interface

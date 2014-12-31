@@ -31,6 +31,7 @@ module Controllers {
 
 			// Add item to inventory
 			this.$scope.player.inventory[recipe.key] = 1;
+			this.$scope.player.tools.push(recipe);
 		}
 
 	}
