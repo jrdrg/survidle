@@ -7,11 +7,16 @@
 		background: rgba(black, 0.25);
 		text-align: center;
 		padding: 0.25em;
+		margin: 0;
 	}
 
 	ul, li {
 		list-style-type: none;
 		margin: 0;
 		padding: 0;
+	}
+
+	li {
+		padding: 1rem;
 	}
 }

@@ -21,7 +21,6 @@ module Entities {
 		 */
 		inventory = {
 			food: 0,
-			wood: 10,
 		};
 
 		/**
@@ -59,7 +58,7 @@ module Entities {
 		// Interface
 		//////////////////////////////////////////////////////////////////////
 
-		has: (item: string, number?: number) => boolean;
+		has: (item: string, required?: number) => boolean;
 		getInventorySize: () => number;
 		hasEmptyInventory: () => boolean;
 		hasInventoryFull: () => boolean;

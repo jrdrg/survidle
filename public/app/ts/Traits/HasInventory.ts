@@ -11,10 +11,7 @@ class HasInventory {
 	 * Whether the entity has at least X
 	 * of something
 	 */
-	has(item: string, required?: number): boolean {
-		console.log(typeof required);
-		required = required || 1;
-
+	has(item: string, required: number = 1): boolean {
 		return this.inventory[item] >= required;
 	}
 

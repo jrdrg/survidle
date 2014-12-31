@@ -1,10 +1,9 @@
 <article class="recipe">
 	<h3>{{ name }}</h3>
-	{{ $parent.player.inventory.wood }}
 	<ul>
 		<li ng-repeat="(ingredient, required) in ingredients">
 			{{ ingredient|title }}
-			<span class="label label-success" ng-class="{'label-danger': !$parent.player.has(ingredient, required)}" ng-bind="required"></span>
+			<span class="label label-success" ng-class="{'label-danger': $parent.player.inventory[item] <= required}" ng-bind="required"></span>
 		</li>
 	</ul>
 </article>

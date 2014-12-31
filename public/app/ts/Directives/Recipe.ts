@@ -20,7 +20,7 @@ module Directives {
 		 * @type {any}
 		 */
 		scope = {
-			name       : '@',
+			name       : '=',
 			ingredients: '=',
 		};
 

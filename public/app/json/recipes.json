@@ -1,0 +1,9 @@
+[
+  {
+    "name": "Wooden axe",
+    "required": "gatherWood",
+    "ingredients": {
+      "wood": 10
+    }
+  }
+]

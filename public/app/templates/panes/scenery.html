@@ -15,7 +15,7 @@
 	<div ng-if="player.has('wood')">
 		<h4>Crafting</h4>
 
-		<recipe name="Wooden axe" ingredients="{wood: 10}"></recipe>
+		<recipe ng-repeat="recipe in recipes" name="recipe.name" ingredients="recipe.ingredients" ng-if="game.stages[recipe.required]"></recipe>
 	</div>
 </main>
 
