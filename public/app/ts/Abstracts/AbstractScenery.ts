@@ -2,14 +2,9 @@ module Abstracts {
 	export class AbstractScenery {
 
 		/**
-		 * The available actions
-		 */
-		actions: Action[];
-
-		/**
 		 * @param game
 		 */
-		constructor(public game: Controllers.GameController) {
+		constructor(public game: Controllers.GameController, public actions: Action[]) {
 		}
 
 		/**

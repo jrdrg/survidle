@@ -41,9 +41,20 @@ module Controllers {
 		/**
 		 * @param $scope
 		 */
-		constructor(public $scope, public $interval: ng.IIntervalService) {
+		constructor(
+			public $rootScope,
+			public $scope,
+			public $interval: ng.IIntervalService,
+			public $http: ng.IHttpService
+		) {
 			$scope.game = this;
 			$scope.Math = Math;
+
+			// Load core data
+			this.loadDataOnScope('recipes');
+			this.loadDataOnScope('actions');
+			this.loadDataOnScope('enemies');
+			this.loadDataOnScope('events');
 
 			// Restore save
 			this.bootWorld();
@@ -123,7 +134,7 @@ module Controllers {
 			// Define sceneries
 			this.scenery = 'forest';
 			this.sceneries = {
-				forest: new Entities.Sceneries.Forest(this),
+				forest: new Entities.Sceneries.Forest(this, this.$rootScope.actions.forest),
 			};
 
 			// Define interval
@@ -183,6 +194,15 @@ module Controllers {
 		//////////////////////////////////////////////////////////////////////
 		////////////////////////////// HELPERS ///////////////////////////////
 		//////////////////////////////////////////////////////////////////////
+
+		/**
+		 * Load some data from JSON onto the root scope
+		 */
+		loadDataOnScope(data: string) {
+			this.$http.get('public/app/json/' + data + '.json').then((response) => {
+				this.$rootScope[data] = response.data;
+			});
+		}
 
 		/**
 		 * Get a Recipe by its key

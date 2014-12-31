@@ -1,15 +1,6 @@
 module Entities.Sceneries {
 	export class Forest extends Abstracts.AbstractScenery {
 
-		actions: Action[] = [
-			{method: 'lookAround', label: 'Look around', once: true},
-			{method: 'lookUp', label: 'Look up', unlock: 'game.stages.lookAround', once: true},
-			{method: 'gatherFood', label: 'Gather food', unlock: 'game.stages.lookAround', condition: '!player.hasInventoryFull()'},
-			{method: 'gatherWood', label: 'Gather wood', unlock: 'game.stages.gatherFood', condition: '!player.hasInventoryFull()'},
-			{method: 'gatherIron', label: 'Gather iron', unlock: "player.has('woodenPickaxe')", condition: '!player.hasInventoryFull()'},
-			{method: 'eatFood', label: 'Eat food', unlock: 'game.stages.gatherFood', condition: "player.has('food')"},
-		];
-
 		//////////////////////////////////////////////////////////////////////
 		////////////////////////////// ACTIONS ///////////////////////////////
 		//////////////////////////////////////////////////////////////////////
@@ -32,6 +23,9 @@ module Entities.Sceneries {
 			this.game.player.gatherWithSkill('food', 'gathering');
 		}
 
+		/**
+		 * Mine some iron
+		 */
 		gatherIron() {
 			this.game.player.gatherWithSkill('iron', 'mining');
 		}
