@@ -1,0 +1,20 @@
+<main class="layout-content">
+	<p class="animate--fade-in" ng-show="game.world.cycle">You wake up alone in a dark forest, without a shred of memory.</p>
+	<p class="animate--fade-in" ng-show="game.stages.lookAround">An army of gigantic trees surround you. In between them lay small bushes, with red berries on them.</p>
+	<p class="animate--fade-in" ng-show="game.stages.lookUp">You observe the sun moving in the sky and learn its ways.</p>
+	<p class="animate--fade-in" ng-show="player.isHungry()">You feel pretty hungry.</p>
+</main>
+
+<aside class="layout-aside list-group animate--fade-in" ng-show="game.world.cycle > 3">
+	<span class="list-group-item disabled">Actions</span>
+	<a href="#" ng-click="game.getScenery().act(key)" ng-repeat="(key, action) in game.getScenery().getActions()" ng-show="{{ action.condition || true }}" class="list-group-item">{{ action.label }}</a>
+
+	<section ng-hide="player.hasEmptyInventory()">
+		<span class="list-group-item disabled">Inventory</span>
+		<span class="list-group-item" ng-repeat="(item, quantity) in player.inventory">
+			<span class="badge">{{ quantity }}</span>
+			{{ item|title }}
+		</span>
+	</section>
+</aside>
+

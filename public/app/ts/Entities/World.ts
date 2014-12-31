@@ -20,14 +20,14 @@ module Entities {
 		 *
 		 * @type {number}
 		 */
-		cycleLength = 1;
+		cycleLength = 0.5;
 
 		/**
 		 * Number of cycles in a day
 		 *
 		 * @type {number}
 		 */
-		cyclesPerDay = 3;
+		cyclesPerDay = 24;
 
 		/**
 		 * Compute days related variables

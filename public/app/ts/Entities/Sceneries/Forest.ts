@@ -1,23 +1,12 @@
 module Entities.Sceneries {
 	export class Forest extends Abstracts.AbstractScenery {
 
-		actions = {
-			gatherFood: 'Gather food',
-			eatFood   : 'Eat food',
-		};
-
-		constructor(game) {
-			super(game);
-		}
-
-		getActions() {
-			var actions = _.clone(this.actions);
-			if (!this.game.player.has('food')) {
-				delete actions.eatFood;
-			}
-
-			return actions;
-		}
+		actions: Action[] = [
+			{method: 'gatherFood', label: 'Gather food', condition: "this.game.stages.lookAround"},
+			{method: 'eatFood', label: 'Eat food', condition: "this.game.player.has('food')"},
+			{method: 'lookUp', label: 'Look up', once: true},
+			{method: 'lookAround', label: 'Look around', once: true},
+		];
 
 		//////////////////////////////////////////////////////////////////////
 		////////////////////////////// ACTIONS ///////////////////////////////
@@ -35,10 +24,19 @@ module Entities.Sceneries {
 		 * Gather some food from the forest
 		 */
 		gatherFood() {
+			this.game.stages.gatherFood = true;
+
 			var probability = 0.1;
 			var food = 10;
 
 			this.game.player.inventory.food += (food * probability);
+		}
+
+		/**
+		 * Look up
+		 */
+		lookUp() {
+			this.game.stages.lookUp = true;
 		}
 
 	}

@@ -4,7 +4,7 @@ module Abstracts {
 		/**
 		 * The available actions
 		 */
-		actions;
+		actions: Action[];
 
 		/**
 		 * @param game
@@ -14,10 +14,8 @@ module Abstracts {
 
 		/**
 		 * Get the available actions
-		 *
-		 * @returns {any}
 		 */
-		getActions() {
+		getActions(): Action[] {
 			return this.actions;
 		}
 
@@ -27,8 +25,19 @@ module Abstracts {
 		 * @param action
 		 * @returns {any}
 		 */
-		act(action: string) {
-			return this[action]();
+		act(index: number) {
+			var action = this.actions[index];
+
+			// Remove one-time actions after use
+			if (action.once) {
+				delete this.actions[index];
+				this.actions = _.values(this.actions);
+			}
+
+			// Remember use
+			this.game.stages[action.method] = true;
+
+			return this[action.method]();
 		}
 
 	}

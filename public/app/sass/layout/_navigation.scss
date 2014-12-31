@@ -1,0 +1,26 @@
+.layout-navigation {
+	width: 80%;
+	margin: auto;
+
+	.nav-tabs.nav-justified > li {
+		&.active > a,
+		> a {
+			border: none;
+			border-radius: 0;
+			color: white;
+
+			&:hover {
+				border: none;
+				color: white;
+			}
+		}
+
+		> a:hover {
+			background: rgba(black, 0.25);
+		}
+
+		&.active > a {
+			background: grey(30);
+		}
+	}
+}

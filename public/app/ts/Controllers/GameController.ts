@@ -22,6 +22,17 @@ module Controllers {
 		sceneries;
 
 		/**
+		 * The stages of the game
+		 *
+		 * @type {any}
+		 */
+		stages = {
+			lookAround: false,
+			lookUp: false,
+			gatherFood: false,
+		};
+
+		/**
 		 * @param $scope
 		 */
 		constructor($scope, $interval: ng.IIntervalService) {
@@ -29,8 +40,10 @@ module Controllers {
 			$scope.Math = Math;
 
 			// Define world and player
+			//var name = prompt('What is your name?');
+			var name = 'Foobar';
 			this.world = new Entities.World();
-			this.player = new Entities.Player();
+			this.player = new Entities.Player(name);
 
 			// Define sceneries
 			this.scenery = 'forest';
@@ -38,9 +51,13 @@ module Controllers {
 				forest: new Entities.Sceneries.Forest(this),
 			};
 
+			// Boot game cycle
 			$interval(() => {
 				this.newCycle();
 			}, this.world.cycleLength * 1000);
+
+			// Bind to scope
+			$scope.player = this.player;
 		}
 
 		//////////////////////////////////////////////////////////////////////

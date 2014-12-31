@@ -15,29 +15,21 @@
 		<h1>Survidle</h1>
 	</header>
 
-	<section class="layout-status">
-		<status label="Day" value="game.world.day"></status>
-		<status label="Health" max="10" value="game.player.life"></status>
-		<status label="Hunger" max="10" value="game.player.hunger"></status>
+	<section class="layout-status animate--fade-in">
+		<status ng-show="game.stages.lookUp" label="Day" value="game.world.day"></status>
+		<status ng-show="game.stages.gatherFood" label="Health" max="10" value="game.player.life"></status>
+		<status ng-show="game.stages.gatherFood" label="Hunger" max="10" value="game.player.hunger"></status>
 	</section>
 
-	<section class="layout-container">
-		<main class="layout-content">
-			<p class="animate--fade-in" ng-show="game.world.cycle">You wake up alone in a dark forest.</p>
-			<p class="animate--fade-in" ng-show="game.player.isHungry()">You feel pretty hungry.</p>
-		</main>
-		<aside class="layout-aside list-group animate--fade-in" ng-show="game.world.cycle > game.world.cyclesPerDay">
-			<span class="list-group-item disabled">Actions</span>
-			<a href="#" ng-click="game.getScenery().act(action)" ng-repeat="(action, label) in game.getScenery().getActions()" class="list-group-item">{{ label }}</a>
+	<section ng-controller="NavigationController as navigation">
+		<nav class="layout-navigation">
+			<ul class="nav nav-tabs nav-justified">
+				<li ng-class="{active: navigation.current == 'scenery'}"><a href="#" ng-click="navigation.current = 'scenery'">The Forest</a></li>
+				<li ng-class="{active: navigation.current == 'character'}"><a href="#" ng-click="navigation.current = 'character'">What you know</a></li>
+			</ul>
+		</nav>
 
-			<section ng-hide="game.player.hasEmptyInventory()">
-				<span class="list-group-item disabled">Inventory</span>
-				<span class="list-group-item" ng-repeat="(item, quantity) in game.player.inventory">
-					<span class="badge">{{ quantity }}</span>
-					{{ item }}
-				</span>
-			</section>
-		</aside>
+		<ng-include class="layout-container" src="navigation.getTemplate()"></ng-include>
 	</section>
 
 	<!-- build:js public/builds/js/scripts.js -->
@@ -47,10 +39,12 @@
 	<script src="public/app/js/Traits/HasInventory.js"></script>
 	<script src="public/app/js/Abstracts/AbstractScenery.js"></script>
 	<script src="public/app/js/Controllers/GameController.js"></script>
+	<script src="public/app/js/Controllers/NavigationController.js"></script>
 	<script src="public/app/js/Directives/Status.js"></script>
 	<script src="public/app/js/Entities/Player.js"></script>
-	<script src="public/app/js/Entities/World.js"></script>
 	<script src="public/app/js/Entities/Sceneries/Forest.js"></script>
+	<script src="public/app/js/Entities/World.js"></script>
+	<script src="public/app/js/Filters/Title.js"></script>
 	<script src="public/app/js/app.js"></script>
 	<!-- endbuild -->
 </body>
