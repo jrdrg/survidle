@@ -2,10 +2,10 @@ module Entities.Sceneries {
 	export class Forest extends Abstracts.AbstractScenery {
 
 		actions: Action[] = [
-			{method: 'gatherFood', label: 'Gather food', condition: "this.game.stages.lookAround"},
-			{method: 'eatFood', label: 'Eat food', condition: "this.game.player.has('food')"},
-			{method: 'lookUp', label: 'Look up', once: true},
 			{method: 'lookAround', label: 'Look around', once: true},
+			{method: 'lookUp', label: 'Look up', condition: "game.stages.lookAround", once: true},
+			{method: 'gatherFood', label: 'Gather food', condition: "game.stages.lookAround && !player.hasInventoryFull()"},
+			{method: 'eatFood', label: 'Eat food', condition: "game.player.has('food')"},
 		];
 
 		//////////////////////////////////////////////////////////////////////

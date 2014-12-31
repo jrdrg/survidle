@@ -1,8 +1,16 @@
 <main class="layout-content">
-	<p class="animate--fade-in" ng-show="game.world.cycle">You wake up alone in a dark forest, without a shred of memory.</p>
-	<p class="animate--fade-in" ng-show="game.stages.lookAround">An army of gigantic trees surround you. In between them lay small bushes, with red berries on them.</p>
-	<p class="animate--fade-in" ng-show="game.stages.lookUp">You observe the sun moving in the sky and learn its ways.</p>
-	<p class="animate--fade-in" ng-show="player.isHungry()">You feel pretty hungry.</p>
+	<h4>Diary</h4>
+	<ul class="list-unstyled">
+		<li class="animate--fade-in" ng-show="game.world.cycle">You wake up alone in a dark forest, without a shred of memory.</li>
+		<li class="animate--fade-in" ng-show="game.stages.lookAround">An army of gigantic trees surround you. In between them lay small bushes, with red berries on them.</li>
+		<li class="animate--fade-in" ng-show="game.stages.lookUp">You observe the sun moving in the sky and learn its ways.</li>
+	</ul>
+
+	<h4>Alerts</h4>
+	<ul class="list-unstyled">
+		<li class="animate--fade-in" ng-show="player.isHungry()">You feel pretty hungry.</li>
+		<li class="animate--fade-in" ng-show="player.hasInventoryFull()">Your pockets are full.</li>
+	</ul>
 </main>
 
 <aside class="layout-aside list-group animate--fade-in" ng-show="game.world.cycle > 3">

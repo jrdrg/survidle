@@ -17,8 +17,9 @@
 
 	<section class="layout-status animate--fade-in">
 		<status ng-show="game.stages.lookUp" label="Day" value="game.world.day"></status>
-		<status ng-show="game.stages.gatherFood" label="Health" max="10" value="game.player.life"></status>
-		<status ng-show="game.stages.gatherFood" label="Hunger" max="10" value="game.player.hunger"></status>
+		<status ng-show="game.stages.gatherFood" label="Health" max="10" value="player.life"></status>
+		<status ng-show="game.stages.gatherFood" label="Hunger" max="10" value="player.hunger"></status>
+		<status ng-show="game.stages.gatherFood" label="Inventory" max="player.inventoryCapacity" value="player.getInventorySize() / player.inventoryCapacity"></status>
 	</section>
 
 	<section ng-controller="NavigationController as navigation">

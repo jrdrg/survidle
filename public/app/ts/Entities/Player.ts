@@ -23,6 +23,8 @@ module Entities {
 			food: 0,
 		};
 
+		inventoryCapacity = 20;
+
 		/**
 		 * @param name
 		 */
@@ -38,7 +40,9 @@ module Entities {
 		//////////////////////////////////////////////////////////////////////
 
 		has: (item: string) => boolean;
+		getInventorySize: () => number;
 		hasEmptyInventory: () => boolean;
+		hasInventoryFull: () => boolean;
 
 	}
 }

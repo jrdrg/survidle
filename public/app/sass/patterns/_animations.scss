@@ -1,9 +1,11 @@
 .animate--fade-in {
 	opacity: 1;
+	height: auto;
 	transition: 0.3s all;
 
 	&.ng-hide {
 		display: block !important;
 		opacity: 0;
+		height: 0;
 	}
 }

@@ -34,10 +34,11 @@ module Abstracts {
 				this.actions = _.values(this.actions);
 			}
 
-			// Remember use
+			// Execute action
 			this.game.stages[action.method] = true;
-
-			return this[action.method]();
+			if (typeof this[action.method] !== 'undefined') {
+				this[action.method]();
+			}
 		}
 
 	}
