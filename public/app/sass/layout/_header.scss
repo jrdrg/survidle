@@ -6,6 +6,7 @@
 	height: $header-size + 3rem;
 	color: white;
 	display: flex;
+	position: relative;
 	align-items: flex-end;
 	justify-content: center;
 	overflow: hidden;
@@ -16,5 +17,12 @@
 		margin: 0;
 		font-size: $header-size;
 		height: $header-size - 0.75rem;
+	}
+
+	nav {
+		$padding: 1rem;
+		position: absolute;
+		top: $padding;
+		right: $padding;
 	}
 }

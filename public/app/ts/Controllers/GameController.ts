@@ -31,32 +31,23 @@ module Controllers {
 		 *
 		 * @type {any}
 		 */
-		stages = {
-			lookAround: false,
-			lookUp    : false,
-			gatherFood: false,
-		};
+		stages = {};
+
+		/**
+		 * The current cycle
+		 */
+		cycle;
 
 		/**
 		 * @param $scope
 		 */
-		constructor(public $scope, $interval: ng.IIntervalService) {
+		constructor(public $scope, public $interval: ng.IIntervalService) {
 			$scope.game = this;
 			$scope.Math = Math;
 
 			// Restore save
 			this.bootWorld();
 			this.restoreSave();
-
-			// Boot game cycle
-			$interval(() => {
-				this.newCycle();
-				this.save();
-			}, this.world.cycleLength * 1000);
-
-			// Bind to scope
-			$scope.player = this.player;
-			$scope.world = this.world;
 		}
 
 		//////////////////////////////////////////////////////////////////////
@@ -73,8 +64,8 @@ module Controllers {
 				this.player[key] = value;
 			});
 
-			_.each(survidle.world, (key: string, value: any) => {
-				this.player[key] = value;
+			_.each(survidle.world, (value: any, key: string) => {
+				this.world[key] = value;
 			});
 
 			this.stages = survidle.game.stages;
@@ -85,7 +76,10 @@ module Controllers {
 		 */
 		save() {
 			localStorage.setItem('survidle', JSON.stringify({
-				world : this.world,
+				world : {
+					cycle: this.world.cycle,
+					day: this.world.day,
+				},
 				player: {
 					inventory        : this.player.inventory,
 					skills           : this.player.skills,
@@ -99,7 +93,24 @@ module Controllers {
 			}));
 		}
 
+		reset() {
+			this.$interval.cancel(this.cycle);
+
+			this.bootWorld();
+			this.save();
+		}
+
+		/**
+		 * Boot the game
+		 */
 		bootWorld() {
+			// Define stages of the game
+			this.stages = {
+				lookAround: false,
+				lookUp    : false,
+				gatherFood: false,
+			};
+
 			// Define world and player
 			this.world = new Entities.World();
 			this.player = new Entities.Player('Foobar');
@@ -113,6 +124,16 @@ module Controllers {
 			this.sceneries = {
 				forest: new Entities.Sceneries.Forest(this),
 			};
+
+			// Define interval
+			this.cycle = this.$interval(() => {
+				this.newCycle();
+				this.save();
+			}, this.world.cycleLength * 1000);
+
+			// Bind to scope
+			this.$scope.player = this.player;
+			this.$scope.world = this.world;
 		}
 
 		//////////////////////////////////////////////////////////////////////

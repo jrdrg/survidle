@@ -9,10 +9,13 @@
 	<link rel="stylesheet" href="public/app/css/styles.css" />
 	<!-- endbuild -->
 </head>
-<body ng-app="survidle" ng-controller="GameController">
+<body ng-app="survidle" ng-controller="GameController as app">
 
 	<header class="layout-header">
 		<h1>Survidle</h1>
+		<nav class="btn-group">
+			<a class="btn btn-default" ng-click="app.reset()">Reset</a>
+		</nav>
 	</header>
 
 	<section class="layout-status animate--fade-in">
