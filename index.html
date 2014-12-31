@@ -21,16 +21,36 @@
 		<status label="Hunger" max="10" value="game.player.hunger"></status>
 	</section>
 
-	<main class="layout-content">
-		<p>You wake up alone in a dark forest</p>
-	</main>
+	<section class="layout-container">
+		<main class="layout-content">
+			<p class="animate--fade-in" ng-show="game.world.cycle">You wake up alone in a dark forest.</p>
+			<p class="animate--fade-in" ng-show="game.player.isHungry()">You feel pretty hungry.</p>
+		</main>
+		<aside class="layout-aside list-group animate--fade-in" ng-show="game.world.cycle > game.world.cyclesPerDay">
+			<span class="list-group-item disabled">Actions</span>
+			<a href="#" ng-click="game.getScenery().act(action)" ng-repeat="(action, label) in game.getScenery().getActions()" class="list-group-item">{{ label }}</a>
+
+			<section ng-hide="game.player.hasEmptyInventory()">
+				<span class="list-group-item disabled">Inventory</span>
+				<span class="list-group-item" ng-repeat="(item, quantity) in game.player.inventory">
+					<span class="badge">{{ quantity }}</span>
+					{{ item }}
+				</span>
+			</section>
+		</aside>
+	</section>
 
 	<!-- build:js public/builds/js/scripts.js -->
 	<script src="public/components/angular/angular.js"></script>
+	<script src="public/components/lodash/dist/lodash.js"></script>
+	<script src="public/app/js/helpers.js"></script>
+	<script src="public/app/js/Traits/HasInventory.js"></script>
+	<script src="public/app/js/Abstracts/AbstractScenery.js"></script>
 	<script src="public/app/js/Controllers/GameController.js"></script>
 	<script src="public/app/js/Directives/Status.js"></script>
 	<script src="public/app/js/Entities/Player.js"></script>
 	<script src="public/app/js/Entities/World.js"></script>
+	<script src="public/app/js/Entities/Sceneries/Forest.js"></script>
 	<script src="public/app/js/app.js"></script>
 	<!-- endbuild -->
 </body>

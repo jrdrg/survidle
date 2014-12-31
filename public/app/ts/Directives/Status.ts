@@ -1,4 +1,4 @@
-module Survidle.Directives {
+module Directives {
 	export class Status {
 
 		/**
@@ -23,6 +23,10 @@ module Survidle.Directives {
 			label   : '@',
 			max: '@',
 			value: '=',
+		};
+
+		link = function($scope) {
+			$scope.round = Math.round;
 		};
 
 		/**

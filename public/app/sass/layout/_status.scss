@@ -1,21 +1,26 @@
+$status-background: grey(25);
+
 .layout-status {
-	background: grey(25);
+	background: $status-background;
 	padding: 1rem;
 	text-align: center;
 
 	.status {
-		width: 15rem;
+		width: 10rem;
 		margin-right: 1rem;
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
 
 		&--bare {
-			background: #000000;
+			background: darken($status-background, 5);
 			color: white;
 		}
 
 		&, &__label {
 			display: inline-block;
 			margin: 0;
-			vertical-align: middle;
+			vertical-align: top;
+			line-height: 1.4;
 		}
 
 		&__label {

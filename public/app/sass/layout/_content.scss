@@ -1,8 +1,18 @@
-.layout-content {
+.layout-container {
 	width: 100%;
 	background: rgba(black, 0.15);
 	color: white;
 	padding: 2rem;
 	width: 80%;
 	margin: auto;
+	display: flex;
+}
+
+.layout-content {
+	flex: 3;
+}
+
+.layout-aside {
+	flex: 1;
+	color: black;
 }
