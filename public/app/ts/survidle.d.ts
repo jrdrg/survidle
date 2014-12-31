@@ -1,6 +1,7 @@
 declare module _ {
 	interface LoDashStatic {
 		mixin(any: any): void;
+		sum(object): number;
 	}
 }
 

@@ -36,9 +36,7 @@ class HasInventory {
 	 * Get the current inventory size
 	 */
 	getInventorySize(): number {
-		return _.reduce(this.inventory, function (a: number, b: number) {
-			return a + b;
-		});
+		return _.sum(this.inventory);
 	}
 
 	/**
