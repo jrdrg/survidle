@@ -17,14 +17,6 @@ module Directives {
 		templateUrl = 'public/app/templates/recipe.html';
 
 		/**
-		 * @type {any}
-		 */
-		scope = {
-			name       : '=',
-			ingredients: '=',
-		};
-
-		/**
 		 * @returns {Survidle.Directives.Status}
 		 */
 		static instance() {

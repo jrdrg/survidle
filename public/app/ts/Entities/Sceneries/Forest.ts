@@ -3,10 +3,10 @@ module Entities.Sceneries {
 
 		actions: Action[] = [
 			{method: 'lookAround', label: 'Look around', once: true},
-			{method: 'lookUp', label: 'Look up', condition: "game.stages.lookAround", once: true},
-			{method: 'gatherFood', label: 'Gather food', condition: "game.stages.lookAround && !player.hasInventoryFull()"},
-			{method: 'gatherWood', label: 'Gather wood', condition: "game.stages.lookAround && !player.hasInventoryFull()"},
-			{method: 'eatFood', label: 'Eat food', condition: "game.player.has('food')"},
+			{method: 'lookUp', label: 'Look up', unlock: "game.stages.lookAround", once: true},
+			{method: 'gatherFood', label: 'Gather food', unlock: "game.stages.lookAround && !player.hasInventoryFull()"},
+			{method: 'gatherWood', label: 'Gather wood', unlock: "game.stages.gatherFood && !player.hasInventoryFull()"},
+			{method: 'eatFood', label: 'Eat food', unlock: 'game.stages.gatherFood', condition: "game.player.has('food')"},
 		];
 
 		//////////////////////////////////////////////////////////////////////

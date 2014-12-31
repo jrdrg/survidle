@@ -14,7 +14,7 @@ module Entities {
 		/**
 		 * @type {number}
 		 */
-		hunger = 0;
+		hunger = 0.5;
 
 		/**
 		 * @type {any}

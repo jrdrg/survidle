@@ -6,25 +6,33 @@
 		<li class="animate--fade-in" ng-show="game.stages.lookUp">You observe the sun moving in the sky and learn its ways.</li>
 	</ul>
 
-	<h4>Alerts</h4>
-	<ul class="list-unstyled">
-		<li class="animate--fade-in" ng-show="player.isHungry()">You feel pretty hungry.</li>
-		<li class="animate--fade-in" ng-show="player.hasInventoryFull()">Your pockets are full.</li>
-	</ul>
+	<div class="animate--fade-in" ng-show="game.world.cycle > 3">
+		<hr />
+		<h4>Thoughts</h4>
+		<ul class="list-unstyled">
+			<li class="animate--fade-in" ng-show="player.isHungry()">You feel pretty hungry.</li>
+			<li class="animate--fade-in" ng-show="player.hasInventoryFull()">Your pockets are full.</li>
+		</ul>
+	</div>
 
-	<div ng-if="player.has('wood')">
+	<div ng-if="player.has('wood')" ng-controller="CraftingController as crafting">
+		<hr />
 		<h4>Crafting</h4>
 
-		<recipe ng-repeat="recipe in recipes" name="recipe.name" ingredients="recipe.ingredients" ng-if="game.stages[recipe.required]"></recipe>
+		<recipe ng-repeat="recipe in recipes"></recipe>
 	</div>
 </main>
 
 <aside class="layout-aside list-group animate--fade-in" ng-show="game.world.cycle > 3">
-	<span class="list-group-item disabled">Actions</span>
-	<a href="#" ng-click="game.getScenery().act(key)" ng-repeat="(key, action) in game.getScenery().getActions()" ng-show="{{ action.condition || true }}" class="list-group-item">{{ action.label }}</a>
+	<span class="list-group-item list-group-item-info">
+		<h4 class="list-group-item-heading">Actions</h4>
+	</span>
+	<a href="#" ng-click="game.getScenery().act(key)" ng-repeat="(key, action) in game.getScenery().getActions()" ng-show="{{ action.unlock || true }}" ng-disabled="{{ action.condition || true }}" class="list-group-item">{{ action.label }}</a>
 
 	<section ng-hide="player.hasEmptyInventory()">
-		<span class="list-group-item disabled">Inventory</span>
+		<span class="list-group-item list-group-item-info">
+			<h4 class="list-group-item-heading">Inventory</h4>
+		</span>
 		<span class="list-group-item" ng-repeat="(item, quantity) in player.inventory">
 			<span class="badge">{{ quantity }}</span>
 			{{ item|title }}

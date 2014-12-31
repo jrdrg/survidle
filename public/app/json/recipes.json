@@ -1,5 +1,6 @@
 [
   {
+    "key": "woodenAxe",
     "name": "Wooden axe",
     "required": "gatherWood",
     "ingredients": {

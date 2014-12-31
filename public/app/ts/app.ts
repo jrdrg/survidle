@@ -9,6 +9,7 @@ var app = angular.module('survidle', [
 //////////////////////////////////////////////////////////////////////
 
 app.controller('GameController', Controllers.GameController);
+app.controller('CraftingController', Controllers.CraftingController);
 app.controller('NavigationController', Controllers.NavigationController);
 
 // Directives
