@@ -19,7 +19,9 @@
 		<hr />
 		<h4>Crafting</h4>
 
-		<recipe ng-repeat="recipe in recipes"></recipe>
+		<section class="layout-recipes">
+			<recipe ng-repeat="recipe in recipes"></recipe>
+		</section>
 	</div>
 </main>
 
@@ -33,7 +35,7 @@
 
 	<section ng-hide="player.hasEmptyInventory()">
 		<header class="list-group-item">
-			<h4 class="list-group-item-heading">Inventory</h4>
+			<h4 class="list-group-item-heading">Inventory ({{ player.getInventoryCapacity() }})</h4>
 		</header>
 		<p ng-click="player.drop(item)" bs-tooltip="tooltip" data-placement="left" title="Click to drop" class="list-group-item" ng-repeat="(item, quantity) in player.inventory">
 			<span class="badge">{{ quantity }}</span>

@@ -19,7 +19,7 @@
 		<status ng-show="game.stages.lookUp" label="Day" value="game.world.day"></status>
 		<status ng-show="game.stages.gatherFood" label="Health" max="10" value="player.life"></status>
 		<status ng-show="game.stages.gatherFood" label="Hunger" max="10" value="player.hunger"></status>
-		<status ng-show="game.stages.gatherFood" label="Inventory" max="player.inventoryCapacity" value="player.getInventorySize() / player.inventoryCapacity"></status>
+		<status ng-show="game.stages.gatherFood" label="Inventory" max="player.getInventoryCapacity()" value="player.getInventorySize() / player.getInventoryCapacity()"></status>
 	</section>
 
 	<section ng-controller="NavigationController as navigation">

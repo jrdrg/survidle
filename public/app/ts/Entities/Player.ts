@@ -24,11 +24,11 @@ module Entities {
 		};
 
 		/**
-		 * The inventory capacity
+		 * The base inventory capacity
 		 *
 		 * @type {number}
 		 */
-		inventoryCapacity = 20;
+		inventoryCapacity = 25;
 
 		/**
 		 * The player's skills
@@ -55,6 +55,18 @@ module Entities {
 			return this.hunger > 0.25;
 		}
 
+		/**
+		 * Get the inventory capacity
+		 */
+		getInventoryCapacity() {
+			var capacity = this.inventoryCapacity;
+			if (this.has('basket')) {
+				capacity += 40;
+			}
+
+			return capacity;
+		}
+
 		// Interface
 		//////////////////////////////////////////////////////////////////////
 
@@ -67,4 +79,4 @@ module Entities {
 	}
 }
 
-applyMixins(Entities.Player, [HasInventory]);
+applyMixins(Entities.Player, [HasInventory], ['getInventoryCapacity']);

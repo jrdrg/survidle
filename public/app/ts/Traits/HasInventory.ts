@@ -5,6 +5,9 @@ class HasInventory {
 	 */
 	inventory;
 
+	/**
+	 * The base capacity of the inventory
+	 */
 	inventoryCapacity: number;
 
 	/**
@@ -20,6 +23,13 @@ class HasInventory {
 	 */
 	drop(item: string) {
 		this.inventory[item] = this.inventory[item].decrement();
+	}
+
+	/**
+	 * Get the capacity of the inventory
+	 */
+	getInventoryCapacity(): number {
+		return this.inventoryCapacity;
 	}
 
 	/**
@@ -42,7 +52,7 @@ class HasInventory {
 	 * Whether the inventory is full or not
 	 */
 	hasInventoryFull(): boolean {
-		return this.getInventorySize() >= this.inventoryCapacity;
+		return this.getInventorySize() >= this.getInventoryCapacity();
 	}
 
 }

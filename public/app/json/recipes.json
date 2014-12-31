@@ -7,5 +7,14 @@
     "ingredients": {
       "wood": 10
     }
+  },
+  {
+    "key": "basket",
+    "name": "Basket",
+    "description": "A place to put stuff",
+    "required": "gatherWood",
+    "ingredients": {
+      "wood": 20
+    }
   }
 ]

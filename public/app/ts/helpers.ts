@@ -1,7 +1,9 @@
-function applyMixins(derivedCtor: any, baseCtors: any[]) {
+function applyMixins(derivedCtor: any, baseCtors: any[], override: string[]) {
 	baseCtors.forEach(baseCtor => {
 		Object.getOwnPropertyNames(baseCtor.prototype).forEach(name => {
-			derivedCtor.prototype[name] = baseCtor.prototype[name];
+			if (override.indexOf(name) === -1) {
+				derivedCtor.prototype[name] = baseCtor.prototype[name];
+			}
 		})
 	});
 }
