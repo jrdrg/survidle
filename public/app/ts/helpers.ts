@@ -23,7 +23,7 @@ Number.prototype.leftPadding = function (padding: number): string {
 };
 
 _.mixin({
-	sum: function (object): number {
+	sum       : function (object): number {
 		return _.reduce(object, function (a: number, b: number) {
 			return a + b;
 		});
