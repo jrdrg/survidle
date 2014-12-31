@@ -42,6 +42,8 @@ module Entities.Sceneries {
 				this.game.player.inventory[item] = 0;
 			}
 
+			// Update skill and inventory
+			this.game.player.skills[skill] += 0.01;
 			this.game.player.inventory[item] += Math.round(probability);
 		}
 

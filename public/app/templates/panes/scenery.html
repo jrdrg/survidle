@@ -24,19 +24,33 @@
 </main>
 
 <aside class="layout-aside list-group animate--fade-in" ng-show="game.world.cycle > 3">
-	<span class="list-group-item list-group-item-info">
-		<h4 class="list-group-item-heading">Actions</h4>
-	</span>
-	<a href="#" ng-click="game.getScenery().act(key, action.condition)" ng-repeat="(key, action) in game.getScenery().getActions()" ng-show="{{ action.unlock || true }}" ng-disabled="{{ action.condition || true }}" class="list-group-item">{{ action.label }}</a>
+	<section>
+		<header class="list-group-item">
+			<h4 class="list-group-item-heading">Actions</h4>
+		</header>
+		<a href="#" ng-click="game.getScenery().act(key, action.condition)" ng-repeat="(key, action) in game.getScenery().getActions()" ng-show="{{ action.unlock || true }}" ng-disabled="{{ action.condition || true }}" class="list-group-item">{{ action.label }}</a>
+	</section>
 
 	<section ng-hide="player.hasEmptyInventory()">
-		<span class="list-group-item list-group-item-info">
+		<header class="list-group-item">
 			<h4 class="list-group-item-heading">Inventory</h4>
-		</span>
+		</header>
 		<p ng-click="player.drop(item)" bs-tooltip="tooltip" data-placement="left" title="Click to drop" class="list-group-item" ng-repeat="(item, quantity) in player.inventory">
 			<span class="badge">{{ quantity }}</span>
 			{{ item|title }}
 		</p>
+	</section>
+
+	<section ng-show="game.stages.gatherFood">
+		<header class="list-group-item">
+			<h4 class="list-group-item-heading">Skills</h4>
+		</header>
+		<div class="list-group-item" ng-repeat="(skill, level) in player.skills">
+			{{ skill|title }} - LVL{{ Math.floor(level) }}
+			<div class="progress">
+				<span class="progress-bar" style="width: {{ game.skillProgress(level) }}%"></span>
+			</div>
+		</div>
 	</section>
 </aside>
 

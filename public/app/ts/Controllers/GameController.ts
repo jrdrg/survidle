@@ -89,6 +89,10 @@ module Controllers {
 		////////////////////////////// HELPERS ///////////////////////////////
 		//////////////////////////////////////////////////////////////////////
 
+		skillProgress(level): number {
+			return Math.round((level - Math.floor(level)) * 100);
+		}
+
 		/**
 		 * Compute by how much something gains in a cycle
 		 * if it needs to reach 1 in {days} day
