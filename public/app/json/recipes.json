@@ -33,5 +33,15 @@
       "wood": 5
     },
     "skills": {}
+  },
+  {
+    "key": "cabin",
+    "name": "Small cabin",
+    "description": "Should keep you out of danger... for now",
+    "required": "gatherWood",
+    "ingredients": {
+      "wood": 50
+    },
+    "skills": {}
   }
 ]
