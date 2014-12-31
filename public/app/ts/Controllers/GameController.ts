@@ -78,7 +78,7 @@ module Controllers {
 			localStorage.setItem('survidle', JSON.stringify({
 				world : {
 					cycle: this.world.cycle,
-					day: this.world.day,
+					day  : this.world.day,
 				},
 				player: {
 					inventory        : this.player.inventory,
@@ -86,6 +86,7 @@ module Controllers {
 					age              : this.player.age,
 					survival         : this.player.survival,
 					inventoryCapacity: this.player.inventoryCapacity,
+					tools            : this.player.tools,
 				},
 				game  : {
 					stages: this.stages,

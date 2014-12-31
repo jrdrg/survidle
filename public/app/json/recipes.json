@@ -8,6 +8,7 @@
       "wood": 10
     },
     "skills": {
+      "combat": 1.5,
       "masonry": 2
     }
   },
