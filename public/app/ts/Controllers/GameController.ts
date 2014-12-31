@@ -12,6 +12,11 @@ module Controllers {
 		world: Entities.World;
 
 		/**
+		 * The service that manages encounters
+		 */
+		encounters: Services.EncountersManager;
+
+		/**
 		 * The current scenery
 		 */
 		scenery;
@@ -44,6 +49,7 @@ module Controllers {
 			var name = 'Foobar';
 			this.world = new Entities.World();
 			this.player = new Entities.Player(name);
+			this.encounters = new Services.EncountersManager(this.player);
 
 			// Define sceneries
 			this.scenery = 'forest';
@@ -79,6 +85,9 @@ module Controllers {
 		newCycle() {
 			this.world.cycle++;
 			this.world.passDays();
+
+			// Trigger encounters
+			this.encounters.triggerEncounters();
 
 			// Compute basic needs
 			this.player.survival.hunger = this.player.survival.hunger.increment(this.computeNeedGain(30), 1);

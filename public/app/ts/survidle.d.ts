@@ -10,3 +10,7 @@ interface Number {
 	decrement(by: number, minimum?: number);
 	leftPadding(padding: number);
 }
+
+declare var chance: {
+	bool(options?: any): boolean;
+}

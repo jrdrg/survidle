@@ -1,18 +1,10 @@
 module Entities {
-	export class Player implements HasInventory {
+	export class Player extends Abstracts.AbstractEntity {
 
 		/**
 		 * The age of the player
 		 */
 		age: number;
-
-		/**
-		 * The survival stats
-		 */
-		survival = {
-			life  : 1,
-			hunger: 0.5,
-		};
 
 		/**
 		 * @type {any}
@@ -22,23 +14,12 @@ module Entities {
 		};
 
 		/**
-		 * The available tools
-		 */
-		tools: Recipe[] = [];
-
-		/**
-		 * The base inventory capacity
-		 *
-		 * @type {number}
-		 */
-		inventoryCapacity = 25;
-
-		/**
 		 * The player's skills
 		 *
 		 * @type {any}
 		 */
 		skills = {
+			combar: 1,
 			gathering: 1,
 			masonry  : 1,
 		};
@@ -47,27 +28,10 @@ module Entities {
 		 * @param name
 		 */
 		constructor(public name: string) {
+			super();
+
 			this.age = Math.floor((Math.random() * 30) + 16);
 		}
-
-		/**
-		 * Whether the player is hungry or not
-		 *
-		 * @returns {boolean}
-		 */
-		isHungry() {
-			return this.survival.hunger > 0.25;
-		}
-
-		//////////////////////////////////////////////////////////////////////
-		////////////////////////////// INTERFACE /////////////////////////////
-		//////////////////////////////////////////////////////////////////////
-
-		has: (item: string, required?: number) => boolean;
-		drop: (item: string) => void;
-		getInventorySize: () => number;
-		hasEmptyInventory: () => boolean;
-		hasInventoryFull: () => boolean;
 
 		//////////////////////////////////////////////////////////////////////
 		////////////////////////////// INVENTORY /////////////////////////////
@@ -123,5 +87,3 @@ module Entities {
 
 	}
 }
-
-applyMixins(Entities.Player, [HasInventory], ['getInventoryCapacity']);
