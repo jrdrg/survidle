@@ -36,6 +36,11 @@ app.run(function ($http: ng.IHttpService, $rootScope) {
 	});
 
 	// Fetch events
+	$http.get(data + '/enemies.json').then(function (response) {
+		$rootScope.enemies = response.data;
+	});
+
+	// Fetch events
 	$http.get(data + '/events.json').then(function (response) {
 		$rootScope.events = response.data;
 	});

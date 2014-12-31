@@ -1,6 +1,6 @@
 <span class="status__label label label-default">{{ label }}</span>
 <div class="status progress" ng-if="max">
-	<span class="progress-bar" style="width: {{ value * 100 }}%">
+	<span class="progress-bar" style="width: {{ value * 100 }}%" ng-class="{'progress-bar-danger': max - value > 0.75}">
 		{{ round(value * 100) }}%
 	</span>
 </div>

@@ -115,7 +115,7 @@ module Controllers {
 			// Define world and player
 			this.world = new Entities.World();
 			this.player = new Entities.Player('Foobar');
-			this.encounters = new Services.EncountersManager(this.player, this.world);
+			this.encounters = new Services.EncountersManager(this);
 
 			// Bind entities
 			this.world.entities.push(this.player);

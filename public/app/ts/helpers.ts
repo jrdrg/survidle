@@ -28,4 +28,7 @@ _.mixin({
 			return a + b;
 		});
 	},
+	randomItem: function (array) {
+		return array[Math.floor(Math.random() * array.length)];
+	}
 });

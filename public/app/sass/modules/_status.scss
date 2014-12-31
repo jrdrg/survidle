@@ -4,9 +4,16 @@
 	border-top-left-radius: 0;
 	border-bottom-left-radius: 0;
 
+	.progress-bar,
+	&--bare {
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
+	}
+
 	&--bare {
 		background: darken($status-background, 5);
 		color: white;
+		text-align: center;
 	}
 
 	&, &__label {

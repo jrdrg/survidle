@@ -6,21 +6,24 @@ module Services {
 		 */
 		current: Entities.Enemy;
 
-		constructor(public player: Entities.Player, public world: Entities.World) {
+		constructor(public game: Controllers.GameController) {
 		}
 
 		/**
 		 * Trigger encounters
 		 */
 		triggerEncounters() {
-			if (this.player.has('house') || !this.player.has('woodenAxe')) {
+			if (!this.game.player.has('woodenAxe')) {
 				return;
 			}
 
-			var likelihood = this.world.isNighttime() ? 15 : 5;
+			var modifier = this.game.world.isNighttime ? 2 : 1;
+			var enemyType = <Entities.Enemy> _.randomItem(this.game.$scope.enemies);
+
+			var likelihood = 5 * modifier;
 			if (chance.bool({likelihood: likelihood})) {
-				var enemy = new Entities.Enemy('Direwolf');
-				enemy.survival.hunger = chance.floating({min: 0, max: 1});
+				var enemy = new Entities.Enemy(enemyType.name);
+				enemy.skills = enemyType.skills;
 
 				return enemy;
 			}

@@ -1,6 +1,13 @@
 module Entities {
 	export class Enemy extends Abstracts.AbstractEntity {
 
+		constructor(public name: string) {
+			super(name);
+
+			// Assign random hunger
+			this.survival.hunger = chance.floating({min: 0, max: 1});
+		}
+
 		onCycle(game: Controllers.GameController) {
 			super.onCycle(game);
 
