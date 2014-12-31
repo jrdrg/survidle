@@ -34,6 +34,22 @@ module Abstracts {
 		skills = {};
 
 		//////////////////////////////////////////////////////////////////////
+		/////////////////////////////// CYCLES ///////////////////////////////
+		//////////////////////////////////////////////////////////////////////
+
+		/**
+		 * What happens on every cycle
+		 */
+		onCycle() {
+			this.survival.hunger = this.survival.hunger.increment(this.computeNeedGain(30), 1);
+
+			// Compute maluses
+			if (this.survival.hunger >= 1) {
+				this.survival.life = this.survival.life.decrement(this.computeNeedGain(3));
+			}
+		}
+
+		//////////////////////////////////////////////////////////////////////
 		////////////////////////////// SURVIVAL //////////////////////////////
 		//////////////////////////////////////////////////////////////////////
 
@@ -51,6 +67,18 @@ module Abstracts {
 		 */
 		getInventoryCapacity() {
 			return this.inventoryCapacity;
+		}
+
+		/**
+		 * Compute by how much something gains in a cycle
+		 * if it needs to reach 1 in {days} day
+		 *
+		 * @param days
+		 * 1
+		 * @returns {number}
+		 */
+		computeNeedGain(days: number) {
+			return 1 / (days * 24);
 		}
 
 		//////////////////////////////////////////////////////////////////////

@@ -51,6 +51,9 @@ module Controllers {
 			this.player = new Entities.Player(name);
 			this.encounters = new Services.EncountersManager(this.player);
 
+			// Bind entities
+			this.world.entities.push(this.player);
+
 			// Define sceneries
 			this.scenery = 'forest';
 			this.sceneries = {
@@ -89,13 +92,9 @@ module Controllers {
 			// Trigger encounters
 			this.encounters.triggerEncounters();
 
-			// Compute basic needs
-			this.player.survival.hunger = this.player.survival.hunger.increment(this.computeNeedGain(30), 1);
-
-			// Compute maluses
-			if (this.player.survival.hunger >= 1) {
-				this.player.survival.life = this.player.survival.life.decrement(this.computeNeedGain(3));
-			}
+			this.world.entities.forEach(function (entity: Abstracts.AbstractEntity) {
+				entity.onCycle();
+			});
 		}
 
 		//////////////////////////////////////////////////////////////////////
@@ -114,18 +113,6 @@ module Controllers {
 		 */
 		skillProgress(level: number): number {
 			return Math.round((level - Math.floor(level)) * 100);
-		}
-
-		/**
-		 * Compute by how much something gains in a cycle
-		 * if it needs to reach 1 in {days} day
-		 *
-		 * @param days
-		 * 1
-		 * @returns {number}
-		 */
-		computeNeedGain(days: number) {
-			return 1 / (days * this.world.cyclesPerDay);
 		}
 
 	}
