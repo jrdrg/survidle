@@ -44,11 +44,65 @@ module Controllers {
 			$scope.game = this;
 			$scope.Math = Math;
 
+			// Restore save
+			this.bootWorld();
+			this.restoreSave();
+
+			// Boot game cycle
+			$interval(() => {
+				this.newCycle();
+				this.save();
+			}, this.world.cycleLength * 1000);
+
+			// Bind to scope
+			$scope.player = this.player;
+			$scope.world = this.world;
+		}
+
+		//////////////////////////////////////////////////////////////////////
+		/////////////////////////////// SAVES ////////////////////////////////
+		//////////////////////////////////////////////////////////////////////
+
+		restoreSave() {
+			var survidle = JSON.parse(localStorage.getItem('survidle'));
+			if (!survidle) {
+				return;
+			}
+
+			_.each(survidle.player, (value: any, key: string) => {
+				this.player[key] = value;
+			});
+
+			_.each(survidle.world, (key: string, value: any) => {
+				this.player[key] = value;
+			});
+
+			this.stages = survidle.game.stages;
+		}
+
+		/**
+		 * Save the game
+		 */
+		save() {
+			localStorage.setItem('survidle', JSON.stringify({
+				world : this.world,
+				player: {
+					inventory        : this.player.inventory,
+					skills           : this.player.skills,
+					age              : this.player.age,
+					survival         : this.player.survival,
+					inventoryCapacity: this.player.inventoryCapacity,
+				},
+				game  : {
+					stages: this.stages,
+				}
+			}));
+		}
+
+		bootWorld() {
 			// Define world and player
-			//var name = prompt('What is your name?');
-			var name = 'Foobar';
 			this.world = new Entities.World();
-			this.player = new Entities.Player(name);
+			this.player = new Entities.Player('Foobar');
 			this.encounters = new Services.EncountersManager(this.player, this.world);
 
 			// Bind entities
@@ -59,15 +113,6 @@ module Controllers {
 			this.sceneries = {
 				forest: new Entities.Sceneries.Forest(this),
 			};
-
-			// Boot game cycle
-			$interval(() => {
-				this.newCycle();
-			}, this.world.cycleLength * 1000);
-
-			// Bind to scope
-			$scope.player = this.player;
-			$scope.world = this.world;
 		}
 
 		//////////////////////////////////////////////////////////////////////
