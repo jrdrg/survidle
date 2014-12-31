@@ -19,10 +19,8 @@ module Controllers {
 
 		/**
 		 * Get the current template
-		 *
-		 * @returns {string}
 		 */
-		getTemplate() {
+		getTemplate(): string {
 			return 'public/app/templates/panes/' + this.current + '.html';
 		}
 

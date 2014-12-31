@@ -16,9 +16,9 @@
 	</header>
 
 	<section class="layout-status animate--fade-in">
-		<status ng-show="game.stages.lookUp" label="Day" value="world.getCurrentTime(player.has('sundial'))"></status>
-		<status ng-show="game.stages.gatherFood" label="{{ stat|title }}" max="10" ng-repeat="(stat, current) in player.survival" value="current"></status>
-		<status ng-show="game.stages.gatherFood" label="Inventory" max="player.getInventoryCapacity()" value="player.getInventorySize() / player.getInventoryCapacity()"></status>
+		<status class="animate--fade-in" ng-show="game.stages.lookUp" label="Day" value="world.getCurrentTime(player.has('sundial'))"></status>
+		<status class="animate--fade-in" ng-show="game.stages.gatherFood" label="{{ stat|title }}" max="10" ng-repeat="(stat, current) in player.survival" value="current"></status>
+		<status class="animate--fade-in" ng-show="game.stages.gatherFood" label="Inventory" max="player.getInventoryCapacity()" value="player.getInventorySize() / player.getInventoryCapacity()"></status>
 	</section>
 
 	<section ng-controller="NavigationController as navigation">

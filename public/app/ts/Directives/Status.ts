@@ -7,11 +7,6 @@ module Directives {
 		restrict = 'E';
 
 		/**
-		 * @type {boolean}
-		 */
-		transclude = true;
-
-		/**
 		 * @type {string}
 		 */
 		templateUrl = 'public/app/templates/status.html';
@@ -25,6 +20,9 @@ module Directives {
 			value: '=',
 		};
 
+		/**
+		 * Bind Math to the scope
+		 */
 		link = function($scope) {
 			$scope.round = Math.round;
 		};
