@@ -22,5 +22,15 @@
     "skills": {
       "gathering": 2
     }
+  },
+  {
+    "key": "sundial",
+    "name": "Sundial",
+    "description": "Tell the time more precisely",
+    "required": "gatherWood",
+    "ingredients": {
+      "wood": 5
+    },
+    "skills": {}
   }
 ]

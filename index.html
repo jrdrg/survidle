@@ -16,9 +16,8 @@
 	</header>
 
 	<section class="layout-status animate--fade-in">
-		<status ng-show="game.stages.lookUp" label="Day" value="game.world.day"></status>
-		<status ng-show="game.stages.gatherFood" label="Health" max="10" value="player.life"></status>
-		<status ng-show="game.stages.gatherFood" label="Hunger" max="10" value="player.hunger"></status>
+		<status ng-show="game.stages.lookUp" label="Day" value="world.getCurrentTime(player.has('sundial'))"></status>
+		<status ng-show="game.stages.gatherFood" label="{{ stat|title }}" max="10" ng-repeat="(stat, current) in player.survival" value="current"></status>
 		<status ng-show="game.stages.gatherFood" label="Inventory" max="player.getInventoryCapacity()" value="player.getInventorySize() / player.getInventoryCapacity()"></status>
 	</section>
 

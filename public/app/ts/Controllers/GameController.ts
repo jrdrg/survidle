@@ -58,6 +58,7 @@ module Controllers {
 
 			// Bind to scope
 			$scope.player = this.player;
+			$scope.world = this.world;
 		}
 
 		//////////////////////////////////////////////////////////////////////
@@ -77,11 +78,12 @@ module Controllers {
 			this.world.passDays();
 
 			// Compute basic needs
-			this.player.hunger = this.player.hunger.increment(this.computeNeedGain(30), 1);
+			this.player.survival.hunger = this.player.survival.hunger.increment(this.computeNeedGain(30), 1);
+			this.player.survival.warmth = this.player.survival.warmth.decrement(this.computeNeedGain(1), 0);
 
 			// Compute maluses
-			if (this.player.hunger >= 1) {
-				this.player.life = this.player.life.decrement(this.computeNeedGain(3));
+			if (this.player.survival.hunger >= 1) {
+				this.player.survival.life = this.player.survival.life.decrement(this.computeNeedGain(3));
 			}
 		}
 

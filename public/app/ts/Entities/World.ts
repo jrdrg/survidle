@@ -29,6 +29,25 @@ module Entities {
 		 */
 		cyclesPerDay = 24;
 
+		//////////////////////////////////////////////////////////////////////
+		//////////////////////////// DATE AND TIME ///////////////////////////
+		//////////////////////////////////////////////////////////////////////
+
+		/**
+		 * Get the current time in a human readable format
+		 */
+		getCurrentTime(hasSundial: boolean): any {
+			if (!hasSundial) {
+				return this.day;
+			}
+
+			// Add padding to hour
+			var hour = (this.cycle + 12 - (this.cyclesPerDay * this.day));
+			hour = hour.leftPadding(2);
+
+			return this.day + ', ' + hour + ':00'
+		}
+
 		/**
 		 * Compute days related variables
 		 */

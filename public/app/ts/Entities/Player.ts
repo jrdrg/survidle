@@ -7,14 +7,13 @@ module Entities {
 		age: number;
 
 		/**
-		 * @type {number}
+		 * The survival stats
 		 */
-		life = 1;
-
-		/**
-		 * @type {number}
-		 */
-		hunger = 0.5;
+		survival = {
+			life: 1,
+			hunger: 0.5,
+			warmth: 1,
+		};
 
 		/**
 		 * @type {any}
@@ -58,7 +57,7 @@ module Entities {
 		 * @returns {boolean}
 		 */
 		isHungry() {
-			return this.hunger > 0.25;
+			return this.survival.hunger > 0.25;
 		}
 
 		//////////////////////////////////////////////////////////////////////

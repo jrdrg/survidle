@@ -17,8 +17,10 @@ module Entities.Sceneries {
 		 * Eat the gathered food
 		 */
 		eatFood() {
-			this.game.player.inventory.food = this.game.player.inventory.food.decrement(1);
-			this.game.player.hunger = this.game.player.hunger.decrement(0.1);
+			var player = this.game.player;
+
+			player.inventory.food = player.inventory.food.decrement(1);
+			player.survival.hunger = player.survival.hunger.decrement(0.1);
 		}
 
 		/**
