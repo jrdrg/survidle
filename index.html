@@ -24,7 +24,7 @@
 		<status class="animate--fade-in" ng-show="game.stages.gatherFood" label="Inventory" max="player.getInventoryCapacity()" value="player.getInventorySize() / player.getInventoryCapacity()"></status>
 	</section>
 
-	<section ng-controller="NavigationController as navigation">
+	<section ng-controller="NavigationController as navigation" ng-if="!player.isDead()">
 		<nav class="layout-navigation">
 			<ul class="nav nav-tabs nav-justified">
 				<li ng-repeat="pane in navigation.available" ng-class="{active: navigation.current == pane.key}"><a href="#" ng-click="navigation.current = pane.key">{{ pane.key == 'encounters' ? pane.label + ' (' +game.world.getAliveEntities().length+ ')' : pane.label }}</a></li>
@@ -32,6 +32,12 @@
 		</nav>
 
 		<ng-include class="layout-container" src="navigation.getTemplate()"></ng-include>
+	</section>
+
+	<section class="layout-container--game-over" ng-if="player.isDead()">
+		<h2>You have failed miserably at surviving.</h2>
+		<h3>You are now officially nature's bitch.</h3>
+		<p><a class="btn btn-default btn-lg" href="#" ng-click="app.reset()">Try again?</a></p>
 	</section>
 
 	<!-- build:js public/builds/js/scripts.js -->

@@ -8,6 +8,17 @@
 	display: flex;
 }
 
+.layout-container--game-over {
+	@extend .layout-container;
+
+	display: block;
+	text-align: center;
+
+	p {
+		margin-top: 3rem;
+	}
+}
+
 .layout-content {
 	width: 75%;
 
