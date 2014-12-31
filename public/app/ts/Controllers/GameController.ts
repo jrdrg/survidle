@@ -64,6 +64,12 @@ module Controllers {
 		////////////////////////////// SCENERIES /////////////////////////////
 		//////////////////////////////////////////////////////////////////////
 
+		happened(key: number, event: Event, foo, $scope): boolean {
+			console.log(key, event, foo, $scope);
+			return true;
+			return this.$scope.$eval(event.when);
+		}
+
 		getScenery() {
 			return this.sceneries[this.scenery];
 		}

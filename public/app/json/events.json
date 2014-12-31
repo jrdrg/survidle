@@ -1,0 +1,14 @@
+[
+  {
+    "contents": "You wake up alone in a dark forest, without a shred of memory.",
+    "when": "game.world.cycle"
+  },
+  {
+    "contents": "An army of gigantic trees surround you. In between them lay small bushes, with red berries on them.",
+    "when": "game.stages.lookAround"
+  },
+  {
+    "contents": "You observe the sun moving in the sky and learn its ways.",
+    "when": "game.stages.lookUp"
+  }
+]
