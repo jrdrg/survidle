@@ -6,6 +6,8 @@ module Entities {
 		 */
 		age: number;
 
+		killedBy: string = 'hunger';
+
 		/**
 		 * @type {any}
 		 */

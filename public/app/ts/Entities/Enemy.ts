@@ -13,6 +13,9 @@ module Entities {
 
 			game.player.attack(this);
 			this.attack(game.player);
+			if (!game.player.isDead()) {
+				game.player.killedBy = this.name;
+			}
 		}
 
 	}
