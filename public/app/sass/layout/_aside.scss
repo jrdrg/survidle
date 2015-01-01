@@ -18,8 +18,8 @@
 		margin-bottom: 0;
 	}
 
-	a {
-		cursor: pointer;
+	.list-group-item {
+		@extend %clickable;
 	}
 
 	.list-group-item[disabled] {

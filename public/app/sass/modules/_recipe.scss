@@ -4,9 +4,10 @@
 }
 
 .recipe {
+	@extend %clickable;
+
 	width: 20rem;
 	background: rgba(black, 0.25);
-	cursor: pointer;
 	margin-right: 1rem;
 	margin-bottom: 1rem;
 	transition: background 0.3s;
