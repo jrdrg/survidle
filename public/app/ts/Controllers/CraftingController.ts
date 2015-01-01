@@ -5,13 +5,13 @@ module Controllers {
 
 		}
 
-		isUnlocked(recipe: Item) {
-			var stage = recipe.required || 'gatherWood';
+		isUnlocked(item: Item) {
+			var stage = item.required || 'gatherWood';
 			if (!this.$scope.game.stages[stage]) {
 				return false;
 			}
 
-			return !this.$scope.player.has(recipe.key) || recipe.multiple;
+			return !this.$scope.player.has(item.key) || item.multiple;
 		}
 
 		/**

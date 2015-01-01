@@ -4,6 +4,7 @@ module Entities {
 		key: string;
 		name: string;
 		description: string;
+		type: string;
 
 		// Options
 		required: string;
@@ -19,8 +20,11 @@ module Entities {
 			this.key = options.key;
 			this.name = options.name;
 			this.description = options.description;
+			this.type = options.type;
+
 			this.required = options.required;
 			this.multiple = options.multiple;
+
 			this.quantity = options.quantity || 0;
 			this.ingredients = options.ingredients;
 			this.skills = options.skills;

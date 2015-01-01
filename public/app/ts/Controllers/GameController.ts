@@ -205,10 +205,9 @@ module Controllers {
 		}
 
 		computeRevenues() {
-			_.each(this.player.inventory, (quantity: number, item: string) => {
-				var recipe = this.items.getItemByKey(item);
-				if (recipe && recipe.revenues) {
-					this.player.addMultipleItems(recipe.revenues, quantity);
+			_.each(this.player.getInventoryContents(), (item: Item) => {
+				if (item.revenues) {
+					this.player.addMultipleItems(item.revenues, item.quantity);
 				}
 			});
 		}

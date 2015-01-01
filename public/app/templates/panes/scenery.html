@@ -18,7 +18,7 @@
 		<h4>Crafting</h4>
 
 		<section class="layout-recipes">
-			<recipe ng-repeat="recipe in recipes | orderBy:crafting.recipeCost:true"></recipe>
+			<recipe ng-repeat="recipe in items | filter:{type: '!resource'} | orderBy:crafting.recipeCost:true"></recipe>
 		</section>
 	</div>
 </main>

@@ -7,4 +7,10 @@
 			<span class="label label-success" ng-class="{'label-danger': !$parent.crafting.canCraft(recipe)}" ng-bind="required"></span>
 		</li>
 	</ul>
+	<ul>
+		<li ng-repeat="(item, revenue) in recipe.revenues" ng-if="recipe.revenues">
+			{{ item|title }}
+			<span class="label label-success">{{ revenue }}/s</span>
+		</li>
+	</ul>
 </article>

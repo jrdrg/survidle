@@ -15,7 +15,7 @@ class HasInventory {
 	 */
 	add(item: Entities.Item) {
 		if (!this.inventory[item.key]) {
-			this.inventory[item.key] = _.cloneDeep(item);
+			this.inventory[item.key] = new Entities.Item(_.cloneDeep(item));
 		}
 
 		this.inventory[item.key].quantity++;
@@ -51,6 +51,13 @@ class HasInventory {
 	 */
 	drop(item: string) {
 		this.inventory[item].decrement();
+	}
+
+	/**
+	 * Get the raw contents of the inventory
+	 */
+	getInventoryContents(): Entities.Item[] {
+		return _.values(this.inventory);
 	}
 
 	/**

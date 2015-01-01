@@ -65,11 +65,9 @@ module Abstracts {
 			}
 
 			var probability = this.skills[skill] * this.getSkillModifier(skill);
-			console.log(this.inventory);
 			if (typeof this.inventory[item.key] == 'undefined') {
 				this.inventory[item.key] = new Entities.Item(item);
 			}
-			console.log(this.inventory);
 
 			// Update skill and inventory
 			this.updateSkillWithExperience(skill);
@@ -177,6 +175,7 @@ module Abstracts {
 		add: (item: Item) => void;
 		has: (item: string, required?: number) => boolean;
 		drop: (item: string) => void;
+		getInventoryContents: () => Entities.Item[];
 		getInventorySize: () => number;
 		hasEmptyInventory: () => boolean;
 		hasInventoryFull: () => boolean;
