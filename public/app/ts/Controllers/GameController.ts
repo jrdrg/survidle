@@ -55,6 +55,7 @@ module Controllers {
 			this.loadDataOnScope('items');
 			this.loadDataOnScope('actions');
 			this.loadDataOnScope('enemies');
+			this.loadDataOnScope('technologies');
 			this.loadDataOnScope('events');
 
 			// Restore save

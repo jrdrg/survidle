@@ -1,0 +1,8 @@
+[
+  {
+    "key": "agriculture",
+    "name": "Agriculture",
+    "description": "Allow the creation of fields and crops",
+    "disabled": "!game.stages.craftcabin"
+  }
+]
