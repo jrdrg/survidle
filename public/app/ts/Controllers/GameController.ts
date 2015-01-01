@@ -113,6 +113,10 @@ module Controllers {
 			});
 
 			_.each(survidle.world, (value: any, key: string) => {
+				if (key == 'map') {
+					value = this.world.rebuildCells(value);
+				}
+
 				this.world[key] = value;
 			});
 
@@ -131,8 +135,11 @@ module Controllers {
 			localStorage.setItem('survidle', JSON.stringify({
 				world         : {
 					cycle: this.world.cycle,
+					map  : this.world.map,
 				},
 				player        : {
+					x                : this.player.x,
+					y                : this.player.y,
 					inventory        : this.player.inventory,
 					skills           : this.player.skills,
 					age              : this.player.age,
