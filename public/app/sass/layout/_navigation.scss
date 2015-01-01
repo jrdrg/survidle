@@ -15,6 +15,11 @@
 			}
 		}
 
+		&.danger > a,
+		&.danger.active > a {
+			background: rgba(darken(red, 20), 0.25);
+		}
+
 		> a:hover {
 			background: rgba(black, 0.25);
 		}

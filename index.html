@@ -27,7 +27,9 @@
 	<section ng-controller="NavigationController as navigation" ng-if="!player.isDead()">
 		<nav class="layout-navigation">
 			<ul class="nav nav-tabs nav-justified">
-				<li ng-repeat="pane in navigation.available" ng-class="{active: navigation.current == pane.key}"><a href="#" ng-click="navigation.current = pane.key">{{ pane.key == 'encounters' ? pane.label + ' (' +game.world.getAliveEntities().length+ ')' : pane.label }}</a></li>
+				<li ng-repeat="pane in navigation.available" ng-class="{active: navigation.current == pane.key, danger: game.world.getAliveEntities().length > 1 && pane.key == 'encounters'}">
+					<a href="#" ng-click="navigation.current = pane.key">{{ pane.key == 'encounters' ? pane.label + ' (' +(game.world.getAliveEntities().length - 1)+ ')' : pane.label }}</a>
+				</li>
 			</ul>
 		</nav>
 
