@@ -82,15 +82,22 @@ module Abstracts {
 		}
 
 		/**
+		 * Move towards another entity
+		 */
+		moveTowards(entity: HasCoordinates) {
+			var directionX = entity.x === this.x ? 0 : (entity.x > this.x ? 1 : -1);
+			var directionY = entity.y === this.y ? 0 : (entity.y > this.y ? 1 : -1);
+			this.move(directionX, directionY);
+		}
+
+		/**
 		 * Track another entity
 		 */
-		track(entity: AbstractEntity) {
+		track(entity: HasCoordinates) {
 			var tracking = this.skills.tracking * 10;
 
 			if (this.distanceWith(entity) <= tracking) {
-				var directionX = entity.x === this.x ? 0 : (entity.x > this.x ? 1 : -1);
-				var directionY = entity.y === this.y ? 0 : (entity.y > this.y ? 1 : -1);
-				this.move(directionX, directionY);
+				this.moveTowards(entity);
 			} else {
 				this.moveRandomly();
 			}
@@ -99,7 +106,7 @@ module Abstracts {
 		/**
 		 * Compute the distance with another entity
 		 */
-		distanceWith(entity: AbstractEntity): number {
+		distanceWith(entity: HasCoordinates): number {
 			return _.pointsDistance(this.x, this.y, entity.x, entity.y);
 		}
 
@@ -107,7 +114,7 @@ module Abstracts {
 		 * Check if an entity is on the same cell than
 		 * this one
 		 */
-		isOnSameCellThan(entity: AbstractEntity): boolean {
+		isOnSameCellThan(entity: HasCoordinates): boolean {
 			return this.x == entity.x && this.y == entity.y;
 		}
 

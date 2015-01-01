@@ -12,8 +12,10 @@ module Controllers {
 			var player = this.$rootScope.player;
 			var distance = _.pointsDistance(x, y, player.x, player.y);
 
-			player.moveTo(x, y);
-			this.$rootScope.game.timeWarp(distance);
+			for (var i = 0; i <= distance; i++) {
+				player.moveTowards({x: x, y: y});
+				this.$rootScope.game.newCycle();
+			}
 		}
 
 	}
