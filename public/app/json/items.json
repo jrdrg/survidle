@@ -78,6 +78,7 @@
     "key": "trap",
     "name": "Wolf trap",
     "multiple": true,
+    "usable": true,
     "description": "Push button, receive bacon",
     "type": "installation",
     "required": "gatherIron",
@@ -85,8 +86,31 @@
       "iron": 5
     },
     "revenues": {
-      "food": 0.2
+      "food": 10
     },
     "skills": {}
+  },
+  {
+    "key": "field",
+    "name": "Field",
+    "description": "Make nature give back. A little. When it doesn't rain.",
+    "multiple": true,
+    "type": "installation",
+    "required": "craftcabin",
+    "ingredients": {
+      "food": 25,
+      "wood": 15
+    }
+  },
+  {
+    "key": "bandage",
+    "name": "Bandages",
+    "description": "Made from muddy leaves. Totally sanitary.",
+    "multiple": true,
+    "required": "gatherFood",
+    "type": "resource",
+    "ingredients": {
+      "food": 10
+    }
   }
 ]

@@ -73,7 +73,9 @@ module Abstracts {
 		 * Update the experience of a skill
 		 */
 		updateSkillWithExperience(skill: string, experience = 0.01) {
-			this.skills[skill] += experience;
+			var modifier = Math.max(this.skills[skill], 1);
+
+			this.skills[skill] += experience / Math.floor(modifier);
 		}
 
 		/**

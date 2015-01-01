@@ -17,7 +17,7 @@
 
 		&.danger > a,
 		&.danger.active > a {
-			background: rgba(darken(red, 20), 0.25);
+			background: $color-dark-red;
 		}
 
 		> a:hover {

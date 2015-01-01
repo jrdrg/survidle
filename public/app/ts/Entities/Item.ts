@@ -7,6 +7,7 @@ module Entities {
 		type: string;
 
 		// Options
+		usable = false;
 		required: string;
 		multiple = false;
 
@@ -23,6 +24,7 @@ module Entities {
 			this.type = options.type;
 
 			this.required = options.required;
+			this.usable = options.usable || false;
 			this.multiple = options.multiple;
 
 			this.quantity = options.quantity || 0;
@@ -43,6 +45,10 @@ module Entities {
 		 */
 		decrement(by: number = 1) {
 			this.quantity = this.quantity.decrement(by);
+		}
+
+		remove() {
+			this.quantity = 0;
 		}
 
 	}

@@ -6,6 +6,7 @@ interface Item {
 	// Options
 	required?: string;
 	multiple?: boolean;
+	usable?: boolean;
 
 	// Statistics
 	quantity?: number;

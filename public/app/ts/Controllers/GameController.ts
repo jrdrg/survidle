@@ -212,6 +212,10 @@ module Controllers {
 			_.each(this.player.getInventoryContents(), (item: Item) => {
 				if (item.revenues) {
 					this.player.addMultipleItems(item.revenues, item.quantity);
+
+					if (item.usable) {
+						this.player.inventory[item.key].remove();
+					}
 				}
 			});
 		}

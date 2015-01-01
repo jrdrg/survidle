@@ -1,16 +1,19 @@
 <article class="recipe" ng-click="$parent.crafting.craft(recipe)" ng-if="$parent.crafting.isUnlocked(recipe)">
 	<h3>{{ recipe.name }}</h3>
+	<h4 class="recipe__usable" ng-if="recipe.usable">Destroyed after use</h4>
 	<p>{{ recipe.description }}</p>
 	<ul>
+		<h5>Ingredients</h5>
 		<li ng-repeat="(ingredient, required) in recipe.ingredients">
 			{{ ingredient|title }}
 			<span class="label label-success" ng-class="{'label-danger': !$parent.crafting.canCraft(recipe)}" ng-bind="required"></span>
 		</li>
 	</ul>
 	<ul ng-if="recipe.revenues">
+		<h5>Revenues</h5>
 		<li ng-repeat="(item, revenue) in recipe.revenues">
 			{{ item|title }}
-			<span class="label label-success">{{ revenue }}/s</span>
+			<span class="label label-success">{{ revenue }}</span>
 		</li>
 	</ul>
 </article>
