@@ -9,6 +9,7 @@ body {
 	padding: 0;
 }
 
-hr {
-	border-color: grey(40);
+hr,
+.page-header {
+	border-color: $border-color;
 }

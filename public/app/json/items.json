@@ -100,6 +100,9 @@
     "ingredients": {
       "food": 25,
       "wood": 15
+    },
+    "revenues": {
+      "food": 1
     }
   },
   {

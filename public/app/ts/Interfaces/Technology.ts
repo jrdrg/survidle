@@ -5,6 +5,8 @@ interface Technology {
 	description: string;
 	disabled?: string;
 
+	progress: number;
+
 	children?: any;
 
 }

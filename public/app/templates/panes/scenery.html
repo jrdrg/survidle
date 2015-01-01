@@ -1,24 +1,25 @@
-<main class="layout-content">
-	<h4>Diary</h4>
-	<ul class="list-unstyled">
-		<li class="animate--fade-in" ng-repeat="event in events" ng-show="{{ event.when }}">{{ event.contents }}</li>
-	</ul>
-
-	<div class="animate--fade-in" ng-show="game.world.cycle > 3">
-		<hr />
-		<h4>Thoughts</h4>
+<div class="layout-container">
+	<main class="layout-content">
+		<h4>Diary</h4>
 		<ul class="list-unstyled">
-			<li class="animate--fade-in" ng-show="player.isHungry()">You feel pretty hungry.</li>
-			<li class="animate--fade-in" ng-show="player.hasInventoryFull()">Your inventory is full. Try dropping a few things from it.</li>
+			<li class="animate--fade-in" ng-repeat="event in events" ng-show="{{ event.when }}">{{ event.contents }}</li>
 		</ul>
-	</div>
 
-	<div class="animate--fade-in" ng-include="'public/app/templates/crafting.html'" ng-show="game.stages.gatherWood" ng-controller="CraftingController as crafting"></div>
-</main>
+		<div class="animate--fade-in" ng-show="game.world.cycle > 3">
+			<hr />
+			<h4>Thoughts</h4>
+			<ul class="list-unstyled">
+				<li class="animate--fade-in" ng-show="player.isHungry()">You feel pretty hungry.</li>
+				<li class="animate--fade-in" ng-show="player.hasInventoryFull()">Your inventory is full. Try dropping a few things from it.</li>
+			</ul>
+		</div>
 
-<aside class="layout-aside list-group animate--fade-in" ng-show="game.world.cycle > 3">
-	<section ng-include="'public/app/templates/sidebar/actions.html'"></section>
-	<section ng-hide="player.hasEmptyInventory()" ng-include="'public/app/templates/sidebar/inventory.html'"></section>
-	<section ng-show="game.stages.gatherFood" ng-include="'public/app/templates/sidebar/skills.html'"></section>
-</aside>
+		<div class="animate--fade-in" ng-include="'public/app/templates/crafting.html'" ng-show="game.stages.gatherWood" ng-controller="CraftingController as crafting"></div>
+	</main>
 
+	<aside class="layout-aside list-group animate--fade-in" ng-show="game.world.cycle > 3">
+		<section ng-include="'public/app/templates/sidebar/actions.html'"></section>
+		<section ng-hide="player.hasEmptyInventory()" ng-include="'public/app/templates/sidebar/inventory.html'"></section>
+		<section ng-show="game.stages.gatherFood" ng-include="'public/app/templates/sidebar/skills.html'"></section>
+	</aside>
+</div>

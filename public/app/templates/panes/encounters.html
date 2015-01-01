@@ -1,15 +1,17 @@
-<main class="layout-content">
-	<div class="media enemy" ng-repeat="entity in world.getAliveEntities()">
-		<a class="media-left" href="#">
-			<img src="http://placehold.it/64x64">
-		</a>
+<div class="layout-container">
+	<main class="layout-content">
+		<div class="media enemy" ng-repeat="entity in world.getAliveEntities()">
+			<a class="media-left" href="#">
+				<img src="http://placehold.it/64x64">
+			</a>
 
-		<div class="media-body">
-			<h4 class="media-heading">{{ entity.name }}</h4>
-			<status label="{{ stat|title }}" max="10" ng-repeat="(stat, current) in entity.survival" value="current"></status>
-			<div class="enemy__skills">
-				<status label="{{ skill|title }}" rounded="true" ng-repeat="(skill, level) in entity.skills" value="level"></status>
+			<div class="media-body">
+				<h4 class="media-heading">{{ entity.name }}</h4>
+				<status label="{{ stat|title }}" max="10" ng-repeat="(stat, current) in entity.survival" value="current"></status>
+				<div class="enemy__skills">
+					<status label="{{ skill|title }}" rounded="true" ng-repeat="(skill, level) in entity.skills" value="level"></status>
+				</div>
 			</div>
 		</div>
-	</div>
-</main>
+	</main>
+</div>
