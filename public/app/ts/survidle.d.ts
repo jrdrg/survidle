@@ -13,7 +13,6 @@ declare module _ {
 interface Number {
 	increment(by: number, minimum?: number);
 	decrement(by: number, minimum?: number);
-	leftPadding(padding: number);
 }
 
 declare var chance: {

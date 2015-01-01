@@ -13,6 +13,9 @@
     },
     "jquery/jquery.d.ts": {
       "commit": "ca32947b75a2b1203779dac7154ffbc232746e4d"
+    },
+    "moment/moment.d.ts": {
+      "commit": "9872b853d6facd11ab4eba733b2408e249d85082"
     }
   }
 }

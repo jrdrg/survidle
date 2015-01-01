@@ -65,15 +65,17 @@ module Entities {
 		/**
 		 * Get the current time in a human readable format
 		 */
-		getCurrentTime(hasSundial: boolean): any {
+		getCurrentTime(hasSundial: boolean, hasCalendar: boolean): any {
 			if (!hasSundial) {
 				return this.day;
 			}
 
-			// Add padding to hour
-			var hour = this.getCurrentHour().leftPadding(2);
+			var currentDate = moment('2014-01-01T00:00:00').hours(this.cycle);
+			if (!hasCalendar) {
+				return this.day + ', ' + currentDate.format('HH:MM');
+			}
 
-			return this.day + ', ' + hour + ':00'
+			return currentDate.format('Do MMM HH:MM');
 		}
 
 		/**
