@@ -2,6 +2,22 @@ module Abstracts {
 	export class AbstractEntity implements HasInventory {
 
 		/**
+		 * Coordinates
+		 */
+		x: number = 0;
+		y: number = 0;
+
+		/**
+		 * The type of the entity
+		 */
+		key: string;
+
+		/**
+		 * What killed the entity
+		 */
+		killedBy: string = 'hunger';
+
+		/**
 		 * The survival stats
 		 */
 		survival = {
@@ -34,6 +50,18 @@ module Abstracts {
 		 * @param name
 		 */
 		constructor(public name: string) {
+		}
+
+		//////////////////////////////////////////////////////////////////////
+		//////////////////////////// POSITIONNING ////////////////////////////
+		//////////////////////////////////////////////////////////////////////
+
+		/**
+		 * Move to a position on the map
+		 */
+		moveTo(x: number, y: number) {
+			this.x = x;
+			this.y = y;
 		}
 
 		//////////////////////////////////////////////////////////////////////

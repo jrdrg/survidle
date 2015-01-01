@@ -1,6 +1,11 @@
 module Entities {
 	export class Enemy extends Abstracts.AbstractEntity {
 
+		/**
+		 * The type of the entity
+		 */
+		key = 'enemy';
+
 		constructor(public name: string) {
 			super(name);
 

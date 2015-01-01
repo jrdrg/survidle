@@ -2,11 +2,14 @@ module Entities {
 	export class Player extends Abstracts.AbstractEntity {
 
 		/**
+		 * The type of the entity
+		 */
+		key = 'player';
+
+		/**
 		 * The age of the player
 		 */
 		age: number;
-
-		killedBy: string = 'hunger';
 
 		/**
 		 * @type {any}

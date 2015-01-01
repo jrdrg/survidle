@@ -8,7 +8,10 @@ module Entities {
 		 */
 		cycle = 0;
 
-		date;
+		/**
+		 * The current date object
+		 */
+		date: Moment;
 
 		/**
 		 * The length of a cycle in seconds
@@ -29,9 +32,59 @@ module Entities {
 		 */
 		entities = [];
 
-		constructor() {
+		/**
+		 * The map
+		 */
+		map = [];
+
+		constructor(size: number) {
 			this.passDays();
+
+			this.generateMap(size);
 		}
+
+		//////////////////////////////////////////////////////////////////////
+		//////////////////////////////// MAP /////////////////////////////////
+		//////////////////////////////////////////////////////////////////////
+
+		/**
+		 * Generate the map
+		 */
+		generateMap(size: number) {
+			for (var y = 0; y <= size; y++) {
+				this.map[y] = [];
+
+				for (var x = 0; x <= size; x++) {
+					this.map[y][x] = new Entities.Map.Cell(x, y);
+				}
+			}
+		}
+
+		//////////////////////////////////////////////////////////////////////
+		////////////////////////////// ENTITIES //////////////////////////////
+		//////////////////////////////////////////////////////////////////////
+
+		/**
+		 * Get the entities at particular coordinates
+		 */
+		getEntitiesAt(x: number, y: number): Abstracts.AbstractEntity[] {
+			return _.filter(this.entities, function (entity: Abstracts.AbstractEntity) {
+				return entity.x == x && entity.y == y;
+			});
+		}
+
+		/**
+		 * Get all the entities that are still alive
+		 */
+		getAliveEntities(): Abstracts.AbstractEntity[] {
+			return _.filter(this.entities, function (entity: Abstracts.AbstractEntity) {
+				return !entity.isDead();
+			});
+		}
+
+		//////////////////////////////////////////////////////////////////////
+		//////////////////////////// DATE AND TIME ///////////////////////////
+		//////////////////////////////////////////////////////////////////////
 
 		/**
 		 * Get the absolute day number since the beginning of the game
@@ -41,20 +94,6 @@ module Entities {
 
 			return Math.round(unix / (60 * 60 * 24));
 		}
-
-		//////////////////////////////////////////////////////////////////////
-		////////////////////////////// ENTITIES //////////////////////////////
-		//////////////////////////////////////////////////////////////////////
-
-		getAliveEntities() {
-			return _.filter(this.entities, function (entity: Abstracts.AbstractEntity) {
-				return !entity.isDead();
-			});
-		}
-
-		//////////////////////////////////////////////////////////////////////
-		//////////////////////////// DATE AND TIME ///////////////////////////
-		//////////////////////////////////////////////////////////////////////
 
 		/**
 		 * Check if it's night or not

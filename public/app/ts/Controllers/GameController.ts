@@ -169,7 +169,7 @@ module Controllers {
 			};
 
 			// Define world and player
-			this.world = new Entities.World();
+			this.world = new Entities.World(20);
 			this.player = new Entities.Player('Foobar');
 			this.encounters = new Services.EncountersManager(this);
 

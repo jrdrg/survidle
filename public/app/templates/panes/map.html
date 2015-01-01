@@ -1,2 +1,11 @@
 <div class="layout-container">
+	<table class="map table">
+		<tr ng-repeat="row in world.map">
+			<td ng-repeat="cell in row" ng-click="player.moveTo(cell.x, cell.y)" class="cell cell--{{ cell.type }}">
+				<span class="entity entity--{{ entity.key }}" ng-repeat="entity in world.getEntitiesAt(cell.x, cell.y)">
+					X
+				</span>
+			</td>
+		</tr>
+	</table>
 </div>
