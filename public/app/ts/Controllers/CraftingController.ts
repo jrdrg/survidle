@@ -5,7 +5,7 @@ module Controllers {
 
 		}
 
-		isUnlocked(recipe: Recipe) {
+		isUnlocked(recipe: Item) {
 			var stage = recipe.required || 'gatherWood';
 			if (!this.$scope.game.stages[stage]) {
 				return false;
@@ -17,8 +17,8 @@ module Controllers {
 		/**
 		 * Check if the player can craft a recipe
 		 */
-		canCraft(recipe: Recipe): boolean {
-			var unmet = _.filter(recipe.ingredients, (required: number, ingredient: string) => {
+		canCraft(item: Item): boolean {
+			var unmet = _.filter(item.ingredients, (required: number, ingredient: string) => {
 				return !this.$scope.player.has(ingredient, required);
 			});
 
@@ -28,30 +28,25 @@ module Controllers {
 		/**
 		 * Craft a recipe
 		 */
-		craft(recipe: Recipe): void {
-			if (!this.canCraft(recipe)) {
+		craft(item: Item): void {
+			if (!this.canCraft(item)) {
 				return;
 			}
 
 			// Remove ingredients from inventory
-			_.each(recipe.ingredients, (required: number, ingredient: string) => {
-				this.$scope.player.inventory[ingredient] -= required;
+			_.each(item.ingredients, (required: number, ingredient: string) => {
+				this.$scope.player.inventory[ingredient].decrement(required);
 			});
 
-			// Add item to inventory
-			if (!this.$scope.player.inventory[recipe.key]) {
-				this.$scope.player.inventory[recipe.key] = 0;
-			}
-
-			this.$scope.player.inventory[recipe.key]++;
-			this.$scope.player.tools.push(recipe);
+			this.$scope.player.add(item);
+			this.$scope.player.tools.push(item);
 		}
 
 		/**
 		 * Get the cost of a recipe
 		 */
-		recipeCost(recipe: Recipe): number {
-			return _.sum(recipe.ingredients);
+		recipeCost(item: Item): number {
+			return _.sum(item.ingredients);
 		}
 
 	}

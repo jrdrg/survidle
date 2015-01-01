@@ -12,6 +12,10 @@
     "when": "game.stages.lookUp"
   },
   {
+    "contents": "As you walk through the lonely woods, you hear howlings in the distance. Better hurry.",
+    "when": "game.stages.gatherWood"
+  },
+  {
     "contents": "You are now in the warmth of your small cabin. Wolves can't get to you",
     "when": "player.has('cabin')"
   }

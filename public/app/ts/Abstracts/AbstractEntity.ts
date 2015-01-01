@@ -17,7 +17,7 @@ module Abstracts {
 		/**
 		 * The available tools
 		 */
-		tools: Recipe[] = [];
+		tools: Item[] = [];
 
 		/**
 		 * The base inventory capacity
@@ -59,19 +59,21 @@ module Abstracts {
 		 * Gather something, taking into account
 		 * skills and tools
 		 */
-		gatherWithSkill(item: string, skill: string) {
+		gatherWithSkill(item: Item, skill: string) {
 			if (!this.skills[skill]) {
 				this.skills[skill] = 1;
 			}
 
 			var probability = this.skills[skill] * this.getSkillModifier(skill);
-			if (typeof this.inventory[item] == 'undefined') {
-				this.inventory[item] = 0;
+			console.log(this.inventory);
+			if (typeof this.inventory[item.key] == 'undefined') {
+				this.inventory[item.key] = new Entities.Item(item);
 			}
+			console.log(this.inventory);
 
 			// Update skill and inventory
 			this.updateSkillWithExperience(skill);
-			this.inventory[item] += Math.round(probability);
+			this.inventory[item.key].increment(Math.round(probability));
 		}
 
 		/**
@@ -84,13 +86,13 @@ module Abstracts {
 		/**
 		 * Get the tools affecting a skill
 		 */
-		getSkillBonuses(skill: string): Recipe[] {
+		getSkillBonuses(skill: string): Item[] {
 			var bonuses = [];
 			if (!this.tools.length) {
 				return [];
 			}
 
-			_.each(this.tools, (recipe: Recipe) => {
+			_.each(this.tools, (recipe: Item) => {
 				var bonus = recipe.skills[skill];
 				if (typeof bonus !== 'undefined') {
 					bonuses.push(recipe);
@@ -106,7 +108,7 @@ module Abstracts {
 		getSkillModifier(skill: string): number {
 			var modifier = 1;
 			var bonuses = this.getSkillBonuses(skill);
-			_.each(bonuses, function (recipe: Recipe) {
+			_.each(bonuses, function (recipe: Item) {
 				modifier *= recipe.skills[skill];
 			});
 
@@ -172,6 +174,7 @@ module Abstracts {
 		////////////////////////////// INTERFACE /////////////////////////////
 		//////////////////////////////////////////////////////////////////////
 
+		add: (item: Item) => void;
 		has: (item: string, required?: number) => boolean;
 		drop: (item: string) => void;
 		getInventorySize: () => number;

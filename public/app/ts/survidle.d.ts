@@ -4,6 +4,10 @@ declare module _ {
 		sum(object): number;
 		randomItem(array): any;
 	}
+
+	interface LoDashArrayWrapper<T> {
+		sum(): LoDashArrayWrapper<T>;
+	}
 }
 
 interface Number {

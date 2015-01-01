@@ -11,7 +11,7 @@ module Entities.Sceneries {
 		eatFood() {
 			var player = this.game.player;
 
-			player.inventory.food = player.inventory.food.decrement(1);
+			player.inventory.food.decrement(1);
 			player.survival.life = player.survival.life.increment(0.2);
 			player.survival.hunger = player.survival.hunger.decrement(0.1);
 		}
@@ -20,21 +20,21 @@ module Entities.Sceneries {
 		 * Gather some food from the forest
 		 */
 		gatherFood() {
-			this.game.player.gatherWithSkill('food', 'gathering');
+			this.game.player.gatherWithSkill(this.game.items.getItemByKey('food'), 'gathering');
 		}
 
 		/**
 		 * Mine some iron
 		 */
 		gatherIron() {
-			this.game.player.gatherWithSkill('iron', 'mining');
+			this.game.player.gatherWithSkill(this.game.items.getItemByKey('iron'), 'mining');
 		}
 
 		/**
 		 * Chop down some woods
 		 */
 		gatherWood() {
-			this.game.player.gatherWithSkill('wood', 'masonry');
+			this.game.player.gatherWithSkill(this.game.items.getItemByKey('wood'), 'masonry');
 		}
 
 	}

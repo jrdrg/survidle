@@ -1,4 +1,4 @@
-interface Recipe {
+interface Item {
 	key: string;
 	name: string;
 	description: string;
@@ -8,7 +8,8 @@ interface Recipe {
 	multiple?: boolean;
 
 	// Statistics
-	ingredients: any;
+	quantity?: number;
+	ingredients?: any;
 	skills?: any;
 	revenues?: any;
 }

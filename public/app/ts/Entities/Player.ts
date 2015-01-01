@@ -9,9 +9,7 @@ module Entities {
 		/**
 		 * @type {any}
 		 */
-		inventory = {
-			food: 0,
-		};
+		inventory;
 
 		/**
 		 * The player's skills

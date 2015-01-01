@@ -26,7 +26,7 @@ _.mixin({
 	sum       : function (object): number {
 		return _.reduce(object, function (a: number, b: number) {
 			return a + b;
-		});
+		}) || 0;
 	},
 	randomItem: function (array) {
 		return array[Math.floor(Math.random() * array.length)];

@@ -11,6 +11,17 @@ class HasInventory {
 	inventoryCapacity: number;
 
 	/**
+	 * Add an item to the inventory
+	 */
+	add(item: Entities.Item) {
+		if (!this.inventory[item.key]) {
+			this.inventory[item.key] = _.cloneDeep(item);
+		}
+
+		this.inventory[item.key].quantity++;
+	}
+
+	/**
 	 * Add multiple objects to the inventory
 	 */
 	addMultipleItems(items: any, multiplier: number = 1) {
@@ -23,7 +34,7 @@ class HasInventory {
 				return;
 			}
 
-			this.inventory[item] += quantity * multiplier;
+			this.inventory[item].increment(quantity * multiplier);
 		});
 	}
 
@@ -32,14 +43,14 @@ class HasInventory {
 	 * of something
 	 */
 	has(item: string, required: number = 1): boolean {
-		return this.inventory[item] >= required;
+		return this.inventory[item] && this.inventory[item].quantity >= required;
 	}
 
 	/**
 	 * Drop an item from the inventory
 	 */
 	drop(item: string) {
-		this.inventory[item] = this.inventory[item].decrement();
+		this.inventory[item].decrement();
 	}
 
 	/**
@@ -53,7 +64,9 @@ class HasInventory {
 	 * Get the current inventory size
 	 */
 	getInventorySize(): number {
-		return _.sum(this.inventory);
+		var quantities = _.pluck(this.inventory, 'quantity');
+
+		return _.sum(quantities);
 	}
 
 	/**

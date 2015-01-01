@@ -45,26 +45,34 @@ module Controllers {
 			public $rootScope,
 			public $scope,
 			public $interval: ng.IIntervalService,
-			public $http: ng.IHttpService
+			public $http: ng.IHttpService,
+			public items: Services.ItemsFactory
 		) {
 			$scope.game = this;
 			$scope.Math = Math;
 
 			// Load core data
-			this.loadDataOnScope('recipes');
+			this.loadDataOnScope('items');
 			this.loadDataOnScope('actions');
 			this.loadDataOnScope('enemies');
 			this.loadDataOnScope('events');
 
 			// Restore save
-			this.bootWorld();
-			this.restoreSave();
+			this.$rootScope.$watch('events', (value) => {
+				if (value) {
+					this.bootWorld();
+					this.restoreSave();
+				}
+			});
 		}
 
 		//////////////////////////////////////////////////////////////////////
 		/////////////////////////////// SAVES ////////////////////////////////
 		//////////////////////////////////////////////////////////////////////
 
+		/**
+		 * Restore the data from localStorage
+		 */
 		restoreSave() {
 			var survidle = JSON.parse(localStorage.getItem('survidle'));
 			if (!survidle) {
@@ -72,6 +80,10 @@ module Controllers {
 			}
 
 			_.each(survidle.player, (value: any, key: string) => {
+				if (key == 'inventory') {
+					value = this.items.rebuildItems(value);
+				}
+
 				this.player[key] = value;
 			});
 
@@ -105,6 +117,9 @@ module Controllers {
 			}));
 		}
 
+		/**
+		 * Reset the game
+		 */
 		reset() {
 			this.$interval.cancel(this.cycle);
 
@@ -148,6 +163,13 @@ module Controllers {
 			this.$scope.world = this.world;
 		}
 
+		/**
+		 * Check if the game is booted
+		 */
+		isBooted(): boolean {
+			return typeof this.$rootScope.events !== 'undefined';
+		}
+
 		//////////////////////////////////////////////////////////////////////
 		////////////////////////////// SCENERIES /////////////////////////////
 		//////////////////////////////////////////////////////////////////////
@@ -184,7 +206,7 @@ module Controllers {
 
 		computeRevenues() {
 			_.each(this.player.inventory, (quantity: number, item: string) => {
-				var recipe = this.getRecipeByKey(item);
+				var recipe = this.items.getItemByKey(item);
 				if (recipe && recipe.revenues) {
 					this.player.addMultipleItems(recipe.revenues, quantity);
 				}
@@ -202,13 +224,6 @@ module Controllers {
 			this.$http.get('public/app/json/' + data + '.json').then((response) => {
 				this.$rootScope[data] = response.data;
 			});
-		}
-
-		/**
-		 * Get a Recipe by its key
-		 */
-		getRecipeByKey(key: string): Recipe {
-			return <Recipe> _.find(this.$scope.recipes, {key: key});
 		}
 
 		/**
