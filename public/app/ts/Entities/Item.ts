@@ -24,7 +24,7 @@ module Entities {
 			this.type = options.type;
 
 			this.required = options.required;
-			this.usable = options.usable || false;
+			this.usable = options.usable || false;
 			this.multiple = options.multiple;
 
 			this.quantity = options.quantity || 0;

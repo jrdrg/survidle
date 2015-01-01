@@ -6,6 +6,7 @@
 	<p ng-repeat="bonus in player.getSkillBonuses(skill)">
 		<span class="label label-success">x{{ bonus.skills[skill] }}</span> from <strong>{{ bonus.name }}</strong>
 	</p>
+
 	<div class="progress">
 		<span class="progress-bar" style="width: {{ game.skillProgress(level) }}%"></span>
 	</div>

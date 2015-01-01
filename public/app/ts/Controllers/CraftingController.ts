@@ -45,7 +45,7 @@ module Controllers {
 			this.$scope.player.add(item);
 
 			// Mark event
-			this.$scope.game.stages['craft'+item.key] = true;
+			this.$scope.game.stages['craft' + item.key] = true;
 		}
 
 		/**

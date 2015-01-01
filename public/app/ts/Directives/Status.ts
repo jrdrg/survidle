@@ -15,9 +15,9 @@ module Directives {
 		 * @type {any}
 		 */
 		scope = {
-			label  : '@',
-			max    : '@',
-			value  : '=',
+			label: '@',
+			max  : '@',
+			value: '=',
 		};
 
 		/**
