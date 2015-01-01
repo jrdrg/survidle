@@ -108,7 +108,6 @@ module Controllers {
 			localStorage.setItem('survidle', JSON.stringify({
 				world         : {
 					cycle: this.world.cycle,
-					day  : this.world.day,
 				},
 				player        : {
 					inventory        : this.player.inventory,

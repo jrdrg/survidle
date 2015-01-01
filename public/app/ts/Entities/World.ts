@@ -8,12 +8,7 @@ module Entities {
 		 */
 		cycle = 0;
 
-		/**
-		 * The current day number
-		 *
-		 * @type {number}
-		 */
-		day = 1;
+		date;
 
 		/**
 		 * The length of a cycle in seconds
@@ -34,6 +29,19 @@ module Entities {
 		 */
 		entities = [];
 
+		constructor() {
+			this.passDays();
+		}
+
+		/**
+		 * Get the absolute day number since the beginning of the game
+		 */
+		getDayNumber(): number {
+			var unix = this.date.unix() - (60 * 60 * 11);
+
+			return Math.round(unix / (60 * 60 * 24));
+		}
+
 		//////////////////////////////////////////////////////////////////////
 		////////////////////////////// ENTITIES //////////////////////////////
 		//////////////////////////////////////////////////////////////////////
@@ -52,14 +60,7 @@ module Entities {
 		 * Check if it's night or not
 		 */
 		isNighttime(): boolean {
-			return this.getCurrentHour() > 18;
-		}
-
-		/**
-		 * Get the current hour
-		 */
-		getCurrentHour(): number {
-			return this.cycle + 12 - (this.cyclesPerDay * this.day);
+			return this.date.hours() > 18;
 		}
 
 		/**
@@ -67,22 +68,21 @@ module Entities {
 		 */
 		getCurrentTime(hasSundial: boolean, hasCalendar: boolean): any {
 			if (!hasSundial) {
-				return this.day;
+				return this.getDayNumber();
 			}
 
-			var currentDate = moment('2014-01-01T00:00:00').hours(this.cycle);
 			if (!hasCalendar) {
-				return this.day + ', ' + currentDate.format('HH:MM');
+				return this.getDayNumber() + ', ' + this.date.format('HH:MM');
 			}
 
-			return currentDate.format('MMM Do, HH:MM');
+			return this.date.format('MMM Do, HH:MM');
 		}
 
 		/**
 		 * Compute days related variables
 		 */
 		passDays() {
-			this.day = Math.round(this.cycle / this.cyclesPerDay);
+			this.date = moment(0).add(this.cycle, 'hours');
 		}
 
 	}
