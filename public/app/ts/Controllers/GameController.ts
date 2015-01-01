@@ -53,7 +53,6 @@ module Controllers {
 			$rootScope.game = this;
 			$rootScope.$route = $route;
 			$scope.Math = Math;
-			console.log($route);
 
 			// Load core data
 			this.loadDataOnScope('items');

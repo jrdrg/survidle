@@ -12,22 +12,28 @@
 	margin-bottom: 1rem;
 	transition: background 0.3s;
 
-	&:hover {
-		background: rgba(white, 0.75);
-		color: grey(15);
-	}
-
 	h3,
+	&__type,
 	&__usable {
-		background: rgba(black, 0.25);
 		text-align: center;
 		padding: 0.25em;
 		margin: 0;
 	}
 
+	h3 {
+		background-color: $color-green;
+		font-size: 1.75rem;
+		text-shadow: 0 2px 0px rgba(black, 0.15);
+	}
+
+	&__type,
 	&__usable {
 		font-size: 1.25rem;
 		background: $color-dark-red;
+	}
+
+	&__type {
+		background: grey(10);
 	}
 
 	p {
@@ -51,5 +57,14 @@
 
 	li {
 		padding: 1rem;
+	}
+
+	&:hover {
+		background: rgba(white, 0.75);
+		color: grey(15);
+
+		h3, .recipe__type {
+			color: white;
+		}
 	}
 }
