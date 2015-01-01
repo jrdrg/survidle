@@ -92,6 +92,7 @@ module Controllers {
 			});
 
 			this.stages = survidle.game.stages;
+			this.createSceneries();
 		}
 
 		/**
@@ -109,7 +110,6 @@ module Controllers {
 					age              : this.player.age,
 					survival         : this.player.survival,
 					inventoryCapacity: this.player.inventoryCapacity,
-					tools            : this.player.tools,
 				},
 				game  : {
 					stages: this.stages,
@@ -147,10 +147,7 @@ module Controllers {
 			this.world.entities.push(this.player);
 
 			// Define sceneries
-			this.scenery = 'forest';
-			this.sceneries = {
-				forest: new Entities.Sceneries.Forest(this, this.$rootScope.actions.forest),
-			};
+			this.createSceneries();
 
 			// Define interval
 			this.cycle = this.$interval(() => {
@@ -173,6 +170,13 @@ module Controllers {
 		//////////////////////////////////////////////////////////////////////
 		////////////////////////////// SCENERIES /////////////////////////////
 		//////////////////////////////////////////////////////////////////////
+
+		createSceneries() {
+			this.scenery = 'forest';
+			this.sceneries = {
+				forest: new Entities.Sceneries.Forest(this, this.$rootScope.actions.forest),
+			};
+		}
 
 		/**
 		 * Get the current scenery

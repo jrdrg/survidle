@@ -8,7 +8,7 @@
 			<h4 class="media-heading">{{ entity.name }}</h4>
 			<status label="{{ stat|title }}" max="10" ng-repeat="(stat, current) in entity.survival" value="current"></status>
 			<div class="enemy__skills">
-				<status label="{{ skill|title }}" ng-repeat="(skill, level) in entity.skills" value="level"></status>
+				<status label="{{ skill|title }}" rounded="true" ng-repeat="(skill, level) in entity.skills" value="level"></status>
 			</div>
 		</div>
 	</div>

@@ -38,8 +38,11 @@ module Controllers {
 				this.$scope.player.inventory[ingredient].decrement(required);
 			});
 
+			// Add to inventory
 			this.$scope.player.add(item);
-			this.$scope.player.tools.push(item);
+
+			// Mark event
+			this.$scope.game.stages['craft'+item.key] = true;
 		}
 
 		/**

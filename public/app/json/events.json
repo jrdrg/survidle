@@ -17,6 +17,6 @@
   },
   {
     "contents": "You are now in the warmth of your small cabin. Wolves can't get to you",
-    "when": "player.has('cabin')"
+    "when": "game.stages.craftCabin"
   }
 ]

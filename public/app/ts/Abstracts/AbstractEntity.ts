@@ -15,11 +15,6 @@ module Abstracts {
 		inventory = {};
 
 		/**
-		 * The available tools
-		 */
-		tools: Item[] = [];
-
-		/**
 		 * The base inventory capacity
 		 *
 		 * @type {number}
@@ -86,14 +81,11 @@ module Abstracts {
 		 */
 		getSkillBonuses(skill: string): Item[] {
 			var bonuses = [];
-			if (!this.tools.length) {
-				return [];
-			}
 
-			_.each(this.tools, (recipe: Item) => {
-				var bonus = recipe.skills[skill];
+			_.each(this.getInventoryContents(), (item: Item) => {
+				var bonus = item.skills[skill];
 				if (typeof bonus !== 'undefined') {
-					bonuses.push(recipe);
+					bonuses.push(item);
 				}
 			});
 

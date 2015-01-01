@@ -5,6 +5,9 @@ module Abstracts {
 		 * @param game
 		 */
 		constructor(public game: Controllers.GameController, public actions: Action[]) {
+			this.actions = _.filter(actions, function (action: Action) {
+				return !action.once || action.once && !game.stages[action.method];
+			});
 		}
 
 		/**

@@ -5,5 +5,5 @@
 	</span>
 </div>
 <div class="status progress status--bare" ng-if="!max">
-	{{ value }}
+	{{ rounded ? round(value) : value }}
 </div>

@@ -26,9 +26,9 @@ module Entities {
 			this.multiple = options.multiple;
 
 			this.quantity = options.quantity || 0;
-			this.ingredients = options.ingredients;
-			this.skills = options.skills;
-			this.revenues = options.revenues;
+			this.ingredients = options.ingredients || {};
+			this.skills = options.skills || {};
+			this.revenues = options.revenues || {};
 		}
 
 		/**
