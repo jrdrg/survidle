@@ -37,7 +37,7 @@ module Entities {
 		 */
 		map = [];
 
-		constructor(size: number) {
+		constructor(public size: number) {
 			this.passDays();
 
 			this.generateMap(size);

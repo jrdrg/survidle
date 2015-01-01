@@ -19,10 +19,18 @@ module Services {
 			var likelihood = this.getLikelihood(enemyType) * modifier;
 			if (chance.bool({likelihood: likelihood})) {
 				var enemy = new Entities.Enemy(enemyType.name);
+				enemy.moveTo(this.getRandomCoordinate(), this.getRandomCoordinate());
 				enemy.skills = enemyType.skills;
 
 				return enemy;
 			}
+		}
+
+		/**
+		 * Get a random coordinate within the map
+		 */
+		getRandomCoordinate() {
+			return chance.integer({min: 0, max: this.game.world.size});
 		}
 
 		/**

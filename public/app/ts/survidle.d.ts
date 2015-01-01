@@ -18,4 +18,5 @@ interface Number {
 declare var chance: {
 	bool(options?: any): boolean;
 	floating(options?: any): number;
+	integer(options?: any): number;
 }
