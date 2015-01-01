@@ -108,7 +108,7 @@
     "description": "Made from muddy leaves. Totally sanitary.",
     "multiple": true,
     "required": "gatherFood",
-    "type": "resource",
+    "type": "usable",
     "ingredients": {
       "food": 10
     }

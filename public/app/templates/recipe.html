@@ -6,7 +6,7 @@
 		<h5>Ingredients</h5>
 		<li ng-repeat="(ingredient, required) in recipe.ingredients">
 			{{ ingredient|title }}
-			<span class="label label-success" ng-class="{'label-danger': !$parent.crafting.canCraft(recipe)}" ng-bind="required"></span>
+			<span class="label label-success" ng-class="{'label-danger': !$parent.player.has(ingredient, required)}" ng-bind="required"></span>
 		</li>
 	</ul>
 	<ul ng-if="recipe.revenues">

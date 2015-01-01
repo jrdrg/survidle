@@ -34,6 +34,12 @@
       "label": "Eat food",
       "unlock": "game.stages.gatherFood",
       "condition": "player.has('food')"
+    },
+    {
+      "method": "heal",
+      "label": "Usage bandage",
+      "unlock": "game.stages.gatherFood",
+      "condition": "player.has('bandage')"
     }
   ]
 }

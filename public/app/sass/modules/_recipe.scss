@@ -1,5 +1,6 @@
 .layout-recipes {
 	display: flex;
+	flex-wrap: wrap;
 }
 
 .recipe {
@@ -7,6 +8,7 @@
 	background: rgba(black, 0.25);
 	cursor: pointer;
 	margin-right: 1rem;
+	margin-bottom: 1rem;
 	transition: background 0.3s;
 
 	&:hover {
@@ -30,6 +32,7 @@
 	p {
 		padding: 1em;
 		margin: 0;
+		height: 5em;
 	}
 
 	h5 {

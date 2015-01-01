@@ -27,3 +27,4 @@ app.factory('items', Services.ItemsFactory.instance);
 //////////////////////////////////////////////////////////////////////
 
 app.filter('title', Filters.Title);
+app.filter('filterByType', Filters.Type);
