@@ -11,7 +11,6 @@ var app = angular.module('survidle', [
 app.controller('GameController', Controllers.GameController);
 app.controller('CraftingController', Controllers.CraftingController);
 app.controller('NavigationController', Controllers.NavigationController);
-app.controller('TechnologiesController', Controllers.TechnologiesController);
 
 // Directives
 //////////////////////////////////////////////////////////////////////
@@ -23,7 +22,8 @@ app.directive('technology', Directives.Technology.instance);
 // Services
 //////////////////////////////////////////////////////////////////////
 
-app.factory('items', Services.ItemsFactory.instance);
+app.service('items', Services.ItemsFactory);
+app.service('technologyTree', Services.TechnologyTree);
 
 // Filters
 //////////////////////////////////////////////////////////////////////

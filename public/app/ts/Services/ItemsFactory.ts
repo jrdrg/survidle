@@ -21,9 +21,5 @@ module Services {
 			return <Item> _.find(this.$rootScope.items, {key: key});
 		}
 
-		static instance($rootScope) {
-			return new ItemsFactory($rootScope);
-		}
-
 	}
 }

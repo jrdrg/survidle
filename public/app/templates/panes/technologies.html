@@ -1,16 +1,16 @@
-<div class="layout-container" ng-controller="TechnologiesController as TechCtrl">
+<div class="layout-container">
 	<main class="layout-content">
 		<h4 class="page-header">Technologies Tree</h4>
 
 		<technology ng-repeat="technology in technologies"></technology>
 	</main>
 
-	<aside class="layout-aside list-group" ng-if="TechCtrl.current">
+	<aside class="layout-aside list-group" ng-if="technologyTree.current">
 		<header class="list-group-item">
-			<h4 class="list-group-item-heading">Currently researching: <strong>{{ TechCtrl.current.name }}</strong></h4>
+			<h4 class="list-group-item-heading">Currently researching: <strong>{{ technologyTree.current.name }}</strong></h4>
 		</header>
 		<div class="list-group-item technology__current">
-			<status label="Progress" value="TechCtrl.current.progress" max="1"></status>
+			<status label="Progress" value="technologyTree.current.progress" max="1"></status>
 		</div>
 	</aside>
 </div>

@@ -46,7 +46,8 @@ module Controllers {
 			public $scope,
 			public $interval: ng.IIntervalService,
 			public $http: ng.IHttpService,
-			public items: Services.ItemsFactory
+			public items: Services.ItemsFactory,
+			public technologyTree: Services.TechnologyTree
 		) {
 			$scope.game = this;
 			$scope.Math = Math;
@@ -157,8 +158,9 @@ module Controllers {
 			}, this.world.cycleLength * 1000);
 
 			// Bind to scope
-			this.$scope.player = this.player;
-			this.$scope.world = this.world;
+			this.$rootScope.player = this.player;
+			this.$rootScope.world = this.world;
+			this.$rootScope.technologyTree = this.technologyTree;
 		}
 
 		/**

@@ -1,13 +1,13 @@
-module Controllers {
-	export class TechnologiesController {
+module Services {
+	export class TechnologyTree {
 
 		/**
-		 * The technology currently being researched
+		 * The current technology being researched
 		 */
 		current: Technology;
 
-		constructor(public $scope) {
-			$scope.$watch('world.cycle', this.progress.bind(this));
+		constructor(public $rootScope) {
+			$rootScope.$watch('world.cycle', this.progress.bind(this));
 		}
 
 		/**
