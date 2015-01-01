@@ -3,6 +3,7 @@ declare module _ {
 		mixin(any: any): void;
 		sum(object): number;
 		randomItem(array): any;
+		pointsDistance(x1: number, y1: number, x2: number, y2: number): number;
 	}
 
 	interface LoDashArrayWrapper<T> {

@@ -100,10 +100,7 @@ module Abstracts {
 		 * Compute the distance with another entity
 		 */
 		distanceWith(entity: AbstractEntity): number {
-			var distanceOther = Math.pow(entity.x - entity.y, 2);
-			var distanceSelf = Math.pow(this.x - this.y, 2);
-
-			return Math.sqrt(distanceSelf + distanceOther);
+			return _.pointsDistance(this.x, this.y, entity.x, entity.y);
 		}
 
 		/**

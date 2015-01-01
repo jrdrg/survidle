@@ -245,6 +245,7 @@ module Controllers {
 			// Run entities cycles
 			this.world.getAliveEntities().forEach((entity: Abstracts.AbstractEntity) => {
 				entity.onCycle(this);
+				this.world.getCell(entity.x, entity.y).onCycle(entity);
 			});
 		}
 

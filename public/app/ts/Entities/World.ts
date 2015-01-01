@@ -48,16 +48,51 @@ module Entities {
 		//////////////////////////////////////////////////////////////////////
 
 		/**
+		 * Get a cell by coordinates
+		 */
+		getCell(x: number, y: number): Entities.Map.Cell {
+			return this.map[y][x];
+		}
+
+		/**
 		 * Generate the map
 		 */
 		generateMap(size: number) {
+			// Generate core cells
 			for (var y = 0; y <= size; y++) {
 				this.map[y] = [];
-
 				for (var x = 0; x <= size; x++) {
-					this.map[y][x] = new Entities.Map.Cell(x, y);
+					this.map[y][x] = new Entities.Map.Cell(x, y, _.randomItem(['forest', 'tree']));
 				}
 			}
+
+			// Generate water
+			var numberOfPonds = chance.integer({min: 1, max: 3});
+			for (var i = 0; i <= numberOfPonds; i++) {
+				this.generatePond();
+			}
+		}
+
+		generatePond() {
+			var size = chance.integer({min: 1, max: 2});
+			var x = chance.integer({min: 0, max: this.size});
+			var y = chance.integer({min: 0, max: this.size});
+
+			// Create base cell
+			var center = new Entities.Map.Cell(x, y, 'water');
+			this.map[y][x] = center;
+
+			this.map.forEach(function (column) {
+				column.forEach(function (cell: Entities.Map.Cell) {
+					var distance = cell.distanceWith(center);
+					var withingBounds = distance == size ? chance.bool() : true;
+					withingBounds = distance > size ? false : withingBounds;
+
+					if (withingBounds) {
+						cell.type = 'water';
+					}
+				});
+			})
 		}
 
 		//////////////////////////////////////////////////////////////////////
