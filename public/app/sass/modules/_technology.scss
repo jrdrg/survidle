@@ -1,0 +1,9 @@
+.technology {
+	&[disabled] {
+		opacity: 0.5;
+	}
+
+	p {
+		height: 3em;
+	}
+}

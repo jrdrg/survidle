@@ -14,7 +14,7 @@ module Directives {
 		/**
 		 * @type {string}
 		 */
-		templateUrl = 'public/app/templates/recipe.html';
+		templateUrl = 'public/app/templates/entities/recipe.html';
 
 		/**
 		 * @returns {Survidle.Directives.Status}

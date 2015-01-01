@@ -1,8 +1,5 @@
-<main class="layout-content">
+<main class="layout-content" ng-controller="TechnologiesController as TechCtrl">
 	<h4>Technologies Tree</h4>
-	<div ng-repeat="technology in technologies" ng-disabled="{{ technology.disabled }}">
-		{{ technology.name }}
-		{{ technology.description }}
-	</div>
+	<technology ng-repeat="technology in technologies"></technology>
 </main>
 

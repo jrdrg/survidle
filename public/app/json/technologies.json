@@ -4,5 +4,18 @@
     "name": "Agriculture",
     "description": "Allow the creation of fields and crops",
     "disabled": "!game.stages.craftcabin"
+  },
+  {
+    "key": "astronomy",
+    "name": "Astronomy",
+    "description": "Study the sun and stars",
+    "disabled": "!game.stages.craftsundial",
+    "children": [
+      {
+        "key": "calendar",
+        "name": "Calendar",
+        "description": "Predict seasons and crops failures"
+      }
+    ]
   }
 ]
