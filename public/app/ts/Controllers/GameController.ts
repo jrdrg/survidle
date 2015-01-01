@@ -243,7 +243,7 @@ module Controllers {
 			this.computeRevenues();
 
 			// Run entities cycles
-			this.world.getEntitiesOnPlayer().forEach((entity: Abstracts.AbstractEntity) => {
+			this.world.getAliveEntities().forEach((entity: Abstracts.AbstractEntity) => {
 				entity.onCycle(this);
 			});
 		}

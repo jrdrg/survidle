@@ -13,9 +13,18 @@ module Entities {
 			this.survival.hunger = chance.floating({min: 0, max: 1});
 		}
 
+		/**
+		 * Look for the player, then attack him
+		 */
 		onCycle(game: Controllers.GameController) {
 			super.onCycle(game);
 
+			// Look for the player
+			if (!this.isOnSameCellThan(game.player)) {
+				return this.track(game.player);
+			}
+
+			// Attack the player
 			game.player.attack(this);
 			this.attack(game.player);
 			if (!game.player.isDead()) {

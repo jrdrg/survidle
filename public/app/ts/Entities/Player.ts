@@ -25,6 +25,7 @@ module Entities {
 			combat   : 1,
 			gathering: 1,
 			masonry  : 1,
+			tracking : 1,
 		};
 
 		/**

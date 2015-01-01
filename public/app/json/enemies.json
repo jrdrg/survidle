@@ -2,7 +2,8 @@
   {
     "name": "Direwolf",
     "skills": {
-      "combat": 0.5
+      "combat": 0.5,
+      "tracking": 1.5
     }
   }
 ]

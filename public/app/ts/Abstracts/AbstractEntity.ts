@@ -44,6 +44,7 @@ module Abstracts {
 		 */
 		skills = {
 			combat: 1,
+			tracking: 1,
 		};
 
 		/**
@@ -62,6 +63,55 @@ module Abstracts {
 		moveTo(x: number, y: number) {
 			this.x = x;
 			this.y = y;
+		}
+
+		/**
+		 * Move of X offsets
+		 */
+		move(x: number, y: number) {
+			this.x += x;
+			this.y += y;
+		}
+
+		/**
+		 * Move randomly
+		 */
+		moveRandomly() {
+			var bounds = {min: -1, max: 1};
+			this.move(chance.integer(bounds), chance.integer(bounds));
+		}
+
+		/**
+		 * Track another entity
+		 */
+		track(entity: AbstractEntity) {
+			var tracking = this.skills.tracking * 10;
+
+			if (this.distanceWith(entity) <= tracking) {
+				var directionX = entity.x === this.x ? 0 : (entity.x > this.x ? 1 : -1);
+				var directionY = entity.y === this.y ? 0 : (entity.y > this.y ? 1 : -1);
+				this.move(directionX, directionY);
+			} else {
+				this.moveRandomly();
+			}
+		}
+
+		/**
+		 * Compute the distance with another entity
+		 */
+		distanceWith(entity: AbstractEntity): number {
+			var distanceOther = Math.pow(entity.x + entity.y, 2),
+					distanceSelf = Math.pow(this.x + this.y, 2);
+
+			return Math.sqrt(distanceSelf + distanceOther);
+		}
+
+		/**
+		 * Check if an entity is on the same cell than
+		 * this one
+		 */
+		isOnSameCellThan(entity: AbstractEntity): boolean {
+			return this.x == entity.x && this.y == entity.y;
 		}
 
 		//////////////////////////////////////////////////////////////////////
