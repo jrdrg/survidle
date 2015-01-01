@@ -199,7 +199,6 @@ module Controllers {
 			// Trigger encounters
 			var encounter;
 			if (encounter = this.encounters.triggerEncounters()) {
-				this.encounters.current = encounter;
 				this.world.entities.push(encounter);
 			}
 

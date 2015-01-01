@@ -1,11 +1,6 @@
 module Services {
 	export class EncountersManager {
 
-		/**
-		 * The current encounter
-		 */
-		current: Entities.Enemy;
-
 		constructor(public game: Controllers.GameController) {
 		}
 
