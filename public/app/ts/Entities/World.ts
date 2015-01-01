@@ -75,7 +75,7 @@ module Entities {
 				return this.day + ', ' + currentDate.format('HH:MM');
 			}
 
-			return currentDate.format('Do MMM HH:MM');
+			return currentDate.format('MMM Do, HH:MM');
 		}
 
 		/**

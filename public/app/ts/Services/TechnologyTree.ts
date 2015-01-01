@@ -32,8 +32,10 @@ module Services {
 		/**
 		 * Check if a technology has been researched
 		 */
-		hasResearched(techology: Technology): boolean {
-			return typeof this.researched[techology.key] !== 'undefined';
+		hasResearched(technology): boolean {
+			var key = technology.key || technology;
+
+			return this.researched[key];
 		}
 
 		/**
