@@ -68,7 +68,11 @@ module Entities {
 		 * Get the entities at particular coordinates
 		 */
 		getEntitiesAt(x: number, y: number): Abstracts.AbstractEntity[] {
-			return _.filter(this.entities, function (entity: Abstracts.AbstractEntity) {
+			return _.filter(this.entities, (entity: Abstracts.AbstractEntity, key: number) => {
+				if (entity.isDead()) {
+					return false;
+				}
+
 				return entity.x == x && entity.y == y;
 			});
 		}

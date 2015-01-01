@@ -43,7 +43,7 @@ module Abstracts {
 		 * @type {any}
 		 */
 		skills = {
-			combat: 1,
+			combat  : 1,
 			tracking: 1,
 		};
 
@@ -100,8 +100,8 @@ module Abstracts {
 		 * Compute the distance with another entity
 		 */
 		distanceWith(entity: AbstractEntity): number {
-			var distanceOther = Math.pow(entity.x + entity.y, 2),
-					distanceSelf = Math.pow(this.x + this.y, 2);
+			var distanceOther = Math.pow(entity.x - entity.y, 2);
+			var distanceSelf = Math.pow(this.x - this.y, 2);
 
 			return Math.sqrt(distanceSelf + distanceOther);
 		}
