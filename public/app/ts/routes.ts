@@ -5,7 +5,7 @@ angular.module('survidle').config(function ($routeProvider: ng.route.IRouteProvi
 	//////////////////////////////////////////////////////////////////////
 
 	$routeProvider.when('/changelog', {
-		controller: 'ChangelogController',
+		controller : 'ChangelogController',
 		templateUrl: templates + '/changelog.html',
 	});
 
@@ -16,6 +16,7 @@ angular.module('survidle').config(function ($routeProvider: ng.route.IRouteProvi
 		order      : 1,
 		key        : 'scenery',
 		label      : 'The Forest',
+		unlock     : true,
 		templateUrl: templates + '/scenery.html',
 	});
 
@@ -23,6 +24,7 @@ angular.module('survidle').config(function ($routeProvider: ng.route.IRouteProvi
 		order      : 2,
 		key        : 'map',
 		label      : 'Map',
+		unlock     : 'lookAround',
 		templateUrl: templates + '/map.html',
 	});
 
@@ -30,6 +32,7 @@ angular.module('survidle').config(function ($routeProvider: ng.route.IRouteProvi
 		order      : 3,
 		key        : 'encounters',
 		label      : 'Encounters',
+		unlock     : 'lookAround',
 		templateUrl: templates + '/encounters.html',
 	});
 
@@ -37,6 +40,7 @@ angular.module('survidle').config(function ($routeProvider: ng.route.IRouteProvi
 		order      : 4,
 		key        : 'technologies',
 		label      : 'Technology Tree',
+		unlock     : 'lookAround',
 		templateUrl: templates + '/technologies.html',
 	});
 
