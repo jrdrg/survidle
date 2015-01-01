@@ -229,6 +229,9 @@ module Controllers {
 		/////////////////////////////// CYCLES ///////////////////////////////
 		//////////////////////////////////////////////////////////////////////
 
+		/**
+		 * Start a new cycle
+		 */
 		newCycle() {
 			this.world.cycle++;
 			this.world.passDays();
@@ -249,6 +252,18 @@ module Controllers {
 			});
 		}
 
+		/**
+		 * Time warp X cycles
+		 */
+		timeWarp(cycles: number) {
+			for (var i = 0; i <= cycles; i++) {
+				this.newCycle();
+			}
+		}
+
+		/**
+		 * Compute the revenues of this cycle
+		 */
 		computeRevenues() {
 			_.each(this.player.getInventoryContents(), (item: Item) => {
 				if (item.revenues) {
