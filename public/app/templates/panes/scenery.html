@@ -13,14 +13,7 @@
 		</ul>
 	</div>
 
-	<div class="animate--fade-in" ng-show="game.stages.gatherWood" ng-controller="CraftingController as crafting">
-		<hr />
-		<h4>Crafting</h4>
-
-		<section class="layout-recipes">
-			<recipe ng-repeat="recipe in items | filter:{type: '!resource'} | orderBy:crafting.recipeCost:true"></recipe>
-		</section>
-	</div>
+	<div class="animate--fade-in" ng-include="'public/app/templates/crafting.html'" ng-show="game.stages.gatherWood" ng-controller="CraftingController as crafting"></div>
 </main>
 
 <aside class="layout-aside list-group animate--fade-in" ng-show="game.world.cycle > 3">
