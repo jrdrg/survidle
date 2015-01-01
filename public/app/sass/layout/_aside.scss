@@ -18,6 +18,10 @@
 		margin-bottom: 0;
 	}
 
+	a {
+		cursor: pointer;
+	}
+
 	.list-group-item[disabled] {
 		$disabled-action: grey(95);
 

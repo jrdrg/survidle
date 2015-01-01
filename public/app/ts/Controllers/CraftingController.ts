@@ -10,10 +10,7 @@ module Controllers {
 		 */
 		isUnlocked(item: Item): boolean {
 			var required = item.required || 'stage:gatherWood';
-			var condition = required.split(':');
-			if (condition[0] == 'stage' && !this.$scope.game.stages[condition[1]]) {
-				return false;
-			} else if (condition[0] == 'technology' && !this.$scope.technologyTree.hasResearched(condition[1])) {
+			if (!this.$scope.game.isUnlocked(required)) {
 				return false;
 			}
 

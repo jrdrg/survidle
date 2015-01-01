@@ -19,32 +19,34 @@
 	</header>
 
 	<section class="layout-status animate--fade-in">
-		<status class="animate--fade-in" ng-show="game.stages.lookUp" label="Day" value="world.getCurrentTime(player.has('sundial'), player.has('calendar'))"></status>
+		<status class="animate--fade-in" ng-show="game.stages.lookUp" label="Day" value="world.getCurrentTime(player.has('sundial'), technologyTree.hasResearched('calendar'))"></status>
 		<status class="animate--fade-in" ng-show="game.stages.gatherFood" label="{{ stat|title }}" max="10" ng-repeat="(stat, current) in player.survival" value="current"></status>
 		<status class="animate--fade-in" ng-show="game.stages.gatherFood" label="Inventory" max="player.getInventoryCapacity()" value="player.getInventorySize() / player.getInventoryCapacity()"></status>
 	</section>
 
-	<section ng-controller="NavigationController as navigation" ng-if="!player.isDead()">
+	<section ng-if="!player.isDead()">
 		<nav class="layout-navigation">
 			<ul class="nav nav-tabs nav-justified">
-				<li ng-repeat="pane in navigation.available" ng-class="{active: navigation.current == pane.key, danger: game.world.getAliveEntities().length > 1 && pane.key == 'encounters'}">
-					<a href="#" ng-click="navigation.current = pane.key">{{ pane.key == 'encounters' ? pane.label + ' (' +(game.world.getAliveEntities().length - 1)+ ')' : pane.label }}</a>
+				<li ng-if="route.label" ng-repeat="route in game.getAvailableRoutes() | orderBy:'order'" ng-class="{active: $route.current.key == route.key, danger: game.world.getAliveEntities().length > 1 && route.key == 'encounters'}">
+					<a href="#/{{ route.key }}" ng-if="route.key == 'encounters'">{{ route.label }} ({{ game.world.getAliveEntities().length - 1 }})</a>
+					<a href="#/{{ route.key }}" ng-if="route.key !== 'encounters'">{{ route.label }}</a>
 				</li>
 			</ul>
 		</nav>
 
-		<ng-include src="navigation.getTemplate()"></ng-include>
+		<div ng-view></div>
 	</section>
 
 	<section class="layout-container--game-over" ng-if="player.isDead()">
 		<h2>You have failed miserably at surviving, killed by <strong>{{ player.killedBy }}</strong></h2>
 		<h3>You are now officially nature's bitch.</h3>
-		<p><a class="btn btn-default btn-lg" href="#" ng-click="app.reset()">Try again?</a></p>
+		<p><a class="btn btn-default btn-lg" ng-click="app.reset()">Try again?</a></p>
 	</section>
 
 	<!-- build:js public/builds/js/scripts.js -->
 	<script src="public/components/jquery/dist/jquery.js"></script>
 	<script src="public/components/angular/angular.js"></script>
+	<script src="public/components/angular-route/angular-route.js"></script>
 	<script src="public/components/moment/moment.js"></script>
 	<script src="public/components/angular-strap/dist/angular-strap.js"></script>
 	<script src="public/components/angular-strap/dist/angular-strap.tpl.js"></script>
@@ -57,7 +59,6 @@
 	<script src="public/app/js/Abstracts/AbstractScenery.js"></script>
 	<script src="public/app/js/Controllers/CraftingController.js"></script>
 	<script src="public/app/js/Controllers/GameController.js"></script>
-	<script src="public/app/js/Controllers/NavigationController.js"></script>
 	<script src="public/app/js/Directives/Recipe.js"></script>
 	<script src="public/app/js/Directives/Status.js"></script>
 	<script src="public/app/js/Directives/Technology.js"></script>
@@ -72,6 +73,7 @@
 	<script src="public/app/js/Services/ItemsFactory.js"></script>
 	<script src="public/app/js/Services/TechnologyTree.js"></script>
 	<script src="public/app/js/app.js"></script>
+	<script src="public/app/js/routes.js"></script>
 	<!-- endbuild -->
 </body>
 </html>

@@ -65,13 +65,6 @@
     "skills": {}
   },
   {
-    "key": "calendar",
-    "name": "Calendar",
-    "description": "Never forget the date of the end of the world",
-    "type": "installation",
-    "required": "technology:astronomy"
-  },
-  {
     "key": "cabin",
     "name": "Small cabin",
     "description": "Should keep you out of danger... for now",

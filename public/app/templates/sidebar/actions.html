@@ -1,4 +1,4 @@
 <header class="list-group-item">
 	<h4 class="list-group-item-heading">Actions</h4>
 </header>
-<a href="#" ng-click="game.getScenery().act(key, action.condition)" ng-repeat="(key, action) in game.getScenery().getActions()" ng-show="{{ action.unlock || true }}" ng-disabled="!{{ action.condition }}" class="list-group-item">{{ action.label }}</a>
+<a ng-click="game.getScenery().act(key, action.condition)" ng-repeat="(key, action) in game.getScenery().getActions()" ng-show="{{ action.unlock || true }}" ng-disabled="!{{ action.condition }}" class="list-group-item">{{ action.label }}</a>

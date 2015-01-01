@@ -1,7 +1,8 @@
-<article ng-click="technologyTree.research(technology)" class="technology media" ng-class="{'technology--researching': technologyTree.isResearching(technology), 'technology--researched': technologyTree.hasResearched(technology)}" ng-disabled="{{ !technologyTree.canResearch(technology) }}">
-	<a class="media-left" href="#">
+<article class="technology media" ng-class="{'technology--researching': technologyTree.isResearching(technology), 'technology--researched': technologyTree.hasResearched(technology)}" ng-disabled="{{ !technologyTree.canResearch(technology) }}">
+	<div class="media-left">
 		<img src="http://placehold.it/64x64">
-	</a>
+		<a class="btn btn-primary btn-block" ng-if="technologyTree.canResearch(technology) && !technologyTree.hasResearched(technology)" ng-click="technologyTree.research(technology)">Research</a>
+	</div>
 	<div class="media-body">
 		<h4 class="media-heading">{{ technology.name }}</h4>
 		<p>{{ technology.description }}</p>

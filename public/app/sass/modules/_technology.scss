@@ -1,19 +1,35 @@
 .technology {
-
-	p {
-		height: 3em;
-	}
+	padding: 1rem;
+	display: flex;
 
 	&[disabled] {
 		opacity: 0.5;
 	}
 
+	img {
+		width: 100%;
+		margin-bottom: 1rem;
+	}
+
+	p {
+		height: 3em;
+	}
+
+	.media-left,
+	.media-body {
+		display: block;
+	}
+	.media-left {
+		flex: 1;
+	}
+	.media-body {
+		flex: 10;
+	}
+
 	&--researching {
-		padding: 1rem;
 		background: rgba(black, 0.25);
 	}
 	&--researched {
-		padding: 1rem;
 		background: rgba($color-green, 0.25);
 	}
 }

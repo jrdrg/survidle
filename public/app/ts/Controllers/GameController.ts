@@ -47,10 +47,13 @@ module Controllers {
 			public $interval: ng.IIntervalService,
 			public $http: ng.IHttpService,
 			public items: Services.ItemsFactory,
-			public technologyTree: Services.TechnologyTree
+			public technologyTree: Services.TechnologyTree,
+			public $route: ng.route.IRouteService
 		) {
 			$rootScope.game = this;
+			$rootScope.$route = $route;
 			$scope.Math = Math;
+			console.log($route);
 
 			// Load core data
 			this.loadDataOnScope('items');
@@ -66,6 +69,24 @@ module Controllers {
 					this.restoreSave();
 				}
 			});
+		}
+
+		getAvailableRoutes() {
+			return _.values(this.$route.routes);
+		}
+
+		/**
+		 * Check if something is unlocked
+		 */
+		isUnlocked(required: string): boolean {
+			var condition = required.split(':');
+			if (condition[0] == 'stage' && !this.$scope.game.stages[condition[1]]) {
+				return false;
+			} else if (condition[0] == 'technology' && !this.$scope.technologyTree.hasResearched(condition[1])) {
+				return false;
+			}
+
+			return true;
 		}
 
 		//////////////////////////////////////////////////////////////////////

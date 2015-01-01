@@ -3,18 +3,19 @@
     "key": "agriculture",
     "name": "Agriculture",
     "description": "Allow the creation of fields and crops",
-    "unlock": "game.stages.craftcabin"
+    "unlock": "stage:craftcabin"
   },
   {
     "key": "astronomy",
     "name": "Astronomy",
     "description": "Study the sun and stars",
-    "unlock": "game.stages.craftsundial",
+    "unlock": "stage:craftsundial",
     "children": [
       {
         "key": "calendar",
         "name": "Calendar",
-        "description": "Predict seasons and crops failures"
+        "description": "Predict seasons and crops failures",
+        "unlock": "technology:astronomy"
       }
     ]
   }

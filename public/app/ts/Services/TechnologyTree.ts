@@ -19,7 +19,7 @@ module Services {
 		 * Whether a technology can be researched or not
 		 */
 		canResearch(technology: Technology): boolean {
-			return this.$rootScope.$eval(technology.unlock);
+			return this.$rootScope.game.isUnlocked(technology.unlock);
 		}
 
 		/**
@@ -55,7 +55,7 @@ module Services {
 		 * Research a technology
 		 */
 		research(technology: Technology) {
-			if (!this.canResearch(technology)) {
+			if (!this.canResearch(technology) && !this.hasResearched(technology)) {
 				return;
 			}
 
