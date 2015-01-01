@@ -152,6 +152,10 @@ module Controllers {
 			this.player = new Entities.Player('Foobar');
 			this.encounters = new Services.EncountersManager(this);
 
+			// Set technologies
+			this.technologyTree.researched = {};
+			this.technologyTree.current = null;
+
 			// Bind entities
 			this.world.entities.push(this.player);
 
