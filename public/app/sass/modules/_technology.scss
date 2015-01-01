@@ -1,9 +1,19 @@
 .technology {
+
+	p {
+		height: 3em;
+	}
+
 	&[disabled] {
 		opacity: 0.5;
 	}
 
-	p {
-		height: 3em;
+	&--researching {
+		padding: 1rem;
+		background: rgba(black, 0.25);
+	}
+	&--researched {
+		padding: 1rem;
+		background: rgba($color-green, 0.25);
 	}
 }

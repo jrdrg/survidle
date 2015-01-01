@@ -65,6 +65,13 @@
     "skills": {}
   },
   {
+    "key": "calendar",
+    "name": "Calendar",
+    "description": "Never forget the date of the end of the world",
+    "type": "installation",
+    "required": "technology:astronomy"
+  },
+  {
     "key": "cabin",
     "name": "Small cabin",
     "description": "Should keep you out of danger... for now",
@@ -81,7 +88,7 @@
     "usable": true,
     "description": "Push button, receive bacon",
     "type": "installation",
-    "required": "gatherIron",
+    "required": "stage:gatherIron",
     "ingredients": {
       "iron": 5
     },
@@ -96,7 +103,7 @@
     "description": "Make nature give back. A little. When it doesn't rain.",
     "multiple": true,
     "type": "installation",
-    "required": "craftcabin",
+    "required": "stage:craftcabin",
     "ingredients": {
       "food": 25,
       "wood": 15
@@ -110,7 +117,7 @@
     "name": "Bandages",
     "description": "Made from muddy leaves. Totally sanitary.",
     "multiple": true,
-    "required": "gatherFood",
+    "required": "stage:gatherFood",
     "type": "usable",
     "ingredients": {
       "food": 10

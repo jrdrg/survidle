@@ -49,7 +49,7 @@ module Controllers {
 			public items: Services.ItemsFactory,
 			public technologyTree: Services.TechnologyTree
 		) {
-			$scope.game = this;
+			$rootScope.game = this;
 			$scope.Math = Math;
 
 			// Load core data
@@ -93,6 +93,10 @@ module Controllers {
 				this.world[key] = value;
 			});
 
+			_.each(survidle.technologyTree, (value: any, key: string) => {
+				this.technologyTree[key] = value;
+			});
+
 			this.stages = survidle.game.stages;
 			this.createSceneries();
 		}
@@ -102,19 +106,23 @@ module Controllers {
 		 */
 		save() {
 			localStorage.setItem('survidle', JSON.stringify({
-				world : {
+				world         : {
 					cycle: this.world.cycle,
 					day  : this.world.day,
 				},
-				player: {
+				player        : {
 					inventory        : this.player.inventory,
 					skills           : this.player.skills,
 					age              : this.player.age,
 					survival         : this.player.survival,
 					inventoryCapacity: this.player.inventoryCapacity,
 				},
-				game  : {
+				game          : {
 					stages: this.stages,
+				},
+				technologyTree: {
+					current   : this.technologyTree.current,
+					researched: this.technologyTree.researched,
 				}
 			}));
 		}

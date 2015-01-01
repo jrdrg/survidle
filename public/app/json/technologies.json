@@ -3,13 +3,13 @@
     "key": "agriculture",
     "name": "Agriculture",
     "description": "Allow the creation of fields and crops",
-    "disabled": "!game.stages.craftcabin"
+    "unlock": "game.stages.craftcabin"
   },
   {
     "key": "astronomy",
     "name": "Astronomy",
     "description": "Study the sun and stars",
-    "disabled": "!game.stages.craftsundial",
+    "unlock": "game.stages.craftsundial",
     "children": [
       {
         "key": "calendar",
