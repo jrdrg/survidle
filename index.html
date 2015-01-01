@@ -27,8 +27,8 @@
 	<section ng-if="!player.isDead()">
 		<nav class="layout-navigation">
 			<ul class="nav nav-tabs nav-justified">
-				<li ng-if="route.label" ng-repeat="route in game.getAvailableRoutes() | orderBy:'order'" ng-class="{active: $route.current.key == route.key, danger: game.world.getAliveEntities().length > 1 && route.key == 'encounters'}">
-					<a href="#/{{ route.key }}" ng-if="route.key == 'encounters'">{{ route.label }} ({{ game.world.getAliveEntities().length - 1 }})</a>
+				<li ng-if="route.label" ng-repeat="route in game.getAvailableRoutes() | orderBy:'order'" ng-class="{active: $route.current.key == route.key, danger: game.world.getEntitiesOnPlayer().length > 1 && route.key == 'encounters'}">
+					<a href="#/{{ route.key }}" ng-if="route.key == 'encounters'">{{ route.label }} ({{ game.world.getEntitiesOnPlayer().length - 1 }})</a>
 					<a href="#/{{ route.key }}" ng-if="route.key !== 'encounters'">{{ route.label }}</a>
 				</li>
 			</ul>

@@ -70,7 +70,10 @@ module Controllers {
 			});
 		}
 
-		getAvailableRoutes() {
+		/**
+		 * Get the routes available
+		 */
+		getAvailableRoutes(): ng.route.IRoute[] {
 			return _.values(this.$route.routes);
 		}
 
@@ -239,7 +242,8 @@ module Controllers {
 			// Revenues
 			this.computeRevenues();
 
-			this.world.getAliveEntities().forEach((entity: Abstracts.AbstractEntity) => {
+			// Run entities cycles
+			this.world.getEntitiesOnPlayer().forEach((entity: Abstracts.AbstractEntity) => {
 				entity.onCycle(this);
 			});
 		}

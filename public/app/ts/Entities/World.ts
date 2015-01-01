@@ -74,6 +74,23 @@ module Entities {
 		}
 
 		/**
+		 * Get the entities that are on the same cell
+		 * as the player
+		 */
+		getEntitiesOnPlayer(): Abstracts.AbstractEntity[] {
+			var player = this.getPlayer();
+
+			return this.getEntitiesAt(player.x, player.y);
+		}
+
+		/**
+		 * Get the player's entity
+		 */
+		getPlayer(): Entities.Player {
+			return <Entities.Player> _.find(this.entities, {key: 'player'});
+		}
+
+		/**
 		 * Get all the entities that are still alive
 		 */
 		getAliveEntities(): Abstracts.AbstractEntity[] {
