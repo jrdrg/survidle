@@ -21,3 +21,5 @@ declare var chance: {
 	floating(options?: any): number;
 	integer(options?: any): number;
 }
+
+declare var markdown;

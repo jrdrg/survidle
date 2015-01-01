@@ -1,7 +1,15 @@
 angular.module('survidle').config(function ($routeProvider: ng.route.IRouteProvider) {
 	var templates = 'public/app/templates/panes';
 
-	// Messagesmessages
+	// Meta routes
+	//////////////////////////////////////////////////////////////////////
+
+	$routeProvider.when('/changelog', {
+		controller: 'ChangelogController',
+		templateUrl: templates + '/changelog.html',
+	});
+
+	// Game routes
 	//////////////////////////////////////////////////////////////////////
 
 	$routeProvider.when('/scenery', {
