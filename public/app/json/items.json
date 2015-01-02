@@ -43,6 +43,19 @@
     }
   },
   {
+    "key": "scythe",
+    "name": "Scythe",
+    "description": "Gather food more quickly",
+    "required": "stage:gatherIron",
+    "type": "tool",
+    "ingredients": {
+      "iron": 10
+    },
+    "skills": {
+      "gathering": 3
+    }
+  },
+  {
     "key": "basket",
     "name": "Basket",
     "description": "A place to put stuff",
