@@ -1,7 +1,10 @@
 <?php
 use Rocketeer\Facades\Rocketeer;
 
-Rocketeer::listenTo('deploy.before-symlink', array(
+$listeners = [
     'node_modules/.bin/tsd update --overwrite',
     'node_modules/.bin/grunt',
-));
+];
+
+Rocketeer::listenTo('deploy.before-symlink', $listeners);
+Rocketeer::listenTo('update.after', $listeners);
