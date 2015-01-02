@@ -35,6 +35,9 @@
 	}
 
 	@import 'map/cells';
-	@import 'map/entities';
-	@import 'map/structures';
+
+	.cell {
+		@import 'map/entities';
+		@import 'map/structures';
+	}
 }

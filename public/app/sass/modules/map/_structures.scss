@@ -8,4 +8,9 @@
 		height: image-height('sprites/cabin.png');
 		@include centered-image('sprites/cabin.png');
 	}
+	&--field {
+		width: 100%;
+		height: 100%;
+		background-image: image-url('sprites/field.png');
+	}
 }

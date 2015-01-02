@@ -44,8 +44,7 @@ module Controllers {
 
 			// Add to map
 			if (item.type === 'structure') {
-				var structure = new Entities.Map.Structure(this.$scope.player.x, this.$scope.player.y, item.key);
-				this.$scope.world.structures.push(structure);
+				this.$scope.world.getCell(this.$scope.player.x, this.$scope.player.y).add(item);
 			}
 
 			// Mark event

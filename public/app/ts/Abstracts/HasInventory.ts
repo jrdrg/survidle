@@ -26,7 +26,7 @@ module Abstracts {
 		 * Add multiple objects to the inventory
 		 */
 		addMultipleItems(items: Inventory, multiplier: number = 1) {
-			_.each(items, (quantity: number, item: any) => {
+			_.each(items, (item: Entities.Item) => {
 				if (typeof this.inventory[item.key] === 'undefined') {
 					this.inventory[item.key] = item;
 				}
@@ -35,7 +35,7 @@ module Abstracts {
 					return;
 				}
 
-				this.inventory[item.key].increment(quantity * multiplier);
+				this.inventory[item.key].increment(item.quantity * multiplier);
 			});
 		}
 

@@ -38,11 +38,6 @@ module Services {
 		entities = [];
 
 		/**
-		 * The structures built in the world
-		 */
-		structures = [];
-
-		/**
 		 * The map
 		 */
 		map = [];
@@ -176,10 +171,10 @@ module Services {
 		/**
 		 * Get the structures at particular coordinates
 		 */
-		getStructuresAt(x: number, y: number): Entities.Map.Structure[] {
-			return _.filter(this.structures, function (structure: Entities.Map.Structure) {
-				return structure.x == x && structure.y == y;
-			});
+		getStructuresAt(x: number, y: number): Entities.Item[] {
+			var inventory = this.getCell(x, y).getInventoryContents();
+
+			return _.filter(inventory, {type: 'structure'});
 		}
 
 		/**

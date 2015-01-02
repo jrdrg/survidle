@@ -75,7 +75,6 @@ module Services {
 				world         : {
 					cycle     : this.world.cycle,
 					map       : this.world.map,
-					structures: this.world.structures,
 				},
 				player        : {
 					x                : this.player.x,
