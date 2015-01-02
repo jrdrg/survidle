@@ -42,7 +42,7 @@ module Services {
 					return this.game.player.has('cabin') ? 1 : 5;
 
 				case 'bandits':
-					return this.game.player.has('cabin') ? 2 : 0;
+					return this.game.player.has('cabin') ? 5 : 0;
 			}
 		}
 
