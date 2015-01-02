@@ -18,7 +18,7 @@ module Services {
 
 			var likelihood = this.getLikelihood(enemyType) * modifier;
 			if (chance.bool({likelihood: likelihood})) {
-				var enemy = new Entities.Enemy(enemyType.name);
+				var enemy = new Entities.Enemy(enemyType.name, enemyType.type);
 				enemy.moveTo(this.getRandomCoordinate(), this.getRandomCoordinate());
 				enemy.skills = enemyType.skills;
 

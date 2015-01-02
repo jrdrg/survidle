@@ -1,9 +1,8 @@
 <div class="layout-container">
 	<main class="layout-content">
-		<div class="media enemy" ng-repeat="entity in world.getEntitiesOnPlayer()">
-			<a class="media-left">
-				<img src="http://placehold.it/64x64">
-			</a>
+		<div class="media enemy enemy--{{ entity.type }}" ng-repeat="entity in world.getEntitiesOnPlayer()">
+			<figure class="media-left enemy__avatar">
+			</figure>
 
 			<div class="media-body">
 				<h4 class="media-heading">{{ entity.name }}</h4>

@@ -44,6 +44,14 @@
 			background-color: hsl(207, 36%, 29%);
 			background-image: image-url('sprites/water.jpg');
 		}
+
+
+		$size: $map-size + 10;
+		@for $i from 0 through $size {
+			&.fog--#{$i} {
+				opacity: ($size - ($i * 2)) / $size;
+			}
+		}
 	}
 
 	.entity {
@@ -54,12 +62,9 @@
 		&--player {
 			background-color: green;
 		}
-		&--enemy {
+		&--wolf {
 			color: transparent;
-			background-size: 100%;
-			background-image: image-url('sprites/wolf.png');
-			background-repeat: no-repeat;
-			background-position: center center;
+			@include centered-image('sprites/wolf.png');
 		}
 	}
 }

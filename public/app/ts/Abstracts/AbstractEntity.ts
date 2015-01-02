@@ -10,7 +10,7 @@ module Abstracts {
 		/**
 		 * The type of the entity
 		 */
-		key: string;
+		type: string;
 
 		/**
 		 * What killed the entity

@@ -1,7 +1,6 @@
-@mixin cell-color($color) {
-	background-color: $color;
-
-	&:hover {
-		background-color: lighten($color, 10);
-	}
+@mixin centered-image ($image) {
+	background-image: image-url($image);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 100%;
 }

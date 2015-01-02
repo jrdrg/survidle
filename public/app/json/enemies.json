@@ -1,6 +1,7 @@
 [
   {
     "name": "Direwolf",
+    "type": "wolf",
     "skills": {
       "combat": 0.5,
       "tracking": 1.5

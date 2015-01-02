@@ -1,5 +1,18 @@
 .enemy {
-	.media-body {
+	display: flex;
+
+	&--wolf &__avatar {
+		@include centered-image('sprites/wolf.png');
+	}
+
+	&__avatar {
+		background: grey(25);
+		width: 7rem;
+		margin-right: 1rem;
+		height: 7rem;
+	}
+
+	img {
 		width: 100%;
 	}
 

@@ -4,7 +4,7 @@ module Entities {
 		/**
 		 * The type of the entity
 		 */
-		key = 'player';
+		type = 'player';
 
 		/**
 		 * The age of the player

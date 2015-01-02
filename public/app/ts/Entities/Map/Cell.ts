@@ -7,7 +7,7 @@ module Entities.Map {
 		/**
 		 * Distance with another cell
 		 */
-		distanceWith(cell: Cell): number {
+		distanceWith(cell: HasCoordinates): number {
 			return _.pointsDistance(this.x, this.y, cell.x, cell.y);
 		}
 

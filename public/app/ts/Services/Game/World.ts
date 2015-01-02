@@ -161,7 +161,7 @@ module Services {
 		 * Get the player's entity
 		 */
 		getPlayer(): Entities.Player {
-			return <Entities.Player> _.find(this.entities, {key: 'player'});
+			return <Entities.Player> _.find(this.entities, {type: 'player'});
 		}
 
 		/**
