@@ -21,9 +21,9 @@
 	}
 
 	h3 {
+		@extend %text-shadow;
 		background-color: $color-green;
 		font-size: 1.75rem;
-		text-shadow: 0 2px 0px rgba(black, 0.15);
 	}
 
 	&__type,

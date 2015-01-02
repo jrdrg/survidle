@@ -7,10 +7,11 @@
 
 		<div class="animate--fade-in" ng-show="game.world.cycle > 3">
 			<hr />
-			<h4>Thoughts</h4>
+			<h4>Alerts</h4>
 			<ul class="list-unstyled">
-				<li class="animate--fade-in" ng-show="player.isHungry()">You feel pretty hungry.</li>
-				<li class="animate--fade-in" ng-show="player.hasInventoryFull()">Your inventory is full. Try dropping a few things from it.</li>
+				<li class="alert alert-danger animate--fade-in" ng-show="player.survival.life < 0.5">You are wounded, eat some food to heal yourself</li>
+				<li class="alert alert-danger animate--fade-in" ng-show="player.isHungry()">You feel pretty hungry.</li>
+				<li class="alert alert-danger animate--fade-in" ng-show="player.hasInventoryFull()">Your inventory is full. Try dropping a few things from it.</li>
 			</ul>
 		</div>
 

@@ -11,3 +11,14 @@
 		border-color: darken($color-green, 5);
 	}
 }
+
+.alert {
+	@extend %text-shadow;
+	border: none;
+	margin: 0;
+
+	&.alert-danger {
+		background: $color-dark-red;
+		color: white;
+	}
+}
