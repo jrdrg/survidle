@@ -3,7 +3,7 @@
 </header>
 <div class="list-group-item" ng-repeat="(skill, level) in player.skills">
 	{{ skill|title }} - LVL{{ Math.floor(level) }}<br>
-	<p ng-repeat="bonus in player.getSkillBonuses(skill)">
+	<p ng-if="player.getSkillBonus(skill)" ng-init="bonus = player.getSkillBonus(skill)">
 		<span class="label label-success">x{{ bonus.skills[skill] }}</span> from <strong>{{ bonus.name }}</strong>
 	</p>
 

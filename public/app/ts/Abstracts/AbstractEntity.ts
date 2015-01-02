@@ -163,17 +163,23 @@ module Abstracts {
 		/**
 		 * Get the tools affecting a skill
 		 */
-		getSkillBonuses(skill: string): Entities.Item[] {
-			var bonuses = [];
+		getSkillBonus(skill: string): Entities.Item {
+			var bonuses: Entities.Item[] = [];
 
-			_.each(this.getInventoryContents(), (item: Entities.Item) => {
+			_.each(this.getInventoryContents(), (item) => {
 				var bonus = item.skills[skill];
 				if (typeof bonus !== 'undefined') {
 					bonuses.push(item);
 				}
 			});
 
-			return bonuses;
+			if (!bonuses.length) {
+				return null;
+			}
+
+			return _.max(bonuses, function (item) {
+				return item.skills[skill];
+			});
 		}
 
 		/**
@@ -181,10 +187,12 @@ module Abstracts {
 		 */
 		getSkillModifier(skill: string): number {
 			var modifier = 1;
-			var bonuses = this.getSkillBonuses(skill);
-			_.each(bonuses, function (recipe: Entities.Item) {
-				modifier *= recipe.skills[skill];
-			});
+			var bonus = this.getSkillBonus(skill)
+
+			// Apply tool bonus
+			if (bonus) {
+				modifier *= bonus.skills[skill];
+			}
 
 			return modifier;
 		}
