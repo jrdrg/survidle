@@ -25,7 +25,7 @@
 		<status class="animate--fade-in" ng-show="game.stages.gatherFood" label="Inventory" max="player.getInventoryCapacity()" value="player.getInventorySize() / player.getInventoryCapacity()"></status>
 	</section>
 
-	<section ng-if="!player.isDead()">
+	<section ng-if="!player.isDead() && app.isBooted()">
 		<nav class="layout-navigation">
 			<ul class="nav nav-tabs nav-justified">
 				<li ng-if="route.label && (route.unlock === true || game.stages[route.unlock])" ng-repeat="route in app.getAvailableRoutes() | orderBy:'order'" ng-class="{active: $route.current.key == route.key, danger: game.world.getEntitiesOnPlayer().length > 1 && route.key == 'encounters'}">

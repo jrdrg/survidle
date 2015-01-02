@@ -52,6 +52,13 @@ module Services {
 		//////////////////////////////////////////////////////////////////////
 
 		/**
+		 * Check if an entity is out of bounds
+		 */
+		isOutOfBounds(entity: HasCoordinates): boolean {
+			return entity.x > this.size || entity.x < 0 || entity.y > this.size || entity.y < 0;
+		}
+
+		/**
 		 * Get a cell by coordinates
 		 */
 		getCell(x: number, y: number): Entities.Map.Cell {

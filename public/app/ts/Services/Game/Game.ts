@@ -126,7 +126,6 @@ module Services {
 			this.$interval.cancel(this.cycle);
 
 			this.bootWorld();
-			this.world.generateMap();
 			this.save();
 		}
 
@@ -144,6 +143,7 @@ module Services {
 			// Define world and player
 			this.player = new Entities.Player('Foobar');
 			this.encounters = new Services.EncountersManager(this);
+			this.world = new Services.World;
 
 			// Reset services
 			this.logs.logs = this.logs.logs.slice(0, 1);
@@ -211,6 +211,11 @@ module Services {
 
 			// Run entities cycles
 			this.world.getAliveEntities().forEach((entity: Abstracts.AbstractEntity) => {
+				//console.log(entity.x, entity.y, this.world.isOutOfBounds(entity));
+				if (this.world.isOutOfBounds(entity)) {
+					return;
+				}
+
 				entity.onCycle(this);
 				this.world.getCell(entity.x, entity.y).onCycle(entity);
 			});
