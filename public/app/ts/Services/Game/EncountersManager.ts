@@ -1,7 +1,7 @@
 module Services {
 	export class EncountersManager {
 
-		constructor(public game: Controllers.GameController) {
+		constructor(public game: Services.Game) {
 		}
 
 		/**
@@ -13,7 +13,7 @@ module Services {
 			}
 
 			var modifier = this.game.world.isNighttime ? 2 : 1;
-			var enemyType = <Entities.Enemy> _.randomItem(this.game.$scope.enemies);
+			var enemyType = <Entities.Enemy> _.randomItem(this.game.$rootScope.enemies);
 			enemyType = JSON.parse(JSON.stringify(enemyType));
 
 			var likelihood = this.getLikelihood(enemyType) * modifier;

@@ -4,7 +4,7 @@ module Abstracts {
 		/**
 		 * @param game
 		 */
-		constructor(public game: Controllers.GameController, public actions: Action[]) {
+		constructor(public game: Services.Game, public actions: Action[]) {
 			this.actions = _.filter(actions, function (action: Action) {
 				return !action.once || action.once && !game.stages[action.method];
 			});
@@ -21,7 +21,7 @@ module Abstracts {
 		 * Call an action on the scenery
 		 */
 		act(index: number, condition = 'true'): void {
-			if (!this.game.$scope.$eval(condition)) {
+			if (!this.game.$rootScope.$eval(condition)) {
 				return;
 			}
 

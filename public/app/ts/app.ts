@@ -25,9 +25,13 @@ app.directive('technology', Directives.Technology.instance);
 // Services
 //////////////////////////////////////////////////////////////////////
 
+app.service('encounters', Services.EncountersManager);
+app.service('game', Services.Game);
 app.service('items', Services.ItemsFactory);
-app.service('technologyTree', Services.TechnologyTree);
 app.service('logs', Services.LogsHandler);
+app.service('saves', Services.SaveHandler);
+app.service('technologyTree', Services.TechnologyTree);
+app.service('world', Services.World);
 
 // Filters
 //////////////////////////////////////////////////////////////////////

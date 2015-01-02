@@ -16,7 +16,7 @@ module Entities {
 		/**
 		 * Look for the player, then attack him
 		 */
-		onCycle(game: Controllers.GameController) {
+		onCycle(game: Services.Game) {
 			super.onCycle(game);
 
 			// Look for the player

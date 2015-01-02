@@ -2,57 +2,19 @@ module Controllers {
 	export class GameController {
 
 		/**
-		 * The player
-		 */
-		player: Entities.Player;
-
-		/**
-		 * The world
-		 */
-		world: Entities.World;
-
-		/**
-		 * The service that manages encounters
-		 */
-		encounters: Services.EncountersManager;
-
-		/**
-		 * The current scenery
-		 */
-		scenery;
-
-		/**
-		 * The available sceneries
-		 */
-		sceneries;
-
-		/**
-		 * The stages of the game
-		 *
-		 * @type {any}
-		 */
-		stages = {};
-
-		/**
-		 * The current cycle
-		 */
-		cycle;
-
-		/**
 		 * @param $scope
 		 */
 		constructor(
 			public $rootScope,
 			public $scope,
-			public $interval: ng.IIntervalService,
 			public $http: ng.IHttpService,
 			public items: Services.ItemsFactory,
-			public technologyTree: Services.TechnologyTree,
 			public logs: Services.LogsHandler,
+			public game: Services.Game,
 			public $route: ng.route.IRouteService
 		) {
-			$rootScope.game = this;
 			$rootScope.$route = $route;
+			$rootScope.game = this.game;
 			$scope.Math = Math;
 
 			// Load core data
@@ -65,8 +27,8 @@ module Controllers {
 			// Restore save
 			this.$rootScope.$watch('events', (events) => {
 				if (events) {
-					this.bootWorld();
-					this.restoreSave();
+					this.game.bootWorld();
+					this.game.load();
 					this.logs.events = events;
 				}
 			});
@@ -77,221 +39,6 @@ module Controllers {
 		 */
 		getAvailableRoutes(): ng.route.IRoute[] {
 			return _.values(this.$route.routes);
-		}
-
-		/**
-		 * Check if something is unlocked
-		 */
-		isUnlocked(required: string): boolean {
-			var condition = required.split(':');
-			if (condition[0] == 'stage' && !this.$scope.game.stages[condition[1]]) {
-				return false;
-			} else if (condition[0] == 'technology' && !this.$scope.technologyTree.hasResearched(condition[1])) {
-				return false;
-			}
-
-			return true;
-		}
-
-		//////////////////////////////////////////////////////////////////////
-		/////////////////////////////// SAVES ////////////////////////////////
-		//////////////////////////////////////////////////////////////////////
-
-		/**
-		 * Restore the data from localStorage
-		 */
-		restoreSave() {
-			var survidle = JSON.parse(localStorage.getItem('survidle'));
-			if (!survidle) {
-				return;
-			}
-
-			_.each(survidle.player, (value: any, key: string) => {
-				if (key == 'inventory') {
-					value = this.items.rebuildItems(value);
-				}
-
-				this.player[key] = value;
-			});
-
-			_.each(survidle.world, (value: any, key: string) => {
-				if (key == 'map') {
-					value = this.world.rebuildCells(value);
-				}
-
-				this.world[key] = value;
-			});
-
-			_.each(survidle.logs, (value: any, key: string) => {
-				this.logs[key] = value;
-			});
-
-			_.each(survidle.technologyTree, (value: any, key: string) => {
-				this.technologyTree[key] = value;
-			});
-
-			this.stages = survidle.game.stages;
-			this.createSceneries();
-		}
-
-		/**
-		 * Save the game
-		 */
-		save() {
-			localStorage.setItem('survidle', JSON.stringify({
-				world         : {
-					cycle: this.world.cycle,
-					map  : this.world.map,
-				},
-				player        : {
-					x                : this.player.x,
-					y                : this.player.y,
-					inventory        : this.player.inventory,
-					skills           : this.player.skills,
-					age              : this.player.age,
-					survival         : this.player.survival,
-					inventoryCapacity: this.player.inventoryCapacity,
-				},
-				game          : {
-					stages: this.stages,
-				},
-				logs          : {
-					logs  : this.logs.logs,
-					events: this.logs.events,
-				},
-				technologyTree: {
-					current   : this.technologyTree.current,
-					researched: this.technologyTree.researched,
-				}
-			}));
-		}
-
-		/**
-		 * Reset the game
-		 */
-		reset() {
-			this.$interval.cancel(this.cycle);
-
-			this.bootWorld();
-			this.save();
-		}
-
-		/**
-		 * Boot the game
-		 */
-		bootWorld() {
-			// Define stages of the game
-			this.stages = {
-				lookAround: false,
-				lookUp    : false,
-				gatherFood: false,
-			};
-
-			// Define world and player
-			this.world = new Entities.World(20);
-			this.player = new Entities.Player('Foobar');
-			this.encounters = new Services.EncountersManager(this);
-
-			// Reset services
-			this.logs.logs = this.logs.logs.slice(0, 1);
-			this.technologyTree.researched = {};
-			this.technologyTree.current = null;
-
-			// Bind entities
-			this.world.entities.push(this.player);
-
-			// Define sceneries
-			this.createSceneries();
-
-			// Define interval
-			this.cycle = this.$interval(() => {
-				this.newCycle();
-				this.save();
-			}, this.world.cycleLength * 1000);
-
-			// Bind to scope
-			this.$rootScope.player = this.player;
-			this.$rootScope.world = this.world;
-			this.$rootScope.technologyTree = this.technologyTree;
-		}
-
-		/**
-		 * Check if the game is booted
-		 */
-		isBooted(): boolean {
-			return typeof this.$rootScope.events !== 'undefined';
-		}
-
-		//////////////////////////////////////////////////////////////////////
-		////////////////////////////// SCENERIES /////////////////////////////
-		//////////////////////////////////////////////////////////////////////
-
-		/**
-		 * Create the various sceneries
-		 */
-		createSceneries() {
-			this.scenery = 'forest';
-			this.sceneries = {
-				forest: new Entities.Sceneries.Forest(this, this.$rootScope.actions.forest),
-			};
-		}
-
-		/**
-		 * Get the current scenery
-		 */
-		getScenery(): Abstracts.AbstractScenery {
-			return this.sceneries[this.scenery];
-		}
-
-		//////////////////////////////////////////////////////////////////////
-		/////////////////////////////// CYCLES ///////////////////////////////
-		//////////////////////////////////////////////////////////////////////
-
-		/**
-		 * Start a new cycle
-		 */
-		newCycle() {
-			this.world.cycle++;
-			this.world.passDays();
-
-			// Trigger encounters
-			var encounter;
-			if (encounter = this.encounters.triggerEncounters()) {
-				this.world.entities.push(encounter);
-			}
-
-			// Revenues
-			this.computeRevenues();
-
-			// Run entities cycles
-			this.world.getAliveEntities().forEach((entity: Abstracts.AbstractEntity) => {
-				entity.onCycle(this);
-				this.world.getCell(entity.x, entity.y).onCycle(entity);
-			});
-		}
-
-		/**
-		 * Time warp X cycles
-		 */
-		timeWarp(cycles: number) {
-			for (var i = 0; i <= cycles; i++) {
-				this.newCycle();
-			}
-		}
-
-		/**
-		 * Compute the revenues of this cycle
-		 */
-		computeRevenues() {
-			_.each(this.player.getInventoryContents(), (item: Item) => {
-				if (item.revenues) {
-					this.player.addMultipleItems(item.revenues, item.quantity);
-
-					if (item.usable) {
-						this.player.inventory[item.key].remove();
-					}
-				}
-			});
 		}
 
 		//////////////////////////////////////////////////////////////////////
@@ -305,13 +52,6 @@ module Controllers {
 			this.$http.get('public/app/json/' + data + '.json').then((response) => {
 				this.$rootScope[data] = response.data;
 			});
-		}
-
-		/**
-		 * Compute the progress of a skill in %
-		 */
-		skillProgress(level: number): number {
-			return Math.round((level - Math.floor(level)) * 100);
 		}
 
 	}

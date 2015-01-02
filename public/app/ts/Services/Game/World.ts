@@ -1,5 +1,10 @@
-module Entities {
+module Services {
 	export class World {
+
+		/**
+		 * The size of the world
+		 */
+		size = 20;
 
 		/**
 		 * The current cycle
@@ -37,10 +42,9 @@ module Entities {
 		 */
 		map = [];
 
-		constructor(public size: number) {
+		constructor() {
 			this.passDays();
-
-			this.generateMap(size);
+			this.generateMap();
 		}
 
 		//////////////////////////////////////////////////////////////////////
@@ -57,11 +61,11 @@ module Entities {
 		/**
 		 * Generate the map
 		 */
-		generateMap(size: number) {
+		generateMap() {
 			// Generate core cells
-			for (var y = 0; y <= size; y++) {
+			for (var y = 0; y <= this.size; y++) {
 				this.map[y] = [];
-				for (var x = 0; x <= size; x++) {
+				for (var x = 0; x <= this.size; x++) {
 					this.map[y][x] = new Entities.Map.Cell(x, y, _.randomItem(['forest', 'tree']));
 				}
 			}
@@ -85,7 +89,7 @@ module Entities {
 			this.map.forEach(function (column) {
 				column.forEach(function (cell: Entities.Map.Cell) {
 					var distance = cell.distanceWith(center);
-					var withingBounds = distance == size ? chance.bool() : true;
+					var withingBounds = distance == size ? chance.bool({likelihood: 60}) : true;
 					withingBounds = distance > size ? false : withingBounds;
 
 					if (withingBounds) {

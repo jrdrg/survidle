@@ -24,7 +24,7 @@ angular.module('survidle').config(function ($routeProvider: ng.route.IRouteProvi
 		order      : 2,
 		key        : 'map',
 		label      : 'Map',
-		unlock     : 'craftcabin',
+		unlock     : 'lookAround',
 		templateUrl: templates + '/map.html',
 	});
 

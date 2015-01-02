@@ -196,7 +196,7 @@ module Abstracts {
 		/**
 		 * What happens on every cycle
 		 */
-		onCycle(game: Controllers.GameController) {
+		onCycle(game: Services.Game) {
 			this.survival.hunger = this.survival.hunger.increment(this.computeNeedGain(30), 1);
 
 			// Compute maluses
