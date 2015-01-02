@@ -2,7 +2,7 @@
 //////////////////////////////////////////////////////////////////////
 
 var app = angular.module('survidle', [
-	'mgcrea.ngStrap.tooltip',
+	'ui.bootstrap',
 	'ngRoute',
 	'ngAnimate',
 ]);

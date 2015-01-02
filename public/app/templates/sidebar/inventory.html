@@ -2,7 +2,7 @@
 	<header class="list-group-item">
 		<h4 class="list-group-item-heading">Inventory</h4>
 	</header>
-	<p ng-click="action(item.key)" bs-tooltip="tooltip" data-placement="left" title="{{ tooltip }}" class="inventory__item list-group-item" ng-repeat="item in entity.getInventoryContents() | filterByType:['usable', 'resource']">
+	<p ng-click="action(item.key)" tooltip-placement="left" tooltip="{{ tooltip }}" class="inventory__item list-group-item" ng-repeat="item in entity.getInventoryContents() | filterByType:['usable', 'resource']">
 		<span class="badge">{{ Math.floor(item.quantity) }}</span>
 		{{ item.name }} <small>{{ item.description }}</small>
 	</p>
