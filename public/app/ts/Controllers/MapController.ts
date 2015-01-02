@@ -18,5 +18,18 @@ module Controllers {
 			}
 		}
 
+		/**
+		 * Get the visibility on the map
+		 */
+		getVisibility(cell: Entities.Map.Cell): number {
+			var distance = cell.distanceWith(this.$rootScope.player);
+			var visibility = this.$rootScope.world.size - distance;
+			if (this.$rootScope.world.isNighttime()) {
+				visibility -= 9;
+			}
+
+			return Math.max(0, Math.round(visibility));
+		}
+
 	}
 }

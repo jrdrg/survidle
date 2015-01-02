@@ -23,7 +23,7 @@ module Services {
 		 *
 		 * @type {number}
 		 */
-		cycleLength = 0.5;
+		cycleLength = 1;
 
 		/**
 		 * Number of cycles in a day
@@ -190,7 +190,15 @@ module Services {
 		 * Check if it's night or not
 		 */
 		isNighttime(): boolean {
-			return this.date.hours() > 18;
+			return this.date.hours() > 18 || this.date.hours() < 6;
+		}
+
+		getDayPhase():string {
+			if (this.date.hours() > 0 && this.date.hours() < 6) {
+				return 'morning';
+			} else if (this.date.hours() > 18 && this.date.hours() < 24) {
+				return 'night';
+			}
 		}
 
 		/**

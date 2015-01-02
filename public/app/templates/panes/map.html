@@ -1,7 +1,8 @@
 <div class="layout-container" ng-controller="MapController as map">
 	<table class="map layout-content">
+		<thead class="map__filter map__filter--{{ world.getDayPhase() }}"></thead>
 		<tr ng-repeat="row in world.map">
-			<td ng-repeat="cell in row" ng-click="map.travel(cell.x, cell.y)" class="cell cell--{{ cell.type }} fog--{{ Math.round(cell.distanceWith(player)) }}">
+			<td ng-repeat="cell in row" ng-click="map.travel(cell.x, cell.y)" class="cell cell--{{ cell.type }} fog--{{ map.getVisibility(cell) }}">
 				<span class="entity entity--{{ entity.type }}" ng-repeat="entity in world.getEntitiesAt(cell.x, cell.y)">
 					X
 				</span>

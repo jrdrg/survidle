@@ -6,6 +6,25 @@
 	border-collapse: collapse;
 	margin: auto;
 	box-shadow: 0 0 0px 10px rgba(black, 0.25);
+	position: relative;
+
+	&__filter {
+		$filter-opacity: 0.2;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		z-index: 5;
+		transition: 2s background-color;
+		pointer-events: none;
+		cursor: pointer;
+
+		&--night {
+			background-color: rgba(SteelBlue, $filter-opacity);
+		}
+		&--morning {
+			background-color: rgba(Chocolate, $filter-opacity);
+		}
+	}
 
 	&.layout-content {
 		width: auto;
@@ -25,6 +44,7 @@
 		height: $cell-size;
 		width: $cell-size;
 		cursor: pointer;
+		transition: 0.3s opacity;
 
 		&:hover {
 			opacity: 0.75;
@@ -46,10 +66,9 @@
 		}
 
 
-		$size: $map-size + 10;
-		@for $i from 0 through $size {
+		@for $i from 0 through 10 {
 			&.fog--#{$i} {
-				opacity: ($size - ($i * 2)) / $size;
+				opacity: $i / 10;
 			}
 		}
 	}
