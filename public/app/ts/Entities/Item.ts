@@ -13,9 +13,9 @@ module Entities {
 
 		// Statistics
 		quantity = 0;
-		ingredients = {};
-		skills = {};
-		revenues = {};
+		ingredients: InventorySummary = {};
+		skills: any = {};
+		revenues: InventorySummary = {};
 
 		constructor(options: any) {
 			this.key = options.key;

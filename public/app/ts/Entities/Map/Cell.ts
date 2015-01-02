@@ -49,9 +49,14 @@ module Entities.Map {
 		 * Check if the cell still has resources
 		 */
 		hasResources(): boolean {
-			var resources = this.getItemsOfType('resource');
+			return this.getItemsOfType('resource').length > 0;
+		}
 
-			return _.filter(resources, 'quantity').length > 0;
+		/**
+		 * Check if there is already a structure on the cell
+		 */
+		hasStructure(): boolean {
+			return this.getItemsOfType('structure').length > 0;
 		}
 
 		/**

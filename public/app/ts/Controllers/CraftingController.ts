@@ -20,7 +20,7 @@ module Controllers {
 		/**
 		 * Check if the player can craft a recipe
 		 */
-		canCraft(item: Item): boolean {
+		canCraft(item: Entities.Item): boolean {
 			var unmet = _.filter(item.ingredients, (required: number, ingredient: string) => {
 				return !this.$scope.player.has(ingredient, required);
 			});
@@ -29,10 +29,21 @@ module Controllers {
 		}
 
 		/**
+		 * Check if we have space to build something on the cell
+		 */
+		hasSpaceToCraft(item: Entities.Item): boolean {
+			return item.type == 'structure' ? !this.$scope.world.getPlayerCell().hasStructure() : true;
+		}
+
+		/**
 		 * Craft a recipe
 		 */
 		craft(item: Entities.Item): void {
 			if (!this.canCraft(item)) {
+				return;
+			}
+
+			if (!this.hasSpaceToCraft(item)) {
 				return;
 			}
 
