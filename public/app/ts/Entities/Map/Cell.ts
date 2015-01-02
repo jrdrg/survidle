@@ -46,6 +46,15 @@ module Entities.Map {
 		}
 
 		/**
+		 * Check if the cell still has resources
+		 */
+		hasResources(): boolean {
+			var resources = this.getItemsOfType('resource');
+
+			return _.filter(resources, 'quantity').length > 0;
+		}
+
+		/**
 		 * Distance with another cell
 		 */
 		distanceWith(cell: HasCoordinates): number {
