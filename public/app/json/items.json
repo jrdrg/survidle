@@ -14,7 +14,7 @@
   {
     "key": "food",
     "name": "Food",
-    "description": "Food.",
+    "description": "Heals you (for some reason)",
     "type": "resource"
   },
   {

@@ -20,6 +20,22 @@
 
 	.list-group-item {
 		@extend %clickable;
+		transition: 0.3s backrgound;
+
+		&:active {
+			background: grey(80);
+		}
+
+		small {
+			color: grey(50);
+			font-size: 0.75em;
+			opacity: 0;
+			transition: 0.3s opacity;
+		}
+
+		&:hover small {
+			opacity: 1;
+		}
 	}
 
 	.list-group-item[disabled] {

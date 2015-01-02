@@ -4,7 +4,7 @@
 	</header>
 	<p ng-click="action(item.key)" bs-tooltip="tooltip" data-placement="left" title="{{ tooltip }}" class="inventory__item list-group-item" ng-repeat="item in entity.getInventoryContents() | filterByType:['usable', 'resource']">
 		<span class="badge">{{ Math.floor(item.quantity) }}</span>
-		{{ item.name }}
+		{{ item.name }} <small>{{ item.description }}</small>
 	</p>
 
 	<header class="list-group-item">
@@ -13,7 +13,7 @@
 	<p class="inventory__item list-group-item" ng-repeat="item in entity.getInventoryContents() | filterByType:['structure']">
 		<span class="badge" ng-if="item.multiple">{{ Math.floor(item.quantity) }}</span>
 		<span class="badge" ng-if="!item.multiple">{{ item.quantity * 100 }}%</span>
-		{{ item.name }}
+		{{ item.name }} <small>{{ item.description }}</small>
 	</p>
 
 	<header class="list-group-item">
@@ -21,7 +21,7 @@
 	</header>
 	<p class="inventory__item list-group-item" ng-repeat="item in entity.getInventoryContents() | filterByType:['tool']">
 		<span class="badge">{{ item.quantity * 100 }}%</span>
-		{{ item.name }}
+		{{ item.name }} <small>{{ item.description }}</small>
 	</p>
 </div>
 
