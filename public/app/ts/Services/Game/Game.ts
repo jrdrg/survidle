@@ -49,6 +49,10 @@ module Services {
 		 * Check if something is unlocked
 		 */
 		isUnlocked(required: string): boolean {
+			if (typeof required === 'object') {
+				return _.filter(required, this.isUnlocked.bind(this)).length === required.length;
+			}
+
 			var condition = required.split(':');
 			if (condition[0] == 'stage' && !this.stages[condition[1]]) {
 				return false;
@@ -161,7 +165,7 @@ module Services {
 			// Bind entities
 			this.world.entities = [this.player];
 
-			// Define sceneries
+			// Define scenerieshasi
 			this.createSceneries();
 
 			// Define interval

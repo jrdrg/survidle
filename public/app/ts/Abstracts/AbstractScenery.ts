@@ -29,8 +29,13 @@ module Abstracts {
 		 */
 		gather(item: string, skill: string) {
 			var gathered = this.game.player.gatherWithSkill(this.game.items.getItemByKey(item), skill);
+			var cell = this.game.world.getPlayerCell();
 
-			this.game.world.getPlayerCell().drop(item, gathered);
+			// Drop items from the cell
+			cell.drop(item, gathered);
+			if (cell.type === 'tree' && !cell.has('wood')) {
+				cell.type = 'forest';
+			}
 		}
 
 		/**
