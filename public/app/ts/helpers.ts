@@ -16,6 +16,15 @@ Number.prototype.increment = function (by: number = 1, maximum = 1) {
 	return Math.min(maximum, this + by);
 };
 
+String.prototype.title = function() {
+	var words = this.replace(/([A-Z])/g, ' $1').split(' ');
+	for (var i = 0; i < words.length; i++) {
+		words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
+	}
+
+	return words.join(' ');
+};
+
 _.mixin({
 	pointsDistance: function (x1: number, y1: number, x2: number, y2: number): number {
 		var distanceA = Math.pow(x1 - x2, 2);

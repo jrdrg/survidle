@@ -16,6 +16,10 @@ interface Number {
 	decrement(by: number, minimum?: number);
 }
 
+interface String {
+	title(): string;
+}
+
 declare var chance: {
 	bool(options?: any): boolean;
 	floating(options?: any): number;

@@ -35,11 +35,12 @@ module Directives {
 		/**
 		 * When an item is clicked
 		 */
-		onItem = function(itemKey: string) {
+		onItem = function (itemKey: string) {
 			if (this.isPlayer) {
 				this.game.player.drop(itemKey);
 			} else if (this.game.getScenery().canGather(itemKey)) {
 				this.game.getScenery().gather(itemKey);
+				this.game.stages['gather' + itemKey.title()] = true;
 			}
 		};
 
