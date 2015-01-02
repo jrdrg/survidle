@@ -1,7 +1,8 @@
 module Entities.Map {
-	export class Cell {
+	export class Cell extends Abstracts.HasInventory {
 
 		constructor(public x: number, public y: number, public type: string) {
+			super();
 		}
 
 		/**

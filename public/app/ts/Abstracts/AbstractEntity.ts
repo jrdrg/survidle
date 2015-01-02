@@ -1,5 +1,5 @@
 module Abstracts {
-	export class AbstractEntity implements HasInventory {
+	export class AbstractEntity extends HasInventory {
 
 		/**
 		 * Coordinates
@@ -51,6 +51,7 @@ module Abstracts {
 		 * @param name
 		 */
 		constructor(public name: string) {
+			super();
 		}
 
 		//////////////////////////////////////////////////////////////////////
@@ -244,20 +245,5 @@ module Abstracts {
 			return 1 / (days * 24);
 		}
 
-		//////////////////////////////////////////////////////////////////////
-		////////////////////////////// INTERFACE /////////////////////////////
-		//////////////////////////////////////////////////////////////////////
-
-		add: (item: Item) => void;
-		has: (item: string, required?: number) => boolean;
-		drop: (item: string) => void;
-		getInventoryContents: () => Entities.Item[];
-		getInventorySize: () => number;
-		hasEmptyInventory: () => boolean;
-		hasInventoryFull: () => boolean;
-		addMultipleItems: (items: any, multiplier?: number) => void;
-
 	}
 }
-
-applyMixins(Abstracts.AbstractEntity, [HasInventory], ['getInventoryCapacity']);
