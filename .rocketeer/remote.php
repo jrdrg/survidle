@@ -30,8 +30,6 @@ return array(
     // Use this to list folders that need to keep their state, like
     // user uploaded data, file-based databases, etc.
     'shared'         => array(
-        '{path.storage}/logs',
-        '{path.storage}/sessions',
     ),
 
     // The way symlinks are created. Possible values: 'absolute', 'relative'
@@ -42,7 +40,7 @@ return array(
 
     // If enabled will force a shell to be created
     // which is required for some tools like RVM or NVM
-    'shell'          => false,
+    'shell'          => true,
 
     // An array of commands to run under shell
     'shelled'        => ['which', 'ruby', 'npm', 'bower', 'bundle', 'grunt'],
@@ -56,9 +54,6 @@ return array(
         // You can pass paths in brackets, so {path.public} will return
         // the correct path to the public folder
         'files'    => array(
-            'app/database/production.sqlite',
-            '{path.storage}',
-            '{path.public}',
         ),
 
         // Here you can configure what actions will be executed to set
