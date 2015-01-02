@@ -1,3 +1,3 @@
 interface Inventory {
-	[key: string]: Entities.Item;
+	[index: string]: Entities.Item;
 }

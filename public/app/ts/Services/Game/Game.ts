@@ -244,7 +244,8 @@ module Services {
 		computeRevenues() {
 			_.each(this.player.getInventoryContents(), (item: Item) => {
 				if (item.revenues) {
-					this.player.addMultipleItems(item.revenues, item.quantity);
+					var revenues = this.items.rebuildByQuantities(item.revenues);
+					this.player.addMultipleItems(revenues, item.quantity);
 
 					if (item.usable) {
 						this.player.inventory[item.key].remove();

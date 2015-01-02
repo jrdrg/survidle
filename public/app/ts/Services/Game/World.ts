@@ -127,9 +127,12 @@ module Services {
 		 * Return the cells rebuilt from an object
 		 */
 		rebuildCells(cells) {
-			cells.forEach(function (column, y) {
-				column.forEach(function (cell, x) {
-					cells[cell.y][cell.x] = new Entities.Map.Cell(cell.x, cell.y, cell.type);
+			cells.forEach((column, y) => {
+				column.forEach((data, x) => {
+					var cell = new Entities.Map.Cell(data.x, data.y, data.type);
+					cell.inventory = this.items.rebuildItems(data.inventory);
+
+					cells[cell.y][cell.x] = cell;
 				});
 			});
 

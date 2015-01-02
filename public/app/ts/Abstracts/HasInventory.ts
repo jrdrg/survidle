@@ -2,9 +2,9 @@ module Abstracts {
 	export class HasInventory {
 
 		/**
-		 * @type {any}
+		 * The inventory holding items
 		 */
-		inventory: any = {};
+		inventory: Inventory = {};
 
 		/**
 		 * The base capacity of the inventory
@@ -25,17 +25,17 @@ module Abstracts {
 		/**
 		 * Add multiple objects to the inventory
 		 */
-		addMultipleItems(items: any, multiplier: number = 1) {
-			_.each(items, (quantity: number, item: string) => {
-				if (typeof this.inventory[item] === 'undefined') {
-					this.inventory[item] = 0;
+		addMultipleItems(items: Inventory, multiplier: number = 1) {
+			_.each(items, (quantity: number, item: any) => {
+				if (typeof this.inventory[item.key] === 'undefined') {
+					this.inventory[item.key] = item;
 				}
 
 				if (this.hasInventoryFull()) {
 					return;
 				}
 
-				this.inventory[item].increment(quantity * multiplier);
+				this.inventory[item.key].increment(quantity * multiplier);
 			});
 		}
 

@@ -12,11 +12,6 @@ module Entities {
 		age: number;
 
 		/**
-		 * @type {any}
-		 */
-		inventory;
-
-		/**
 		 * The player's skills
 		 *
 		 * @type {any}
