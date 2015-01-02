@@ -1,0 +1,15 @@
+
+.entity {
+	display: inline-block;
+	padding: 0.5em 1em;
+	font-size: 0.75rem;
+	z-index: 5;
+
+	&--player {
+		background-color: green;
+	}
+	&--wolf {
+		color: transparent;
+		@include centered-image('sprites/wolf.png');
+	}
+}

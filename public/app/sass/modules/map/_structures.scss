@@ -1,0 +1,11 @@
+.structure {
+	display: block;
+	padding: 0;
+	z-index: 0;
+
+	&--cabin {
+		width: image-width('sprites/cabin.png');
+		height: image-height('sprites/cabin.png');
+		@include centered-image('sprites/cabin.png');
+	}
+}

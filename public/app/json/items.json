@@ -46,7 +46,7 @@
     "key": "basket",
     "name": "Basket",
     "description": "A place to put stuff",
-    "type": "structure",
+    "type": "tool",
     "ingredients": {
       "wood": 20
     },
@@ -58,7 +58,7 @@
     "key": "sundial",
     "name": "Sundial",
     "description": "Tell the time more precisely",
-    "type": "structure",
+    "type": "tool",
     "ingredients": {
       "wood": 5
     },

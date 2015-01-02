@@ -1,0 +1,43 @@
+.cell {
+	display: inline-block;
+	padding: 1rem;
+	text-align: center;
+	height: $cell-size;
+	width: $cell-size;
+	cursor: pointer;
+	transition: 0.3s opacity;
+	position: relative;
+
+	.entity,
+	.structure {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translateY(-50%) translateX(-50%);
+	}
+
+	&:hover {
+		opacity: 0.75;
+	}
+
+	&--forest {
+		background-color: $color-green;
+		background-image: image-url('sprites/forest.jpg');
+	}
+	&--tree {
+		background-color: darken($color-green, 15);
+		background-image: image-url('sprites/tree.png'), image-url('sprites/forest.jpg');
+		background-repeat: no-repeat, repeat;
+		background-position: center center, 0 0;
+	}
+	&--water {
+		background-color: hsl(207, 36%, 29%);
+		background-image: image-url('sprites/water.jpg');
+	}
+
+	@for $i from 0 through 10 {
+		&.fog--#{$i} {
+			opacity: $i / 10;
+		}
+	}
+}

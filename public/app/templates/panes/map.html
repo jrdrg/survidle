@@ -6,6 +6,8 @@
 				<span class="entity entity--{{ entity.type }}" ng-repeat="entity in world.getEntitiesAt(cell.x, cell.y)">
 					X
 				</span>
+				<span class="structure structure--{{ structure.type }}" ng-repeat="structure in world.getStructuresAt(cell.x, cell.y)">
+				</span>
 			</td>
 		</tr>
 	</table>

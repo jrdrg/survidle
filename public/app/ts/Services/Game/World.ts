@@ -115,8 +115,8 @@ module Services {
 		 * Return the cells rebuilt from an object
 		 */
 		rebuildCells(cells) {
-			cells.forEach(function(column, y) {
-				column.forEach(function(cell, x) {
+			cells.forEach(function (column, y) {
+				column.forEach(function (cell, x) {
 					cells[cell.y][cell.x] = new Entities.Map.Cell(cell.x, cell.y, cell.type);
 				});
 			});
@@ -132,7 +132,7 @@ module Services {
 		 * Get the entities at particular coordinates
 		 */
 		getEntitiesAt(x: number, y: number): Abstracts.AbstractEntity[] {
-			return _.filter(this.entities, function(entity: Abstracts.AbstractEntity, key: number) {
+			return _.filter(this.entities, function (entity: Abstracts.AbstractEntity, key: number) {
 				if (entity.isDead()) {
 					return false;
 				}
@@ -141,9 +141,12 @@ module Services {
 			});
 		}
 
+		/**
+		 * Get the structures at particular coordinates
+		 */
 		getStructuresAt(x: number, y: number): Entities.Map.Structure[] {
-			return _.filter(this.structures, function(structure: Entities.Map.Structure) {
-				return structure.x == x && structure.x == y;
+			return _.filter(this.structures, function (structure: Entities.Map.Structure) {
+				return structure.x == x && structure.y == y;
 			});
 		}
 
@@ -190,10 +193,13 @@ module Services {
 		 * Check if it's night or not
 		 */
 		isNighttime(): boolean {
-			return this.date.hours() > 18 || this.date.hours() < 6;
+			return this.date.hours() > 18 || this.date.hours() < 6;
 		}
 
-		getDayPhase():string {
+		/**
+		 * Get the current day phase
+		 */
+		getDayPhase(): string {
 			if (this.date.hours() > 0 && this.date.hours() < 6) {
 				return 'morning';
 			} else if (this.date.hours() > 18 && this.date.hours() < 24) {
