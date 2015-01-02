@@ -1,22 +1,22 @@
 [
   {
-    "contents": "You wake up alone in a dark forest, without a shred of memory.",
-    "when": "game.world.cycle"
-  },
-  {
     "contents": "An army of gigantic trees surround you. In between them lay small bushes, with red berries on them.",
-    "when": "game.stages.lookAround"
+    "when": "lookAround"
   },
   {
     "contents": "You observe the sun moving in the sky and learn its ways.",
-    "when": "game.stages.lookUp"
+    "when": "lookUp"
+  },
+  {
+    "contents": "Night is falling, better find something to defend yourself before it's too late.",
+    "when": "eatFood"
   },
   {
     "contents": "As you walk through the lonely woods, you hear howlings in the distance. Better hurry.",
-    "when": "game.stages.gatherWood"
+    "when": "gatherWood"
   },
   {
-    "contents": "You are now in the warmth of your small cabin. Wolves can't get to you",
-    "when": "game.stages.craftCabin"
+    "contents": "You are now in the warmth of your small cabin. That should keep the wolves at bay for a while.",
+    "when": "craftcabin"
   }
 ]

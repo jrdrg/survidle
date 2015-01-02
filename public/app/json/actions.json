@@ -20,7 +20,7 @@
     {
       "method": "gatherWood",
       "label": "Gather wood",
-      "unlock": "game.stages.gatherFood",
+      "unlock": "game.stages.eatFood",
       "condition": "!player.hasInventoryFull()"
     },
     {

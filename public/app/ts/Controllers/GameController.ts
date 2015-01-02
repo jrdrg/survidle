@@ -48,6 +48,7 @@ module Controllers {
 			public $http: ng.IHttpService,
 			public items: Services.ItemsFactory,
 			public technologyTree: Services.TechnologyTree,
+			public logs: Services.LogsHandler,
 			public $route: ng.route.IRouteService
 		) {
 			$rootScope.game = this;
@@ -62,10 +63,11 @@ module Controllers {
 			this.loadDataOnScope('events');
 
 			// Restore save
-			this.$rootScope.$watch('events', (value) => {
-				if (value) {
+			this.$rootScope.$watch('events', (events) => {
+				if (events) {
 					this.bootWorld();
 					this.restoreSave();
+					this.logs.events = events;
 				}
 			});
 		}
@@ -120,6 +122,10 @@ module Controllers {
 				this.world[key] = value;
 			});
 
+			_.each(survidle.logs, (value: any, key: string) => {
+				this.logs[key] = value;
+			});
+
 			_.each(survidle.technologyTree, (value: any, key: string) => {
 				this.technologyTree[key] = value;
 			});
@@ -148,6 +154,10 @@ module Controllers {
 				},
 				game          : {
 					stages: this.stages,
+				},
+				logs          : {
+					logs  : this.logs.logs,
+					events: this.logs.events,
 				},
 				technologyTree: {
 					current   : this.technologyTree.current,
@@ -182,7 +192,8 @@ module Controllers {
 			this.player = new Entities.Player('Foobar');
 			this.encounters = new Services.EncountersManager(this);
 
-			// Set technologies
+			// Reset services
+			this.logs.logs = this.logs.logs.slice(0, 1);
 			this.technologyTree.researched = {};
 			this.technologyTree.current = null;
 

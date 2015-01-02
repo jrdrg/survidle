@@ -4,6 +4,7 @@
 var app = angular.module('survidle', [
 	'mgcrea.ngStrap',
 	'ngRoute',
+	'ngAnimate',
 ]);
 
 // Controllers
@@ -26,6 +27,7 @@ app.directive('technology', Directives.Technology.instance);
 
 app.service('items', Services.ItemsFactory);
 app.service('technologyTree', Services.TechnologyTree);
+app.service('logs', Services.LogsHandler);
 
 // Filters
 //////////////////////////////////////////////////////////////////////

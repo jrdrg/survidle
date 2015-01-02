@@ -34,6 +34,7 @@ module Abstracts {
 
 			// Execute action
 			this.game.stages[action.method] = true;
+			this.game.logs.trigger(action.method);
 			if (typeof this[action.method] !== 'undefined') {
 				this[action.method]();
 			}

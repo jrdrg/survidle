@@ -1,3 +1,18 @@
+%hidden {
+}
+
+%shown {
+}
+
+.ng-enter {
+	transition: 0.3s;
+	opacity: 0;
+}
+
+.ng-enter-active {
+	opacity: 1;
+}
+
 .animate--fade-in {
 	opacity: 1;
 	height: auto;

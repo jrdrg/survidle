@@ -24,7 +24,7 @@ angular.module('survidle').config(function ($routeProvider: ng.route.IRouteProvi
 		order      : 2,
 		key        : 'map',
 		label      : 'Map',
-		unlock     : 'lookAround',
+		unlock     : 'craftcabin',
 		templateUrl: templates + '/map.html',
 	});
 
@@ -40,7 +40,7 @@ angular.module('survidle').config(function ($routeProvider: ng.route.IRouteProvi
 		order      : 4,
 		key        : 'technologies',
 		label      : 'Technology Tree',
-		unlock     : 'lookAround',
+		unlock     : 'craftcabin',
 		templateUrl: templates + '/technologies.html',
 	});
 
