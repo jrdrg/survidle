@@ -26,11 +26,6 @@ module Abstracts {
 		};
 
 		/**
-		 * @type {any}
-		 */
-		inventory = {};
-
-		/**
 		 * The base inventory capacity
 		 *
 		 * @type {number}

@@ -4,7 +4,7 @@ module Abstracts {
 		/**
 		 * @type {any}
 		 */
-		inventory;
+		inventory: any = {};
 
 		/**
 		 * The base capacity of the inventory

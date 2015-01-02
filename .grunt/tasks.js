@@ -17,12 +17,10 @@ module.exports = function(grunt) {
 		'concurrent:images',
 		'rebuild',
 		'ngAnnotate',
-		'useminPrepare',
 		'ngtemplates',
 		'concat',
 		'copy',
 		'minify',
-		'usemin',
 	]);
 
 	// Flow
@@ -43,19 +41,15 @@ module.exports = function(grunt) {
 	// By filetype
 	////////////////////////////////////////////////////////////////////
 
-	grunt.registerTask('md', 'Build contents', [
-		'newer:concat:md',
-		'newer:markdown',
-		'newer:prettify',
-	]);
-
 	grunt.registerTask('js', 'Build scripts', [
-		'concurrent:js'
+		'concurrent:js',
+		'concat:js',
 	]);
 
 	grunt.registerTask('css', 'Build stylesheets', [
 		'newer:compass:compile',
 		'newer:autoprefixer',
+		'concat:css',
 	]);
 
 }
