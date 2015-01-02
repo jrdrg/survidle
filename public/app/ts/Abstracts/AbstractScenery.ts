@@ -27,7 +27,14 @@ module Abstracts {
 		/**
 		 * Gather an item from the current cell
 		 */
-		gather(item: string, skill: string) {
+		gather(item: string, skill?: string) {
+			var skills = {
+				wood: 'masonry',
+				food: 'gathering',
+				iron: 'mining',
+			};
+
+			skill = skill || skills[item];
 			var gathered = this.game.player.gatherWithSkill(this.game.items.getItemByKey(item), skill);
 			var cell = this.game.world.getPlayerCell();
 

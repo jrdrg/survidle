@@ -20,21 +20,21 @@ module Entities.Sceneries {
 		 * Gather some food from the forest
 		 */
 		gatherFood() {
-			this.gather('food', 'gathering');
+			this.gather('food');
 		}
 
 		/**
 		 * Mine some iron
 		 */
 		gatherIron() {
-			this.gather('iron', 'mining');
+			this.gather('iron');
 		}
 
 		/**
 		 * Chop down some woods
 		 */
 		gatherWood() {
-			this.gather('wood', 'masonry');
+			this.gather('wood');
 		}
 
 	}

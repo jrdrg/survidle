@@ -16,16 +16,47 @@ module Directives {
 		 */
 		templateUrl = 'public/app/templates/sidebar/inventory.html';
 
+		/**
+		 * @type {any}
+		 */
 		scope = {
 			entity: '=',
 		};
 
-		link = function ($scope) {
-			$scope.Math = Math;
+		/**
+		 * Whether this is the player's inventory
+		 * or something else's
+		 */
+		isPlayer: boolean;
+
+		constructor(public game: Services.Game) {
+
 		}
 
-		static instance() {
-			return new Inventory();
+		/**
+		 * When an item is clicked
+		 */
+		onItem = function(itemKey: string, entity) {
+			if (this.isPlayer) {
+				this.game.player.drop(itemKey);
+			} else if (this.game.getScenery().canGather(itemKey)) {
+				this.game.getScenery().gather(itemKey);
+			}
+		};
+
+		/**
+		 * Bind correct action
+		 */
+		link = ($scope) => {
+			this.isPlayer = $scope.entity.type === 'player';
+
+			$scope.Math = Math;
+			$scope.action = this.onItem.bind(this);
+			$scope.tooltip = this.isPlayer ? 'Click to drop' : 'Gather';
+		};
+
+		static instance(game: Services.Game) {
+			return new Inventory(game);
 		}
 
 	}
