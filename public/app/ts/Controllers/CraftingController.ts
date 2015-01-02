@@ -65,7 +65,7 @@ module Controllers {
 		/**
 		 * Get the cost of a recipe
 		 */
-		recipeCost(item: Item): number {
+		recipeCost(item: Entities.Item): number {
 			return _.sum(item.ingredients);
 		}
 

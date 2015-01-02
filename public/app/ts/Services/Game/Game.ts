@@ -249,7 +249,7 @@ module Services {
 		 * Compute the revenues of this cycle
 		 */
 		computeRevenues(entity: Abstracts.HasInventory) {
-			_.each(entity.getInventoryContents(), (item: Item) => {
+			_.each(entity.getInventoryContents(), (item: Entities.Item) => {
 				if (item.revenues) {
 					var revenues = this.items.rebuildByQuantities(item.revenues);
 					entity.addMultipleItems(revenues, item.quantity);

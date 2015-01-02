@@ -133,7 +133,7 @@ module Abstracts {
 		 * Gather something, taking into account
 		 * skills and tools
 		 */
-		gatherWithSkill(item: Item, skill: string): number {
+		gatherWithSkill(item: Entities.Item, skill: string): number {
 			if (!this.skills[skill]) {
 				this.skills[skill] = 1;
 			}
@@ -163,10 +163,10 @@ module Abstracts {
 		/**
 		 * Get the tools affecting a skill
 		 */
-		getSkillBonuses(skill: string): Item[] {
+		getSkillBonuses(skill: string): Entities.Item[] {
 			var bonuses = [];
 
-			_.each(this.getInventoryContents(), (item: Item) => {
+			_.each(this.getInventoryContents(), (item: Entities.Item) => {
 				var bonus = item.skills[skill];
 				if (typeof bonus !== 'undefined') {
 					bonuses.push(item);
@@ -182,7 +182,7 @@ module Abstracts {
 		getSkillModifier(skill: string): number {
 			var modifier = 1;
 			var bonuses = this.getSkillBonuses(skill);
-			_.each(bonuses, function (recipe: Item) {
+			_.each(bonuses, function (recipe: Entities.Item) {
 				modifier *= recipe.skills[skill];
 			});
 
