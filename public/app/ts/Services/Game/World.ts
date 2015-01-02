@@ -73,7 +73,7 @@ module Services {
 
 			// Add some base resources for the player
 			this.map[0][0].type = 'tree';
-			this.map[0][0].addMultipleItems({wood: 20, food: 20});
+			this.map[0][0].addMultipleItems(this.items.rebuildByQuantities({wood: 20, food: 20}));
 		}
 
 		/**

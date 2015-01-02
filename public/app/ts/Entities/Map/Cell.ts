@@ -11,6 +11,11 @@ module Entities.Map {
 		 */
 		static probabilities = [50, 50, 10];
 
+		/**
+		 * @type {number}
+		 */
+		inventoryCapacity = 9999;
+
 		constructor(public x: number, public y: number, public type: string) {
 			super();
 		}
