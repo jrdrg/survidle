@@ -17,6 +17,7 @@
 		transition: 2s background-color;
 		pointer-events: none;
 		cursor: pointer;
+		background-image: image-url('map.png');
 
 		&--night {
 			background-color: rgba(SteelBlue, $filter-opacity);
