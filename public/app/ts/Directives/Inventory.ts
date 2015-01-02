@@ -30,13 +30,12 @@ module Directives {
 		isPlayer: boolean;
 
 		constructor(public game: Services.Game) {
-
 		}
 
 		/**
 		 * When an item is clicked
 		 */
-		onItem = function(itemKey: string, entity) {
+		onItem = function(itemKey: string) {
 			if (this.isPlayer) {
 				this.game.player.drop(itemKey);
 			} else if (this.game.getScenery().canGather(itemKey)) {
