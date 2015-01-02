@@ -123,9 +123,10 @@ module Abstracts {
 		 */
 		attack(entity: AbstractEntity) {
 			var damages = (this.skills.combat * this.getSkillModifier('combat')) / 100;
+			var combatSpeed = 2;
 			this.updateSkillWithExperience('combat', damages);
 
-			entity.survival.life -= damages;
+			entity.survival.life -= damages * combatSpeed;
 		}
 
 		/**
