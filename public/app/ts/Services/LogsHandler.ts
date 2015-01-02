@@ -13,7 +13,30 @@ module Services {
 			'You wake up alone in a dark forest, without a shred of memory.'
 		];
 
+		/**
+		 * The alerts
+		 */
+		alerts: {message: string; type: string; close: boolean}[] = [];
+
 		constructor(public $rootScope) {
+		}
+
+		/**
+		 * Alert of something
+		 */
+		alert(message: string, type: string = 'danger') {
+			this.alerts.push({
+				message: message,
+				type   : type,
+				close  : true,
+			});
+		}
+
+		/**
+		 * Close an alert
+		 */
+		close(index: number) {
+			this.alerts.splice(index, 1);
 		}
 
 		/**

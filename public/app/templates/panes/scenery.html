@@ -13,6 +13,7 @@
 				<li class="alert alert-danger animate--fade-in" ng-show="player.isHungry()">You feel pretty hungry.</li>
 				<li class="alert alert-danger animate--fade-in" ng-show="player.hasInventoryFull()">Your inventory is full. Try dropping a few things from it.</li>
 				<li class="alert alert-danger animate--fade-in" ng-show="!world.getPlayerCell().hasResources()">You've gathered everything where you're standing, try moving elsewhere.</li>
+				<alert type="{{ alert.type }}" close="game.logs.close($index)" ng-repeat="alert in game.logs.alerts">{{ alert.message }}</alert>
 			</ul>
 		</div>
 

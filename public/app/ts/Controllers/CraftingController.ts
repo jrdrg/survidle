@@ -1,7 +1,7 @@
 module Controllers {
 	export class CraftingController {
 
-		constructor(public $scope) {
+		constructor(public $scope, public logs: Services.LogsHandler) {
 
 		}
 
@@ -44,6 +44,7 @@ module Controllers {
 			}
 
 			if (!this.hasSpaceToCraft(item)) {
+				this.logs.alert("You can't build two structures on the same cell");
 				return;
 			}
 
