@@ -15,6 +15,7 @@ module Controllers {
 		) {
 			$rootScope.$route = $route;
 			$rootScope.game = this.game;
+			$rootScope.chance = chance;
 			$scope.Math = Math;
 
 			// Load core data

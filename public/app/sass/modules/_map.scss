@@ -1,6 +1,7 @@
 .map {
 	$cell-size: 4rem;
 
+	background: black;
 	border-spacing: 0;
 	border-collapse: collapse;
 	margin: auto;
@@ -25,25 +26,40 @@
 		width: $cell-size;
 		cursor: pointer;
 
+		&:hover {
+			opacity: 0.75;
+		}
+
 		&--forest {
-			@include cell-color($color-green);
+			background-color: $color-green;
+			background-image: image-url('sprites/forest.jpg');
 		}
 		&--tree {
-			@include cell-color(darken($color-green, 15));
+			background-color: darken($color-green, 15);
+			background-image: image-url('sprites/tree.png'), image-url('sprites/forest.jpg');
+			background-repeat: no-repeat, repeat;
+			background-position: center center, 0 0;
 		}
 		&--water {
-			@include cell-color(hsl(207, 36%, 29%));
+			background-color: hsl(207, 36%, 29%);
+			background-image: image-url('sprites/water.jpg');
 		}
 	}
 
 	.entity {
 		display: inline-block;
-		background: red;
 		padding: 0.5em 1em;
 		font-size: 0.75rem;
 
 		&--player {
 			background-color: green;
+		}
+		&--enemy {
+			color: transparent;
+			background-size: 100%;
+			background-image: image-url('sprites/wolf.png');
+			background-repeat: no-repeat;
+			background-position: center center;
 		}
 	}
 }
