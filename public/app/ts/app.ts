@@ -19,6 +19,7 @@ app.controller('ChangelogController', Controllers.ChangelogController);
 //////////////////////////////////////////////////////////////////////
 
 app.directive('status', Directives.Status.instance);
+app.directive('inventory', Directives.Inventory.instance);
 app.directive('recipe', Directives.Recipe.instance);
 app.directive('technology', Directives.Technology.instance);
 

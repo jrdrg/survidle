@@ -42,12 +42,6 @@
 			</div>
 		</div>
 
-		<header class="list-group-item">
-			<h4 class="list-group-item-heading">Structures</h4>
-		</header>
-		<div class="list-group-item" ng-repeat="structure in world.getStructuresAt(player.x, player.y)">
-			<span class="badge">{{ 1 }}</span>
-			{{ structure.type|title }}
-		</div>
+		<inventory entity="world.getCell(player.x, player.y)"></inventory>
 	</aside>
 </div>

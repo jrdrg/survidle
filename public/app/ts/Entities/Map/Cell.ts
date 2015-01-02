@@ -3,6 +3,26 @@ module Entities.Map {
 
 		constructor(public x: number, public y: number, public type: string) {
 			super();
+
+			this.addMultipleItems(this.getResources());
+		}
+
+		/**
+		 * Create the available resources on the cell
+		 */
+		getResources(): any {
+			switch (this.type) {
+				case 'forest':
+					return {
+						food: chance.integer({min: 10, max: 30}),
+					};
+
+				case 'tree': {
+					return {
+						wood: chance.integer({min: 10, max: 20}),
+					};
+				}
+			}
 		}
 
 		/**

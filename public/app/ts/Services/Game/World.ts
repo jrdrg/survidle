@@ -47,9 +47,11 @@ module Services {
 		 */
 		map = [];
 
-		constructor() {
-			this.passDays();
-			this.generateMap();
+		constructor(public items: Services.ItemsFactory) {
+			if (this.items.isBooted()) {
+				this.passDays();
+				this.generateMap();
+			}
 		}
 
 		//////////////////////////////////////////////////////////////////////
@@ -78,7 +80,7 @@ module Services {
 			for (var y = 0; y <= this.size; y++) {
 				this.map[y] = [];
 				for (var x = 0; x <= this.size; x++) {
-					this.map[y][x] = new Entities.Map.Cell(x, y, _.randomItem(['forest', 'tree']));
+					this.map[y][x] = this.generateCell(x, y);
 				}
 			}
 
@@ -87,6 +89,16 @@ module Services {
 			for (var i = 0; i <= numberOfPonds; i++) {
 				this.generatePond();
 			}
+		}
+
+		/**
+		 * Generate a cell and its resources
+		 */
+		generateCell(x: number, y: number) {
+			var cell = new Entities.Map.Cell(x, y, _.randomItem(['forest', 'tree']));
+			cell.inventory = this.items.rebuildByQuantities(cell.getResources());
+
+			return cell;
 		}
 
 		generatePond() {

@@ -150,7 +150,7 @@ module Services {
 			// Define world and player
 			this.player = new Entities.Player('Foobar');
 			this.encounters = new Services.EncountersManager(this);
-			this.world = new Services.World;
+			this.world = new Services.World(this.items);
 
 			// Reset services
 			this.logs.events = _.clone(this.$rootScope.events);

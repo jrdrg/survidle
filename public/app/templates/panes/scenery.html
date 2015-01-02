@@ -19,7 +19,8 @@
 
 	<aside class="layout-aside list-group animate--fade-in" ng-show="game.world.cycle > 3">
 		<section ng-include="'public/app/templates/sidebar/actions.html'"></section>
-		<section ng-show="game.stages.gatherFood && !player.hasEmptyInventory()" ng-include="'public/app/templates/sidebar/inventory.html'"></section>
+		<inventory entity="player" ng-show="game.stages.gatherFood"></inventory>
+		<!--<section  ng-init="entity = player" ng-include="'public/app/templates/sidebar/inventory.html'"></section>-->
 		<section ng-show="game.stages.gatherWood" ng-include="'public/app/templates/sidebar/skills.html'"></section>
 	</aside>
 </div>

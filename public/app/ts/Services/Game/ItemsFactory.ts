@@ -6,11 +6,30 @@ module Services {
 		}
 
 		/**
+		 * Check if the items factory is booted
+		 */
+		isBooted() {
+			return this.$rootScope.items;
+		}
+
+		/**
 		 * Rebuild an object of items
 		 */
-		rebuildItems(items: Item[]) {
+		rebuildItems(items: Inventory): Inventory {
 			return _.mapValues(items, function (item) {
 				return new Entities.Item(item);
+			});
+		}
+
+		/**
+		 * Rebuild an inventory from an {item: quantity} object
+		 */
+		rebuildByQuantities(items): Inventory {
+			return _.mapValues(items, (quantity: number, type: string) => {
+				var item = this.getItemByKey(type);
+				item.quantity = quantity;
+
+				return item;
 			});
 		}
 
