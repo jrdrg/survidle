@@ -136,6 +136,17 @@ module Services {
 		}
 
 		/**
+		 * Loop through all the cells
+		 */
+		onCells(callback?: Function) {
+			this.map.forEach(function (column) {
+				column.forEach(function (cell) {
+					callback(cell);
+				});
+			});
+		}
+
+		/**
 		 * Get a cell by coordinates
 		 */
 		getCell(x: number, y: number): Entities.Map.Cell {

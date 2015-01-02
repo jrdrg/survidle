@@ -39,12 +39,11 @@ module Controllers {
 			// Remove ingredients from inventory
 			this.$scope.player.removeMultipleItems(item.ingredients);
 
-			// Add to inventory
-			this.$scope.player.add(item);
-
 			// Add to map
 			if (item.type === 'structure') {
 				this.$scope.world.getCell(this.$scope.player.x, this.$scope.player.y).add(item);
+			} else {
+				this.$scope.player.add(item);
 			}
 
 			// Mark event

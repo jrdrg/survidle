@@ -21,6 +21,13 @@ module Entities {
 		onCycle(game: Services.Game) {
 			super.onCycle(game);
 
+			// If the wolf is on a wolf trap, kill him
+			var cell = game.world.getCell(this.x, this.y);
+			if (this.type == 'wolf' && cell.has('trap')) {
+				cell.drop('trap');
+				this.survival.life = 0;
+			}
+
 			// Look for the player
 			if (!this.isOnSameCellThan(game.player)) {
 				return this.track(game.player);

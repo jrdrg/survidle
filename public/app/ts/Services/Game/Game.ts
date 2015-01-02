@@ -218,11 +218,15 @@ module Services {
 			}
 
 			// Revenues
-			this.computeRevenues();
+			this.computeRevenues(this.player);
+
+			// Run cells cycles
+			this.world.onCells((cell: Entities.Map.Cell) => {
+				this.computeRevenues(cell);
+			});
 
 			// Run entities cycles
 			this.world.getAliveEntities().forEach((entity: Abstracts.AbstractEntity) => {
-				//console.log(entity.x, entity.y, this.world.isOutOfBounds(entity));
 				if (this.world.isOutOfBounds(entity)) {
 					return;
 				}
@@ -244,14 +248,14 @@ module Services {
 		/**
 		 * Compute the revenues of this cycle
 		 */
-		computeRevenues() {
-			_.each(this.player.getInventoryContents(), (item: Item) => {
+		computeRevenues(entity: Abstracts.HasInventory) {
+			_.each(entity.getInventoryContents(), (item: Item) => {
 				if (item.revenues) {
 					var revenues = this.items.rebuildByQuantities(item.revenues);
-					this.player.addMultipleItems(revenues, item.quantity);
+					entity.addMultipleItems(revenues, item.quantity);
 
 					if (item.usable) {
-						this.player.inventory[item.key].remove();
+						entity.inventory[item.key].remove();
 					}
 				}
 			});

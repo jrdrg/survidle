@@ -50,10 +50,14 @@ module Entities.Map {
 		/**
 		 * On every cycle, on the entities that are on the cell
 		 */
-		onCycle(entity: Abstracts.AbstractEntity) {
-			// Change types
+		onCycle(entity?: Abstracts.AbstractEntity) {
 			if (this.type == 'tree' && !this.has('wood')) {
 				this.type = 'forest';
+			}
+
+			// From there, we cancel if no entity is on the cell
+			if (!entity) {
+				return;
 			}
 
 			switch (this.type) {
