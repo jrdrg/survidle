@@ -70,6 +70,10 @@ module Services {
 			for (var i = 0; i <= numberOfPonds; i++) {
 				this.generatePond();
 			}
+
+			// Add some base resources for the player
+			this.map[0][0].type = 'tree';
+			this.map[0][0].addMultipleItems({wood: 20, food: 20});
 		}
 
 		/**
