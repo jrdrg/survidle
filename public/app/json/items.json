@@ -46,7 +46,7 @@
     "key": "basket",
     "name": "Basket",
     "description": "A place to put stuff",
-    "type": "installation",
+    "type": "structure",
     "ingredients": {
       "wood": 20
     },
@@ -58,7 +58,7 @@
     "key": "sundial",
     "name": "Sundial",
     "description": "Tell the time more precisely",
-    "type": "installation",
+    "type": "structure",
     "ingredients": {
       "wood": 5
     },
@@ -68,7 +68,7 @@
     "key": "cabin",
     "name": "Small cabin",
     "description": "Should keep you out of danger... for now",
-    "type": "installation",
+    "type": "structure",
     "ingredients": {
       "wood": 50
     },
@@ -80,7 +80,7 @@
     "multiple": true,
     "usable": true,
     "description": "Push button, receive bacon",
-    "type": "installation",
+    "type": "structure",
     "required": "stage:gatherIron",
     "ingredients": {
       "iron": 5
@@ -95,7 +95,7 @@
     "name": "Field",
     "description": "Make nature give back. A little. When it doesn't rain.",
     "multiple": true,
-    "type": "installation",
+    "type": "structure",
     "required": "stage:craftcabin",
     "ingredients": {
       "food": 25,

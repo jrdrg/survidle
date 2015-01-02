@@ -23,7 +23,7 @@ module Services {
 			this.events.forEach((event: Event, key: number) => {
 				if (event.when === when) {
 					this.logs.push(event.contents);
-					delete this.events[key];
+					this.events = _.without(this.events, event);
 				}
 			});
 		}

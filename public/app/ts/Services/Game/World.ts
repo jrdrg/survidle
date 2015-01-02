@@ -38,6 +38,11 @@ module Services {
 		entities = [];
 
 		/**
+		 * The structures built in the world
+		 */
+		structures = [];
+
+		/**
 		 * The map
 		 */
 		map = [];
@@ -127,12 +132,18 @@ module Services {
 		 * Get the entities at particular coordinates
 		 */
 		getEntitiesAt(x: number, y: number): Abstracts.AbstractEntity[] {
-			return _.filter(this.entities, (entity: Abstracts.AbstractEntity, key: number) => {
+			return _.filter(this.entities, function(entity: Abstracts.AbstractEntity, key: number) {
 				if (entity.isDead()) {
 					return false;
 				}
 
 				return entity.x == x && entity.y == y;
+			});
+		}
+
+		getStructuresAt(x: number, y: number): Entities.Map.Structure[] {
+			return _.filter(this.structures, function(structure: Entities.Map.Structure) {
+				return structure.x == x && structure.x == y;
 			});
 		}
 

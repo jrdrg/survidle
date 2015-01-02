@@ -8,7 +8,7 @@ module Controllers {
 		/**
 		 * Check if an item is unlocked
 		 */
-		isUnlocked(item: Item): boolean {
+		isUnlocked(item: Entities.Item): boolean {
 			var required = item.required || 'stage:gatherWood';
 			if (!this.$scope.game.isUnlocked(required)) {
 				return false;
@@ -31,7 +31,7 @@ module Controllers {
 		/**
 		 * Craft a recipe
 		 */
-		craft(item: Item): void {
+		craft(item: Entities.Item): void {
 			if (!this.canCraft(item)) {
 				return;
 			}
@@ -43,6 +43,12 @@ module Controllers {
 
 			// Add to inventory
 			this.$scope.player.add(item);
+
+			// Add to map
+			if (item.type == 'structure') {
+				var structure = new Entities.Map.Structure(this.$scope.player.x, this.$scope.player.y, item.key);
+				this.$scope.world.structures.push(structure);
+			}
 
 			// Mark event
 			this.$scope.game.stages['craft' + item.key] = true;

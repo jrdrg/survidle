@@ -7,9 +7,9 @@
 </p>
 
 <header class="list-group-item">
-	<h4 class="list-group-item-heading">Installations</h4>
+	<h4 class="list-group-item-heading">Structures</h4>
 </header>
-<p ng-click="player.drop(item.key)" bs-tooltip="tooltip" data-placement="left" title="Sell for 50%" class="inventory__item list-group-item" ng-repeat="item in player.getInventoryContents() | filterByType:['installation']">
+<p ng-click="player.drop(item.key)" bs-tooltip="tooltip" data-placement="left" title="Sell for 50%" class="inventory__item list-group-item" ng-repeat="item in player.getInventoryContents() | filterByType:['structure']">
 	<span class="badge" ng-if="item.multiple">{{ Math.floor(item.quantity) }}</span>
 	<span class="badge" ng-if="!item.multiple">{{ item.quantity * 100 }}%</span>
 	{{ item.name }}

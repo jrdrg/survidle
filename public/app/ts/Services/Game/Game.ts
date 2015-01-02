@@ -44,6 +44,7 @@ module Services {
 		) {
 
 		}
+
 		/**
 		 * Check if something is unlocked
 		 */
@@ -68,8 +69,9 @@ module Services {
 		save() {
 			this.saves.save({
 				world         : {
-					cycle: this.world.cycle,
-					map  : this.world.map,
+					cycle     : this.world.cycle,
+					map       : this.world.map,
+					structures: this.world.structures,
 				},
 				player        : {
 					x                : this.player.x,
@@ -112,6 +114,11 @@ module Services {
 			this.saves.restoreProperties(this.world, state.world, {
 				map: (value) => {
 					return this.world.rebuildCells(value);
+				},
+				structures: (value) => {
+					return _.map(value, function (structure: any) {
+						return new Entities.Map.Structure(structure.x, structure.y, structure.type);
+					});
 				}
 			});
 
