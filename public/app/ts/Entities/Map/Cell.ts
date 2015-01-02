@@ -35,6 +35,11 @@ module Entities.Map {
 		 * On every cycle, on the entities that are on the cell
 		 */
 		onCycle(entity: Abstracts.AbstractEntity) {
+			// Change types
+			if (this.type == 'tree' && !this.has('wood')) {
+				this.type = 'forest';
+			}
+
 			switch (this.type) {
 				case 'water':
 					entity.survival.life -= 0.1;

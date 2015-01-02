@@ -33,9 +33,6 @@ module Abstracts {
 
 			// Drop items from the cell
 			cell.drop(item, gathered);
-			if (cell.type === 'tree' && !cell.has('wood')) {
-				cell.type = 'forest';
-			}
 		}
 
 		/**
