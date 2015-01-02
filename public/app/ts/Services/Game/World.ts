@@ -172,9 +172,7 @@ module Services {
 		 * Get the structures at particular coordinates
 		 */
 		getStructuresAt(x: number, y: number): Entities.Item[] {
-			var inventory = this.getCell(x, y).getInventoryContents();
-
-			return _.filter(inventory, {type: 'structure'});
+			return this.getCell(x, y).getItemsOfType('structure');
 		}
 
 		/**

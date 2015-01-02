@@ -73,6 +73,13 @@ module Abstracts {
 		}
 
 		/**
+		 * Get only items of a certain type
+		 */
+		getItemsOfType(type: string): Entities.Item[] {
+			return _.filter(this.getInventoryContents(), {type: type});
+		}
+
+		/**
 		 * Get the raw contents of the inventory
 		 */
 		getInventoryContents(): Entities.Item[] {
