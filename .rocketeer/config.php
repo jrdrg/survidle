@@ -45,10 +45,10 @@ return array(
         'production' => array(
             'host'      => 'autopergamene.eu',
             'username'  => '',
-            'password'  => false,
+            'password'  => '',
             'key'       => '/Users/anahkiasen/.ssh/id_rsa',
-            'keyphrase' => false,
-            'agent'     => false,
+            'keyphrase' => '',
+            'agent'     => '',
             'db_role'   => true,
         ),
     ),

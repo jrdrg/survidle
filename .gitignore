@@ -4,6 +4,7 @@ public/components
 public/app/ts/_definitions
 
 # Cached and compiled
+.rocketeer/logs
 .tmp
 .sass-cache
 public/app/css
