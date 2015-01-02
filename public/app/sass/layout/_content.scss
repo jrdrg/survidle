@@ -6,6 +6,12 @@
 	width: 80%;
 	margin: auto;
 	display: flex;
+
+	&--map {
+		.layout-content {
+			width: auto;
+		}
+	}
 }
 
 .layout-container--game-over {
@@ -29,6 +35,6 @@
 
 .layout-aside {
 	margin-left: 2rem;
-	width: 25%;
+	flex: 1;
 	color: black;
 }

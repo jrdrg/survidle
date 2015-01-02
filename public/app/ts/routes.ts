@@ -28,14 +28,6 @@ angular.module('survidle').config(function ($routeProvider: ng.route.IRouteProvi
 		templateUrl: templates + '/map.html',
 	});
 
-	$routeProvider.when('/encounters', {
-		order      : 3,
-		key        : 'encounters',
-		label      : 'Encounters',
-		unlock     : 'lookAround',
-		templateUrl: templates + '/encounters.html',
-	});
-
 	$routeProvider.when('/technologies', {
 		order      : 4,
 		key        : 'technologies',

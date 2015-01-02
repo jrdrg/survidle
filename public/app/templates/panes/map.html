@@ -1,4 +1,4 @@
-<div class="layout-container" ng-controller="MapController as map">
+<div class="layout-container layout-container--map" ng-controller="MapController as map">
 	<table class="map layout-content">
 		<thead class="map__filter map__filter--{{ world.getDayPhase() }}"></thead>
 		<tr ng-repeat="row in world.map">
@@ -20,6 +20,25 @@
 		<div class="list-group-item">
 			<span class="badge">{{ world.getCell(player.x, player.y).type|title }}</span>
 			Type
+		</div>
+
+
+		<header class="list-group-item">
+			<h4 class="list-group-item-heading">Encounters</h4>
+		</header>
+		<div class="list-group-item">
+			<div class="media enemy enemy--{{ entity.type }}" ng-repeat="entity in world.getEntitiesOnPlayer()">
+				<figure class="media-left enemy__avatar">
+				</figure>
+
+				<div class="media-body">
+					<h4 class="media-heading">{{ entity.name }}</h4>
+					<status label="{{ stat|title }}" max="10" ng-repeat="(stat, current) in entity.survival" value="current"></status>
+					<div class="enemy__skills">
+						<status label="{{ skill|title }}" rounded="true" ng-repeat="(skill, level) in entity.skills" value="level"></status>
+					</div>
+				</div>
+			</div>
 		</div>
 
 		<header class="list-group-item">
