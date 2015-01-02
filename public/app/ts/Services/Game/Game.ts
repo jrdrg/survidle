@@ -148,7 +148,7 @@ module Services {
 			};
 
 			// Define world and player
-			this.player = new Entities.Player('Foobar');
+			this.player = new Entities.Player('Herobrine');
 			this.encounters = new Services.EncountersManager(this);
 			this.world = new Services.World(this.items);
 
