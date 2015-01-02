@@ -24,7 +24,7 @@ module Services {
 		/**
 		 * Rebuild an inventory from an {item: quantity} object
 		 */
-		rebuildByQuantities(items): Inventory {
+		rebuildByQuantities(items: InventorySummary): Inventory {
 			return _.mapValues(items, (quantity: number, type: string) => {
 				var item = this.getItemByKey(type);
 				item.quantity = quantity;
@@ -36,8 +36,8 @@ module Services {
 		/**
 		 * Get a Item by its key
 		 */
-		getItemByKey(key: string): Item {
-			return <Item> _.find(this.$rootScope.items, {key: key});
+		getItemByKey(key: string): Entities.Item {
+			return new Entities.Item(_.find(this.$rootScope.items, {key: key}));
 		}
 
 	}

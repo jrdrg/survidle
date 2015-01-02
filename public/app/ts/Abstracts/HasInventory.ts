@@ -48,6 +48,15 @@ module Abstracts {
 		}
 
 		/**
+		 * Check if the entity has multiple items
+		 */
+		hasMultiple(items: InventorySummary): boolean {
+			return _.filter(items, (quantity: number, item: string) => {
+				return !this.has(item, quantity);
+			}).length === 0;
+		}
+
+		/**
 		 * Drop an item from the inventory
 		 */
 		drop(item: string) {
