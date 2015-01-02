@@ -1,6 +1,16 @@
 module Entities.Map {
 	export class Cell extends Abstracts.HasInventory {
 
+		/**
+		 * The available cell types
+		 */
+		static types = ['forest', 'tree', 'rock'];
+
+		/**
+		 * The probabilities of each type
+		 */
+		static probabilities = [50, 50, 10];
+
 		constructor(public x: number, public y: number, public type: string) {
 			super();
 		}
@@ -20,6 +30,12 @@ module Entities.Map {
 						food: chance.integer({min: 10, max: 30}),
 						wood: chance.integer({min: 10, max: 20}),
 					};
+				}
+
+				case 'rock': {
+					return {
+						iron: chance.integer({min: 10, max: 20}),
+					}
 				}
 			}
 		}

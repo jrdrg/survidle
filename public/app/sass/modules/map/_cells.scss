@@ -24,11 +24,15 @@
 		background-color: $color-green;
 		background-image: image-url('sprites/forest.jpg');
 	}
-	&--tree {
+	&--tree,
+	&--rock {
 		background-color: darken($color-green, 15);
 		background-image: image-url('sprites/tree.png'), image-url('sprites/forest.jpg');
 		background-repeat: no-repeat, repeat;
 		background-position: center center, 0 0;
+	}
+	&--rock {
+		background-image: image-url('sprites/rock.png'), image-url('sprites/forest.jpg');
 	}
 	&--water {
 		background-color: hsl(207, 36%, 29%);

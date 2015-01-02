@@ -81,7 +81,8 @@ module Services {
 		 * Generate a cell and its resources
 		 */
 		generateCell(x: number, y: number) {
-			var cell = new Entities.Map.Cell(x, y, _.randomItem(['forest', 'tree']));
+			var type = chance.weighted(Entities.Map.Cell.types, Entities.Map.Cell.probabilities);
+			var cell = new Entities.Map.Cell(x, y, type);
 			cell.inventory = this.items.rebuildByQuantities(cell.getResources());
 
 			return cell;
