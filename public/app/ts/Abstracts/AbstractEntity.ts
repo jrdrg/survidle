@@ -132,7 +132,7 @@ module Abstracts {
 		 * Gather something, taking into account
 		 * skills and tools
 		 */
-		gatherWithSkill(item: Item, skill: string) {
+		gatherWithSkill(item: Item, skill: string): number {
 			if (!this.skills[skill]) {
 				this.skills[skill] = 1;
 			}
@@ -143,8 +143,11 @@ module Abstracts {
 			}
 
 			// Update skill and inventory
+			var gathered = Math.round(probability);
 			this.updateSkillWithExperience(skill);
-			this.inventory[item.key].increment(Math.round(probability));
+			this.inventory[item.key].increment(gathered);
+
+			return gathered;
 		}
 
 		/**

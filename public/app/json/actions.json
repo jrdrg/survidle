@@ -15,13 +15,13 @@
       "method": "gatherFood",
       "label": "Gather food",
       "unlock": "game.stages.lookAround",
-      "condition": "!player.hasInventoryFull()"
+      "condition": "game.getScenery().canGather('food')"
     },
     {
       "method": "gatherWood",
       "label": "Gather wood",
       "unlock": "game.stages.eatFood",
-      "condition": "!player.hasInventoryFull()"
+      "condition": "game.getScenery().canGather('wood')"
     },
     {
       "method": "gatherIron",

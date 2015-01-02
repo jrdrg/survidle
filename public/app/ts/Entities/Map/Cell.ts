@@ -17,6 +17,7 @@ module Entities.Map {
 
 				case 'tree': {
 					return {
+						food: chance.integer({min: 10, max: 30}),
 						wood: chance.integer({min: 10, max: 20}),
 					};
 				}

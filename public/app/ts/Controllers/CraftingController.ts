@@ -37,9 +37,7 @@ module Controllers {
 			}
 
 			// Remove ingredients from inventory
-			_.each(item.ingredients, (required: number, ingredient: string) => {
-				this.$scope.player.inventory[ingredient].decrement(required);
-			});
+			this.$scope.player.removeMultipleItems(item.ingredients);
 
 			// Add to inventory
 			this.$scope.player.add(item);

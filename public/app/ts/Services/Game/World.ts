@@ -55,22 +55,8 @@ module Services {
 		}
 
 		//////////////////////////////////////////////////////////////////////
-		//////////////////////////////// MAP /////////////////////////////////
+		///////////////////////////// GENERATION /////////////////////////////
 		//////////////////////////////////////////////////////////////////////
-
-		/**
-		 * Check if an entity is out of bounds
-		 */
-		isOutOfBounds(entity: HasCoordinates): boolean {
-			return entity.x > this.size || entity.x < 0 || entity.y > this.size || entity.y < 0;
-		}
-
-		/**
-		 * Get a cell by coordinates
-		 */
-		getCell(x: number, y: number): Entities.Map.Cell {
-			return this.map[y][x];
-		}
 
 		/**
 		 * Generate the map
@@ -101,6 +87,9 @@ module Services {
 			return cell;
 		}
 
+		/**
+		 * Generate a pond
+		 */
 		generatePond() {
 			var size = chance.integer({min: 1, max: 2});
 			var x = chance.integer({min: 0, max: this.size});
@@ -137,6 +126,33 @@ module Services {
 			});
 
 			return cells;
+		}
+
+		//////////////////////////////////////////////////////////////////////
+		//////////////////////////////// MAP /////////////////////////////////
+		//////////////////////////////////////////////////////////////////////
+
+		/**
+		 * Check if an entity is out of bounds
+		 */
+		isOutOfBounds(entity: HasCoordinates): boolean {
+			return entity.x > this.size || entity.x < 0 || entity.y > this.size || entity.y < 0;
+		}
+
+		/**
+		 * Get a cell by coordinates
+		 */
+		getCell(x: number, y: number): Entities.Map.Cell {
+			return this.map[y][x];
+		}
+
+		/**
+		 * Get the cell the player is on
+		 */
+		getPlayerCell(): Entities.Map.Cell {
+			var player = this.getPlayer();
+
+			return this.getCell(player.x, player.y);
 		}
 
 		//////////////////////////////////////////////////////////////////////

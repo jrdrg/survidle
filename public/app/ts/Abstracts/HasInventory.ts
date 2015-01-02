@@ -40,6 +40,15 @@ module Abstracts {
 		}
 
 		/**
+		 * Remove multiple objects from the inventory
+		 */
+		removeMultipleItems(items: InventorySummary) {
+			_.each(items, (removed: number, item: string)  => {
+				this.inventory[item].decrement(removed);
+			});
+		}
+
+		/**
 		 * Whether the entity has at least X
 		 * of something
 		 */
@@ -59,8 +68,8 @@ module Abstracts {
 		/**
 		 * Drop an item from the inventory
 		 */
-		drop(item: string) {
-			this.inventory[item].decrement();
+		drop(item: string, dropped: number = 1) {
+			this.inventory[item].decrement(dropped);
 		}
 
 		/**

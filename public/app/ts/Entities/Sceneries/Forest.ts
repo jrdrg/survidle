@@ -20,21 +20,21 @@ module Entities.Sceneries {
 		 * Gather some food from the forest
 		 */
 		gatherFood() {
-			this.game.player.gatherWithSkill(this.game.items.getItemByKey('food'), 'gathering');
+			this.gather('food', 'gathering');
 		}
 
 		/**
 		 * Mine some iron
 		 */
 		gatherIron() {
-			this.game.player.gatherWithSkill(this.game.items.getItemByKey('iron'), 'mining');
+			this.gather('iron', 'mining');
 		}
 
 		/**
 		 * Chop down some woods
 		 */
 		gatherWood() {
-			this.game.player.gatherWithSkill(this.game.items.getItemByKey('wood'), 'masonry');
+			this.gather('wood', 'masonry');
 		}
 
 	}

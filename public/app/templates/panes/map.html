@@ -20,7 +20,7 @@
 			Position
 		</div>
 		<div class="list-group-item">
-			<span class="badge">{{ world.getCell(player.x, player.y).type|title }}</span>
+			<span class="badge">{{ world.getPlayerCell().type|title }}</span>
 			Type
 		</div>
 
@@ -42,6 +42,6 @@
 			</div>
 		</div>
 
-		<inventory entity="world.getCell(player.x, player.y)"></inventory>
+		<inventory entity="world.getPlayerCell()"></inventory>
 	</aside>
 </div>

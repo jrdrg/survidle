@@ -47,6 +47,9 @@ module Entities {
 			this.quantity = this.quantity.decrement(by);
 		}
 
+		/**
+		 * Remove an item completely
+		 */
 		remove() {
 			this.quantity = 0;
 		}

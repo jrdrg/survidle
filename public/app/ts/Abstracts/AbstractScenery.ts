@@ -18,6 +18,22 @@ module Abstracts {
 		}
 
 		/**
+		 * Check if the player can gather an item
+		 */
+		canGather(item: string) {
+			return this.game.world.getPlayerCell().has(item) && !this.game.player.hasInventoryFull();
+		}
+
+		/**
+		 * Gather an item from the current cell
+		 */
+		gather(item: string, skill: string) {
+			var gathered = this.game.player.gatherWithSkill(this.game.items.getItemByKey(item), skill);
+
+			this.game.world.getPlayerCell().drop(item, gathered);
+		}
+
+		/**
 		 * Call an action on the scenery
 		 */
 		act(index: number, condition = 'true'): void {
