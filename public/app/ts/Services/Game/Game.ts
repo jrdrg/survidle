@@ -146,6 +146,7 @@ module Services {
 			this.world = new Services.World;
 
 			// Reset services
+			this.logs.events = _.clone(this.$rootScope.events);
 			this.logs.logs = this.logs.logs.slice(0, 1);
 			this.technologyTree.researched = {};
 			this.technologyTree.current = null;

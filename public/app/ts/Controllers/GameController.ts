@@ -29,7 +29,6 @@ module Controllers {
 				if (events) {
 					this.game.bootWorld();
 					this.game.load();
-					this.logs.events = events;
 				}
 			});
 		}
