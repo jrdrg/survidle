@@ -1,4 +1,6 @@
 .cell {
+	@extend %clickable;
+
 	display: inline-block;
 	position: relative;
 	transition: $map-transitions-duration opacity;
