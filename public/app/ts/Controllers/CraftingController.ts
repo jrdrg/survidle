@@ -2,6 +2,7 @@ module Controllers {
 	export class CraftingController {
 
 		constructor(public $scope, public logs: Services.LogsHandler) {
+			$scope.isUnlocked = this.isUnlocked.bind(this);
 		}
 
 		//////////////////////////////////////////////////////////////////////
