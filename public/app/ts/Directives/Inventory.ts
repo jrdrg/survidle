@@ -55,7 +55,7 @@ module Directives {
 
 			$scope.Math = Math;
 			$scope.action = this.onItem.bind(this);
-			$scope.label = this.isPlayer ? 'Inventory' : 'Zone';
+			$scope.label = this.isPlayer ? 'Inventory' : 'Zone (Click to gather)';
 			$scope.tooltip = this.isPlayer ? 'Click to drop' : 'Gather';
 			$scope.isPlayer = this.isPlayer;
 		};
