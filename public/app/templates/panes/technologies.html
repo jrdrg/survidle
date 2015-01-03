@@ -1,14 +1,14 @@
 <div class="layout-container">
 	<main class="layout-content">
-		<div class="technology__category" ng-repeat="(category, categoryTechnologies) in technologies">
-			<h3 class="page-header">{{ category|ucfirst }}</h3>
+		<div class="technology__category" ng-repeat="(category, categoryTechnologies) in ::technologies">
+			<h3 class="page-header" ng-bind="::category|ucfirst"></h3>
 			<technology ng-repeat="technology in categoryTechnologies"></technology>
 		</div>
 	</main>
 
 	<aside class="layout-aside list-group" ng-if="technologyTree.current">
 		<header class="list-group-item">
-			<h4 class="list-group-item-heading">Currently researching: <strong>{{ technologyTree.current.name }}</strong></h4>
+			<h4 class="list-group-item-heading">Currently researching: <strong ng-bind="technologyTree.current.name"></strong></h4>
 		</header>
 		<div class="list-group-item technology__current">
 			<status label="Progress" value="technologyTree.current.progress" max="1"></status>

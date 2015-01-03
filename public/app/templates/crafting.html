@@ -2,7 +2,7 @@
 <h4>Crafting</h4>
 
 <section ng-if="category !== 'resource' && recipes.length" ng-repeat="(category, recipes) in items | groupBy:'type'">
-	<h3 ng-click="collapsed[category] = !collapsed[category]" class="recipe__category">{{ category|ucfirst }}</h3>
+	<h3 ng-click="collapsed[category] = !collapsed[category]" class="recipe__category" ng-bind="category|ucfirst"></h3>
 	<div class="layout-recipes" collapse="collapsed[category]">
 		<recipe class="recipe" ng-repeat="recipe in recipes"></recipe>
 	</div>

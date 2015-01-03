@@ -2,7 +2,7 @@
 	<main class="layout-content">
 		<h4>Diary</h4>
 		<ul class="list-unstyled">
-			<li class="ng-animate" ng-repeat="log in game.logs.logs">{{ log }}</li>
+			<li class="ng-animate" ng-repeat="log in game.logs.logs" ng-bind="::log"></li>
 		</ul>
 
 		<div class="animate--fade-in" ng-show="game.world.cycle > 3">
@@ -13,7 +13,7 @@
 				<li class="alert alert-danger animate--fade-in" ng-show="player.isHungry()">You feel pretty hungry.</li>
 				<li class="alert alert-danger animate--fade-in" ng-show="player.hasInventoryFull()">Your inventory is full. Try dropping a few things from it.</li>
 				<li class="alert alert-danger animate--fade-in" ng-show="!world.getPlayerCell().hasResources()">You've gathered everything where you're standing, try moving elsewhere.</li>
-				<alert type="{{ alert.type }}" close="game.logs.close($index)" ng-repeat="alert in game.logs.alerts">{{ alert.message }}</alert>
+				<alert type="{{ ::alert.type }}" close="game.logs.close($index)" ng-repeat="alert in game.logs.alerts" ng-bind="::alert.message"></alert>
 			</ul>
 		</div>
 

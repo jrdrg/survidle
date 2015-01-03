@@ -3,10 +3,10 @@
 		<thead class="map__filter map__filter--{{ world.getDayPhase() }}"></thead>
 		<tr ng-repeat="row in world.map">
 			<td ng-repeat="cell in row" ng-click="map.travel(cell.x, cell.y)" class="cell cell--{{ cell.type }} fog--{{ map.getVisibility(cell) }}">
-				<span class="entity entity--{{ entity.type }}" ng-repeat="entity in world.getEntitiesAt(cell.x, cell.y)">
+				<span class="entity entity--{{ ::entity.type }}" ng-repeat="entity in world.getEntitiesAt(cell.x, cell.y)">
 					X
 				</span>
-				<span class="structure structure--{{ structure.key }}" ng-repeat="structure in world.getStructuresAt(cell.x, cell.y)">
+				<span class="structure structure--{{ ::structure.key }}" ng-repeat="structure in world.getStructuresAt(cell.x, cell.y)">
 				</span>
 			</td>
 		</tr>
@@ -20,7 +20,7 @@
 			Position
 		</div>
 		<div class="list-group-item">
-			<span class="badge">{{ world.getPlayerCell().type|ucfirst }}</span>
+			<span class="badge" ng-bind="world.getPlayerCell().type|ucfirst"></span>
 			Type
 		</div>
 
@@ -28,15 +28,15 @@
 			<h4 class="list-group-item-heading">Encounters</h4>
 		</header>
 		<div class="list-group-item">
-			<div class="media enemy enemy--{{ entity.type }}" ng-repeat="entity in world.getEntitiesOnPlayer()">
+			<div class="media enemy enemy--{{ ::entity.type }}" ng-repeat="entity in world.getEntitiesOnPlayer()">
 				<figure class="media-left enemy__avatar">
 				</figure>
 
 				<div class="media-body">
-					<h4 class="media-heading">{{ entity.name }}</h4>
-					<status label="{{ stat|ucfirst }}" max="10" ng-repeat="(stat, current) in entity.survival" value="current"></status>
+					<h4 class="media-heading" ng-bind="entity.name"></h4>
+					<status label="{{ ::stat|ucfirst }}" max="10" ng-repeat="(stat, current) in entity.survival" value="current"></status>
 					<div class="enemy__skills">
-						<status label="{{ skill|ucfirst }}" rounded="true" ng-repeat="(skill, level) in entity.skills" value="level"></status>
+						<status label="{{ ::skill|ucfirst }}" rounded="true" ng-repeat="(skill, level) in entity.skills" value="level"></status>
 					</div>
 				</div>
 			</div>

@@ -4,7 +4,7 @@
 <div class="list-group-item" ng-repeat="(skill, level) in player.skills">
 	{{ skill|ucfirst }} - LVL{{ Math.floor(level) }}<br>
 	<p ng-if="player.getSkillBonus(skill)" ng-init="bonus = player.getSkillBonus(skill)">
-		<span class="label label-success">x{{ bonus.skills[skill] }}</span> from <strong>{{ bonus.name }}</strong>
+		<span class="label label-success">x{{ bonus.skills[skill] }}</span> from <strong ng-bind="bonus.name"></strong>
 	</p>
 
 	<div class="progress">

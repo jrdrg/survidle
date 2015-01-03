@@ -4,7 +4,7 @@
 		<a class="btn btn-primary btn-block" ng-if="technologyTree.canResearch(technology) && !technologyTree.hasResearched(technology) && !technologyTree.isResearching(technology)" ng-click="technologyTree.research(technology)">Research</a>
 	</div>
 	<div class="media-body">
-		<h4 class="media-heading">{{ technology.name }}</h4>
-		<p>{{ technology.description }}</p>
+		<h4 class="media-heading" ng-bind="::technology.name"></h4>
+		<p ng-bind="::technology.description"></p>
 	</div>
 </article>
