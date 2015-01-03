@@ -77,8 +77,8 @@ module Services {
 		save() {
 			this.saves.save({
 				world         : {
-					cycle     : this.world.cycle,
-					map       : this.world.map,
+					cycle: this.world.cycle,
+					map  : this.world.map,
 				},
 				player        : {
 					x                : this.player.x,
@@ -119,7 +119,7 @@ module Services {
 			});
 
 			this.saves.restoreProperties(this.world, state.world, {
-				map: (value) => {
+				map       : (value) => {
 					return this.world.rebuildCells(value);
 				},
 				structures: (value) => {

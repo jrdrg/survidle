@@ -109,7 +109,10 @@
     "description": "Make nature give back. A little. When it doesn't rain.",
     "multiple": true,
     "type": "structure",
-    "required": ["technology:agriculture", "stage:craftcabin"],
+    "required": [
+      "technology:agriculture",
+      "stage:craftcabin"
+    ],
     "ingredients": {
       "food": 25,
       "wood": 15

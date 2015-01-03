@@ -1,4 +1,4 @@
-@mixin centered-image ($image) {
+@mixin centered-image($image) {
 	background-image: image-url($image);
 	background-repeat: no-repeat;
 	background-position: center center;

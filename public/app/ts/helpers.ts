@@ -16,7 +16,7 @@ Number.prototype.increment = function (by: number = 1, maximum = 1) {
 	return Math.min(maximum, this + by);
 };
 
-String.prototype.title = function() {
+String.prototype.title = function () {
 	var words = this.replace(/([A-Z])/g, ' $1').split(' ');
 	for (var i = 0; i < words.length; i++) {
 		words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);

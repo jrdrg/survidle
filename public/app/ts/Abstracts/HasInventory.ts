@@ -61,8 +61,8 @@ module Abstracts {
 		 */
 		hasMultiple(items: InventorySummary): boolean {
 			return _.filter(items, (quantity: number, item: string) => {
-				return !this.has(item, quantity);
-			}).length === 0;
+					return !this.has(item, quantity);
+				}).length === 0;
 		}
 
 		/**

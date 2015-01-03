@@ -44,6 +44,6 @@ app.filter('filterByType', Filters.Type);
 //////////////////////////// CONFIGURATION ///////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-app.config(function($animateProvider: ng.IAnimateProvider) {
+app.config(function ($animateProvider: ng.IAnimateProvider) {
 	$animateProvider.classNameFilter(/ng-animate/);
 });
