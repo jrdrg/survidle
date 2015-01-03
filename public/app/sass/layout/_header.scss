@@ -3,8 +3,7 @@
 
 	display: flex;
 	position: relative;
-	background: grey(20);
-	background-image: image-url('header.jpg');
+	background: grey(20) image-url('header.jpg');
 	height: $header-size + 3rem;
 	overflow: hidden;
 	color: white;

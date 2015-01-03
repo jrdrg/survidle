@@ -1,7 +1,7 @@
 .cell {
 	display: inline-block;
 	position: relative;
-	transition: 0.3s opacity;
+	transition: $map-transitions-duration opacity;
 	cursor: pointer;
 	width: $cell-size;
 	height: $cell-size;

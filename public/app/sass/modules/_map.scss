@@ -16,7 +16,7 @@
 		$filter-opacity: 0.2;
 
 		position: absolute;
-		transition: 2s background-color;
+		transition: $map-transitions-duration background-color;
 		z-index: 5;
 		background-image: image-url('map.png');
 		cursor: pointer;
