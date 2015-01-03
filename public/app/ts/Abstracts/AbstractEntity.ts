@@ -71,7 +71,6 @@ module Abstracts {
 		computeDamages(entity: AbstractEntity): number {
 			var damages = this.skills.combat * this.getSkillModifier('combat');
 			var defense = Math.max(0, entity.skills.defense - 0.5) * 10;
-			console.log(damages, defense);
 			var counter = chance.bool({likelihood: defense})
 			if (counter) {
 				damages = 0;
