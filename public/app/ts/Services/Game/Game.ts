@@ -77,8 +77,9 @@ module Services {
 		save() {
 			this.saves.save({
 				world         : {
-					cycle: this.world.cycle,
-					map  : this.world.map,
+					cycle   : this.world.cycle,
+					map     : this.world.map,
+					entities: this.world.entities,
 				},
 				player        : {
 					x                : this.player.x,
@@ -126,7 +127,18 @@ module Services {
 					return _.map(value, function (structure: any) {
 						return new Entities.Map.Structure(structure.x, structure.y, structure.type);
 					});
-				}
+				},
+				entities  : (entities) => {
+					return _.chain(entities).map((value: Abstracts.AbstractEntity) => {
+						if (value.survival.life <= 0) {
+							return;
+						} else if (value.type == 'player') {
+							return this.player;
+						} else {
+							return this.saves.restoreProperties(new Entities.Enemy(value.name, value.key), value);
+						}
+					}).filter(angular.isDefined).value();
+				},
 			});
 
 			this.stages = state.game.stages;
@@ -166,7 +178,7 @@ module Services {
 			this.technologyTree.current = null;
 
 			// Bind entities
-			this.world.entities = [this.player];
+			this.world.entities.push(this.player);
 
 			// Define scenerieshasi
 			this.createSceneries();

@@ -25,10 +25,14 @@ module Services {
 			}
 		}
 
+		//////////////////////////////////////////////////////////////////////
+		////////////////////////////// HELPERS ///////////////////////////////
+		//////////////////////////////////////////////////////////////////////
+
 		/**
 		 * Get a random type of enemy
 		 */
-		private getRandomEnemyType(): Entities.Enemy {
+		getRandomEnemyType(): Entities.Enemy {
 			var enemyType = <Entities.Enemy> _.randomItem(this.game.$rootScope.enemies);
 
 			return _.cloneDeep(enemyType);

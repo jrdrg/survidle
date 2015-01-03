@@ -35,6 +35,8 @@ module Services {
 
 				object[key] = value;
 			});
+
+			return object;
 		}
 
 	}
