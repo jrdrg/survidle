@@ -8,6 +8,10 @@
 	border-collapse: collapse;
 	border-spacing: 0;
 
+	&__controls {
+		margin-bottom: 1rem;
+	}
+
 	&--placing .cell:hover {
 		background: GoldenRod;
 	}

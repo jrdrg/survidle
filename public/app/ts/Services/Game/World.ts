@@ -4,7 +4,7 @@ module Services {
 		/**
 		 * The size of the world
 		 */
-		size = 20;
+		size = 40;
 
 		/**
 		 * The current cycle

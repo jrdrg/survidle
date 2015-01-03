@@ -6,6 +6,21 @@ module Controllers {
 		 */
 		placingStructure: Entities.Item;
 
+		/**
+		 * The amounts of cells visible
+		 */
+		visible: number = 20;
+
+		/**
+		 * The row to display from
+		 */
+		fromX: number = 0;
+
+		/**
+		 * The column to display from
+		 */
+		fromY: number = 0;
+
 		constructor(
 			public $rootScope,
 			public $scope,
@@ -14,7 +29,12 @@ module Controllers {
 			public items: Services.ItemsFactory
 		) {
 			$scope.canCraft = this.crafting.canCraft.bind(this.crafting);
+			this.center();
 		}
+
+		//////////////////////////////////////////////////////////////////////
+		////////////////////////////// BUILDING //////////////////////////////
+		//////////////////////////////////////////////////////////////////////
 
 		/**
 		 * Craft an item and place it on the map
@@ -35,6 +55,10 @@ module Controllers {
 			this.placingStructure = null;
 		}
 
+		//////////////////////////////////////////////////////////////////////
+		////////////////////////////// TRAVEL ////////////////////////////////
+		//////////////////////////////////////////////////////////////////////
+
 		/**
 		 * Make the player travel to coordinates
 		 */
@@ -45,6 +69,51 @@ module Controllers {
 			for (var i = 0; i <= distance; i++) {
 				player.moveTowards({x: x, y: y});
 				this.$rootScope.game.newCycle();
+			}
+		}
+
+		//////////////////////////////////////////////////////////////////////
+		////////////////////////////// DISPLAY ///////////////////////////////
+		//////////////////////////////////////////////////////////////////////
+
+		/**
+		 * Center the map on the player
+		 */
+		center() {
+			this.fromX = Math.max(0, this.game.player.x - (this.visible / 2));
+			this.fromY = Math.max(0, this.game.player.y - (this.visible / 2));
+		}
+
+		/**
+		 * Offset the visible map in a direction
+		 */
+		offset(direction: string) {
+			var limit = this.game.world.size - this.visible;
+
+			switch (direction) {
+				case 'up':
+					if (this.fromY > 0) {
+						this.fromY--;
+					}
+				break;
+
+				case 'left':
+					if (this.fromX > 0) {
+						this.fromX--;
+					}
+				break;
+
+				case 'right':
+					if (this.fromX < limit) {
+						this.fromX++;
+					}
+				break;
+
+				case 'down':
+					if (this.fromY < limit) {
+						this.fromY++;
+					}
+				break;
 			}
 		}
 

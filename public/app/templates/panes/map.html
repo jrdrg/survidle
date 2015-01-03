@@ -1,8 +1,8 @@
 <div class="layout-container layout-container--map" ng-controller="MapController as map">
 	<table class="map layout-content" ng-class="{'map--placing': map.placingStructure}">
 		<thead class="map__filter map__filter--{{ world.getDayPhase() }}"></thead>
-		<tr ng-repeat="row in world.map">
-			<td ng-repeat="cell in row" ng-click="map.placingStructure ? map.build(cell) : map.travel(cell.x, cell.y)" class="cell cell--{{ cell.type }} fog--{{ map.getVisibility(cell) }}">
+		<tr ng-repeat="row in world.map | after:map.fromY | first:map.visible">
+			<td ng-repeat="cell in row | after:map.fromX | first:map.visible" ng-click="map.placingStructure ? map.build(cell) : map.travel(cell.x, cell.y)" class="cell cell--{{ cell.type }} fog--{{ map.getVisibility(cell) }}">
 				<span class="entity entity--{{ ::entity.key }}" ng-repeat="entity in world.getEntitiesAt(cell.x, cell.y)">
 					X
 				</span>
@@ -12,6 +12,13 @@
 		</tr>
 	</table>
 	<aside class="layout-aside">
+		<div class="btn-group btn-group-xs btn-group-justified map__controls">
+			<a class="btn btn-default" ng-click="map.offset('up')">Up</a>
+			<a class="btn btn-default" ng-click="map.offset('left')">Left</a>
+			<a class="btn btn-default" ng-click="map.center()">Center</a>
+			<a class="btn btn-default" ng-click="map.offset('right')">Right</a>
+			<a class="btn btn-default" ng-click="map.offset('down')">Down</a>
+		</div>
 		<header class="list-group-item">
 			<h4 class="list-group-item-heading">Map</h4>
 		</header>
