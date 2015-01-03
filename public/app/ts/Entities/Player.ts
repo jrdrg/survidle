@@ -7,6 +7,11 @@ module Entities {
 		type = 'player';
 
 		/**
+		 * The subtype
+		 */
+		key = 'player';
+
+		/**
 		 * The age of the player
 		 */
 		age: number;

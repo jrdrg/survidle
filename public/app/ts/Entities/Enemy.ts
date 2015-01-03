@@ -6,10 +6,15 @@ module Entities {
 		 */
 		type = 'enemy';
 
-		constructor(public name: string, type: string) {
+		/**
+		 * The type of enemy
+		 */
+		key: string;
+
+		constructor(public name: string, key: string) {
 			super(name);
 
-			this.type = type;
+			this.key = key;
 
 			// Assign random hunger
 			this.survival.hunger = chance.floating({min: 0, max: 1});
@@ -23,7 +28,7 @@ module Entities {
 
 			// If the wolf is on a wolf trap, kill him
 			var cell = game.world.getCell(this.x, this.y);
-			if (this.type === 'wolf' && cell.has('trap')) {
+			if (this.key === 'wolf' && cell.has('trap')) {
 				cell.drop('trap');
 				this.survival.life = 0;
 			}

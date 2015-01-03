@@ -90,7 +90,6 @@
   {
     "key": "trap",
     "name": "Wolf trap",
-    "multiple": true,
     "usable": true,
     "description": "Push button, receive bacon",
     "type": "structure",
@@ -107,7 +106,6 @@
     "key": "field",
     "name": "Field",
     "description": "Make nature give back. A little. When it doesn't rain.",
-    "multiple": true,
     "type": "structure",
     "required": [
       "technology:agriculture",

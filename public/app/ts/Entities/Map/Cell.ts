@@ -72,6 +72,13 @@ module Entities.Map {
 				this.type = 'forest';
 			}
 
+			// If an enemy is on the cell, damage structures
+			if (entity.type === 'enemy') {
+				_.each(this.getItemsOfType('structure'), (item: Entities.Item) => {
+					this.inventory[item.key].quantity -= chance.bool() ? 0.025 : 0;
+				});
+			}
+
 			// From there, we cancel if no entity is on the cell
 			if (!entity) {
 				return;

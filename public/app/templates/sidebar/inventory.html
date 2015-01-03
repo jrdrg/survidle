@@ -12,7 +12,7 @@
 	</header>
 	<p class="inventory__item list-group-item" ng-repeat="item in entity.getInventoryContents() | filterByType:['structure'] as filteredStructures">
 		<span class="badge" ng-if="item.multiple">{{ Math.floor(item.quantity) }}</span>
-		<span class="badge" ng-if="!item.multiple">{{ item.quantity * 100 }}%</span>
+		<span class="badge" ng-if="!item.multiple">{{ Math.round(item.quantity * 100) }}%</span>
 		<span ng-bind="item.name"></span> <small ng-bind="item.description"></small>
 	</p>
 

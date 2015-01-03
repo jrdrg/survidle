@@ -83,7 +83,9 @@ module Abstracts {
 		 * Get the raw contents of the inventory
 		 */
 		getInventoryContents(): Entities.Item[] {
-			return _.filter(this.inventory, 'quantity');
+			return _.filter(this.inventory, function (item) {
+				return item.quantity > 0;
+			});
 		}
 
 		/**

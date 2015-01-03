@@ -13,6 +13,11 @@ module Abstracts {
 		type: string;
 
 		/**
+		 * The subtype
+		 */
+		key: string;
+
+		/**
 		 * What killed the entity
 		 */
 		killedBy: string = 'hunger';

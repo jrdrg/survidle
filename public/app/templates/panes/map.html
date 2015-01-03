@@ -3,7 +3,7 @@
 		<thead class="map__filter map__filter--{{ world.getDayPhase() }}"></thead>
 		<tr ng-repeat="row in world.map">
 			<td ng-repeat="cell in row" ng-click="map.placingStructure ? map.build(cell) : map.travel(cell.x, cell.y)" class="cell cell--{{ cell.type }} fog--{{ map.getVisibility(cell) }}">
-				<span class="entity entity--{{ ::entity.type }}" ng-repeat="entity in world.getEntitiesAt(cell.x, cell.y)">
+				<span class="entity entity--{{ ::entity.key }}" ng-repeat="entity in world.getEntitiesAt(cell.x, cell.y)">
 					X
 				</span>
 				<span class="structure structure--{{ ::structure.key }}" ng-repeat="structure in world.getStructuresAt(cell.x, cell.y)">
@@ -35,7 +35,7 @@
 			<h4 class="list-group-item-heading">Encounters</h4>
 		</header>
 		<div class="list-group-item">
-			<div class="media enemy enemy--{{ ::entity.type }}" ng-repeat="entity in world.getEntitiesOnPlayer()">
+			<div class="media enemy enemy--{{ ::entity.key }}" ng-repeat="entity in world.getEntitiesOnPlayer()">
 				<figure class="media-left enemy__avatar">
 				</figure>
 
