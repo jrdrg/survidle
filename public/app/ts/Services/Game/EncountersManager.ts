@@ -45,7 +45,7 @@ module Services {
 		 * Get the likelihood of an enemy attacking
 		 */
 		getLikelihood(enemyType: Entities.Enemy): number {
-			switch (enemyType.type) {
+			switch (enemyType.key) {
 				case 'wolf':
 					return this.game.player.has('cabin') ? 1 : 5;
 

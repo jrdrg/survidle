@@ -6,15 +6,8 @@ module Entities {
 		 */
 		type = 'enemy';
 
-		/**
-		 * The type of enemy
-		 */
-		key: string;
-
-		constructor(public name: string, key: string) {
+		constructor(public name: string, public key: string) {
 			super(name);
-
-			this.key = key;
 
 			// Assign random hunger
 			this.survival.hunger = chance.floating({min: 0, max: 1});

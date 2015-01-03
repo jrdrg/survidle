@@ -1,7 +1,7 @@
 [
   {
+    "key": "wolf",
     "name": "Direwolf",
-    "type": "wolf",
     "skills": {
       "combat": 0.5,
       "defense": 0,
@@ -9,8 +9,8 @@
     }
   },
   {
+    "key": "bandits",
     "name": "Bandits",
-    "type": "bandits",
     "skills": {
       "combat": 1,
       "defense": 1,
