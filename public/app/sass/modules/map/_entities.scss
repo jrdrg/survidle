@@ -12,4 +12,8 @@
 		@include centered-image('sprites/wolf.png');
 		color: transparent;
 	}
+
+	&--bandits {
+		background: red;
+	}
 }

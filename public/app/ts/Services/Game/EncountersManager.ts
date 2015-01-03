@@ -13,10 +13,9 @@ module Services {
 			}
 
 			var modifier = this.game.world.isNighttime ? 2 : 1;
-			var enemyType = <Entities.Enemy> _.randomItem(this.game.$rootScope.enemies);
-			enemyType = JSON.parse(JSON.stringify(enemyType));
-
+			var enemyType = this.getRandomEnemyType();
 			var likelihood = this.getLikelihood(enemyType) * modifier;
+
 			if (chance.bool({likelihood: likelihood})) {
 				var enemy = new Entities.Enemy(enemyType.name, enemyType.type);
 				enemy.moveTo(this.getRandomCoordinate(), this.getRandomCoordinate());
@@ -24,6 +23,15 @@ module Services {
 
 				return enemy;
 			}
+		}
+
+		/**
+		 * Get a random type of enemy
+		 */
+		private getRandomEnemyType(): Entities.Enemy {
+			var enemyType = <Entities.Enemy> _.randomItem(this.game.$rootScope.enemies);
+
+			return _.cloneDeep(enemyType);
 		}
 
 		/**
@@ -42,7 +50,7 @@ module Services {
 					return this.game.player.has('cabin') ? 1 : 5;
 
 				case 'bandits':
-					return this.game.player.has('cabin') ? 5 : 0;
+					return this.game.world.getPlayerCell().has('cabin') ? 5 : 0;
 			}
 		}
 
