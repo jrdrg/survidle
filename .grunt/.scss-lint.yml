@@ -48,7 +48,7 @@ linters:
   HexValidation:
     enabled: true
 
-  IdWithExtraneousSelector:
+  IdSelector:
     enabled: true
 
   ImportPath:
@@ -71,6 +71,7 @@ linters:
 
   NameFormat:
     enabled: true
+    allow_leading_underscore: true
     convention: hyphenated_lowercase # or 'BEM', or a regex pattern
 
   NestingDepth:
@@ -78,7 +79,7 @@ linters:
     max_depth: 6
 
   PlaceholderInExtend:
-    enabled: false
+    enabled: true
 
   PropertySortOrder:
     enabled: true
@@ -87,7 +88,7 @@ linters:
 
   PropertySpelling:
     enabled: true
-    extra_properties: ['break-inside']
+    extra_properties: []
 
   QualifyingElement:
     enabled: true
@@ -101,18 +102,7 @@ linters:
 
   SelectorFormat:
     enabled: true
-    convention: BEM # or 'BEM', or 'snake_case', or 'camel_case', or a regex pattern
-    ignored_names:
-      - "tablesorter-headerAsc"
-      - "tablesorter-headerDesc"
-      - "noUi-horizontal"
-      - "noUi-origin"
-      - "noUi-handle"
-      - "noUi-horizontal"
-      - "nivoSlider"
-      - "nivo-controlNav"
-      - "ace_editor"
-      - "current_date"
+    convention: hyphenated_BEM
 
   Shorthand:
     enabled: true

@@ -28,7 +28,7 @@ module Services {
 		 * Check if the player can craft a recipe
 		 */
 		canCraft(item: Entities.Item): boolean {
-			var hasSlot = item.type == 'structure' ? true : !this.game.player.hasInventoryFull();
+			var hasSlot = item.type === 'structure' ? true : !this.game.player.hasInventoryFull();
 			var unmet = _.filter(item.ingredients, (required: number, ingredient: string) => {
 				return !this.game.player.has(ingredient, required);
 			});
@@ -40,7 +40,7 @@ module Services {
 		 * Check if we have space to build something on the cell
 		 */
 		hasSpaceToCraft(item: Entities.Item): boolean {
-			return item.type == 'structure' ? !this.game.world.getPlayerCell().hasStructure() : true;
+			return item.type === 'structure' ? !this.game.world.getPlayerCell().hasStructure() : true;
 		}
 
 		/**
@@ -52,7 +52,7 @@ module Services {
 			}
 
 			if (!this.hasSpaceToCraft(item)) {
-				this.logs.alert("You can't build two structures on the same cell");
+				this.logs.alert('You can\'t build two structures on the same cell');
 				return;
 			}
 

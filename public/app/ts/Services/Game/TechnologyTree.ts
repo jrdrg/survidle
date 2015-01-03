@@ -26,7 +26,7 @@ module Services {
 		 * Check if a technology is being researched
 		 */
 		isResearching(technology: Technology): boolean {
-			return this.current && this.current.key == technology.key;
+			return this.current && this.current.key === technology.key;
 		}
 
 		/**

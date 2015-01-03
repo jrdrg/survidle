@@ -111,7 +111,7 @@ module Abstracts {
 		 * this one
 		 */
 		isOnSameCellThan(entity: HasCoordinates): boolean {
-			return this.x == entity.x && this.y == entity.y;
+			return this.x === entity.x && this.y === entity.y;
 		}
 
 		//////////////////////////////////////////////////////////////////////
@@ -139,7 +139,7 @@ module Abstracts {
 			}
 
 			var probability = this.skills[skill] * this.getSkillModifier(skill);
-			if (typeof this.inventory[item.key] == 'undefined') {
+			if (typeof this.inventory[item.key] === 'undefined') {
 				this.inventory[item.key] = new Entities.Item(item);
 			}
 
@@ -187,7 +187,7 @@ module Abstracts {
 		 */
 		getSkillModifier(skill: string): number {
 			var modifier = 1;
-			var bonus = this.getSkillBonus(skill)
+			var bonus = this.getSkillBonus(skill);
 
 			// Apply tool bonus
 			if (bonus) {

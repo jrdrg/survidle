@@ -1,11 +1,5 @@
 .layout-container {
-	width: 100%;
-	background: rgba(black, 0.15);
-	color: white;
-	padding: 2rem;
-	width: 80%;
-	margin: auto;
-	display: flex;
+	@extend %content;
 
 	&--map {
 		.layout-content {
@@ -15,7 +9,7 @@
 }
 
 .layout-container--game-over {
-	@extend .layout-container;
+	@extend %content;
 
 	display: block;
 	text-align: center;
@@ -35,6 +29,6 @@
 
 .layout-aside {
 	margin-left: 2rem;
-	flex: 1;
 	color: black;
+	flex: 1;
 }

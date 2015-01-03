@@ -30,18 +30,16 @@ module Entities.Map {
 						food: chance.integer({min: 10, max: 30}),
 					};
 
-				case 'tree': {
+				case 'tree':
 					return {
 						food: chance.integer({min: 10, max: 30}),
 						wood: chance.integer({min: 10, max: 20}),
 					};
-				}
 
-				case 'rock': {
+				case 'rock':
 					return {
 						iron: chance.integer({min: 10, max: 20}),
-					}
-				}
+					};
 			}
 		}
 
@@ -70,7 +68,7 @@ module Entities.Map {
 		 * On every cycle, on the entities that are on the cell
 		 */
 		onCycle(entity?: Abstracts.AbstractEntity) {
-			if (this.type == 'tree' && !this.has('wood')) {
+			if (this.type === 'tree' && !this.has('wood')) {
 				this.type = 'forest';
 			}
 

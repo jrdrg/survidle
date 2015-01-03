@@ -9,16 +9,16 @@
 }
 
 .technology {
-	padding: 1rem;
 	display: flex;
+	padding: 1rem;
 
 	&[disabled] {
 		opacity: 0.5;
 	}
 
 	img {
-		width: 100%;
 		margin-bottom: 1rem;
+		width: 100%;
 	}
 
 	p {
@@ -29,9 +29,11 @@
 	.media-body {
 		display: block;
 	}
+
 	.media-left {
 		flex: 1;
 	}
+
 	.media-body {
 		flex: 10;
 	}
@@ -39,6 +41,7 @@
 	&--researching {
 		background: rgba(black, 0.25);
 	}
+
 	&--researched {
 		background: rgba($color-green, 0.25);
 	}

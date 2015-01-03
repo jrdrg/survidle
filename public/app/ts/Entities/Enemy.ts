@@ -23,7 +23,7 @@ module Entities {
 
 			// If the wolf is on a wolf trap, kill him
 			var cell = game.world.getCell(this.x, this.y);
-			if (this.type == 'wolf' && cell.has('trap')) {
+			if (this.type === 'wolf' && cell.has('trap')) {
 				cell.drop('trap');
 				this.survival.life = 0;
 			}

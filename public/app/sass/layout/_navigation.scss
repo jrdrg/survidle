@@ -1,16 +1,16 @@
 .layout-navigation {
-	width: 80%;
 	margin: auto;
+	width: 80%;
 
 	.nav-tabs.nav-justified > li {
 		&.active > a,
 		> a {
-			border: none;
+			border: 0;
 			border-radius: 0;
 			color: white;
 
 			&:hover {
-				border: none;
+				border: 0;
 				color: white;
 			}
 		}

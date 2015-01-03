@@ -1,12 +1,12 @@
 .map {
 	$cell-size: 4rem;
 
-	background: black;
-	border-spacing: 0;
-	border-collapse: collapse;
-	margin: auto;
-	box-shadow: 0 0 0px 10px rgba(black, 0.25);
 	position: relative;
+	margin: auto;
+	box-shadow: 0 0 0 10px rgba(black, 0.25);
+	background: black;
+	border-collapse: collapse;
+	border-spacing: 0;
 
 	&--placing .cell:hover {
 		background: GoldenRod;
@@ -14,18 +14,20 @@
 
 	&__filter {
 		$filter-opacity: 0.2;
+
 		position: absolute;
+		transition: 2s background-color;
+		z-index: 5;
+		background-image: image-url('map.png');
+		cursor: pointer;
 		width: 100%;
 		height: 100%;
-		z-index: 5;
-		transition: 2s background-color;
 		pointer-events: none;
-		cursor: pointer;
-		background-image: image-url('map.png');
 
 		&--night {
 			background-color: rgba(SteelBlue, $filter-opacity);
 		}
+
 		&--morning {
 			background-color: rgba(Chocolate, $filter-opacity);
 		}
@@ -34,7 +36,7 @@
 	tbody {
 		> tr,
 		> tr > td {
-			border: none;
+			border: 0;
 		}
 	}
 

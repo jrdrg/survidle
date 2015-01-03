@@ -38,6 +38,6 @@ angular.module('survidle').config(function ($routeProvider: ng.route.IRouteProvi
 
 	$routeProvider.otherwise({
 		redirectTo: '/scenery',
-	})
+	});
 
 });

@@ -58,9 +58,9 @@ module Services {
 			}
 
 			var condition = required.split(':');
-			if (condition[0] == 'stage' && !this.stages[condition[1]]) {
+			if (condition[0] === 'stage' && !this.stages[condition[1]]) {
 				return false;
-			} else if (condition[0] == 'technology' && !this.technologyTree.hasResearched(condition[1])) {
+			} else if (condition[0] === 'technology' && !this.technologyTree.hasResearched(condition[1])) {
 				return false;
 			}
 
@@ -114,7 +114,7 @@ module Services {
 
 			this.saves.restoreProperties(this.player, state.player, {
 				inventory: (value) => {
-					return this.items.rebuildItems(value)
+					return this.items.rebuildItems(value);
 				}
 			});
 

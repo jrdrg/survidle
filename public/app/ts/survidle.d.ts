@@ -25,6 +25,6 @@ declare var chance: {
 	floating(options?: any): number;
 	integer(options?: any): number;
 	weighted(options: string[], weights?: number[]): string;
-}
+};
 
 declare var markdown;

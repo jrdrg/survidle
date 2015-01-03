@@ -102,14 +102,14 @@ module Services {
 			this.map.forEach(function (column) {
 				column.forEach(function (cell: Entities.Map.Cell) {
 					var distance = cell.distanceWith(center);
-					var withingBounds = distance == size ? chance.bool({likelihood: 60}) : true;
+					var withingBounds = distance === size ? chance.bool({likelihood: 60}) : true;
 					withingBounds = distance > size ? false : withingBounds;
 
 					if (withingBounds) {
 						cell.type = 'water';
 					}
 				});
-			})
+			});
 		}
 
 		/**
@@ -179,7 +179,7 @@ module Services {
 					return false;
 				}
 
-				return entity.x == x && entity.y == y;
+				return entity.x === x && entity.y === y;
 			});
 		}
 

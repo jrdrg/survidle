@@ -8,7 +8,7 @@ module.exports = {
 		noLineComments    : true,
 		relativeAssets    : true,
 		assetCacheBuster  : false,
-		require           : ['susy', 'sass-globbing', 'breakpoint'],
+		require           : ['sass-globbing', 'breakpoint'],
 	},
 
 	/**

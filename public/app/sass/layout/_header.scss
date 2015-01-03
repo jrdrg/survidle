@@ -1,22 +1,22 @@
 .layout-header {
 	$header-size: 12rem;
 
+	display: flex;
+	position: relative;
 	background: grey(20);
 	background-image: image-url('header.jpg');
 	height: $header-size + 3rem;
-	color: white;
-	display: flex;
-	position: relative;
-	align-items: flex-end;
-	justify-content: center;
 	overflow: hidden;
+	color: white;
+	justify-content: center;
+	align-items: flex-end;
 
 	h1 {
-		font-weight: 100;
-		text-transform: uppercase;
 		margin: 0;
-		font-size: $header-size;
 		height: $header-size - 0.75rem;
+		text-transform: uppercase;
+		font-size: $header-size;
+		font-weight: 100;
 	}
 
 	nav {
