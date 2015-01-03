@@ -1,6 +1,20 @@
-.layout-recipes {
+.layout-recipes,
+.layout-recipes.collapse.in {
 	display: flex;
 	flex-wrap: wrap;
+}
+
+.recipe__category {
+	@extend %clickable;
+
+	background-color: rgba(black, 0.25);
+	color: white;
+	padding: 0.5em;
+	margin: 0 0 0.5em;
+
+	&:hover {
+		background-color: rgba(black, 0.15);
+	}
 }
 
 .recipe {

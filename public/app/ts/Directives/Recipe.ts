@@ -9,7 +9,7 @@ module Directives {
 		/**
 		 * @type {boolean}
 		 */
-		replace = true;
+		replace = false;
 
 		/**
 		 * @type {string}

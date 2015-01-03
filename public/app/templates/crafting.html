@@ -1,6 +1,9 @@
 <hr />
 <h4>Crafting</h4>
 
-<section class="layout-recipes">
-	<recipe ng-repeat="recipe in items | filter:{type: '!resource'} | orderBy:['-type', crafting.recipeCost]:true"></recipe>
+<section ng-if="category !== 'resource' && recipes.length" ng-repeat="(category, recipes) in items | groupBy:'type'">
+	<h3 ng-click="collapsed[category] = !collapsed[category]" class="recipe__category">{{ category|ucfirst }}</h3>
+	<div class="layout-recipes" collapse="collapsed[category]">
+		<recipe class="recipe" ng-repeat="recipe in recipes"></recipe>
+	</div>
 </section>

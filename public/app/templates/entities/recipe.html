@@ -1,4 +1,4 @@
-<article class="recipe" ng-click="$parent.crafting.craft(recipe)" ng-if="$parent.crafting.isUnlocked(recipe)">
+<article ng-click="$parent.crafting.craft(recipe)" ng-if="$parent.crafting.isUnlocked(recipe)">
 	<h3>{{ recipe.name }}</h3>
 	<h4 class="recipe__type">{{ recipe.type|ucfirst }}</h4>
 	<h4 class="recipe__usable" ng-if="recipe.usable">Destroyed after use</h4>
