@@ -10,11 +10,14 @@
 - Added **Scythe** item that allows you to gather food more quickly from fields
 - Added **Cooking** technology to automatically eat when hungry
 - Added ability to build structures directly on the map
+- Added state of current research to status bar
 
 ### Changed
 - Made the starting cell always populated wiht some resources
 - Items you are out of are now hidden automatically from the inventory
 - Revenues now go to the cell the structure was built on instead of directly to the player
+- Dropped items now go to the cell the player is in instead of being destroyed
+- Allow players to craft items if they'd have enough space in inventory *after* the craft
 
 ### Fixed
 - You can no longer build multiple structures on a single cell
