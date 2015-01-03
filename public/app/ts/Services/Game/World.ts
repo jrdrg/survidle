@@ -133,6 +133,13 @@ module Services {
 		//////////////////////////////////////////////////////////////////////
 
 		/**
+		 * Check if an entity is still valid
+		 */
+		isValidEntity(entity: Abstracts.AbstractEntity): boolean {
+			return entity.survival.life > 0 && !this.isOutOfBounds(entity);
+		}
+
+		/**
 		 * Check if an entity is out of bounds
 		 */
 		isOutOfBounds(entity: HasCoordinates): boolean {

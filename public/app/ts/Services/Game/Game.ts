@@ -130,7 +130,7 @@ module Services {
 				},
 				entities  : (entities) => {
 					return _.chain(entities).map((value: Abstracts.AbstractEntity) => {
-						if (value.survival.life <= 0) {
+						if (!this.world.isValidEntity(value)) {
 							return;
 						} else if (value.type == 'player') {
 							return this.player;
