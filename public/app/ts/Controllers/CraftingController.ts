@@ -28,11 +28,12 @@ module Controllers {
 		 * Check if the player can craft a recipe
 		 */
 		canCraft(item: Entities.Item): boolean {
+			var hasSlot = item.type == 'structure' ? true : !this.$scope.player.hasInventoryFull();
 			var unmet = _.filter(item.ingredients, (required: number, ingredient: string) => {
 				return !this.$scope.player.has(ingredient, required);
 			});
 
-			return !unmet.length && !this.$scope.player.hasInventoryFull();
+			return !unmet.length && hasSlot;
 		}
 
 		/**
