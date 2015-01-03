@@ -28,12 +28,23 @@ module Services {
 		 * Check if the player can craft a recipe
 		 */
 		canCraft(item: Entities.Item): boolean {
-			var hasSlot = item.type === 'structure' ? true : !this.game.player.hasInventoryFull();
+			var hasSlot = item.type === 'structure' ? true : this.hasInventorySpaceToCraft(item);
 			var unmet = _.filter(item.ingredients, (required: number, ingredient: string) => {
 				return !this.game.player.has(ingredient, required);
 			});
 
 			return !unmet.length && hasSlot;
+		}
+
+		/**
+		 * Check if the player has enough space in inventory to craft
+		 * the recipe
+		 */
+		hasInventorySpaceToCraft(item: Entities.Item): boolean {
+			var current = this.game.player.getInventorySize();
+			var after = current + 1 - this.recipeCost(item);
+
+			return after <= this.game.player.getInventoryCapacity();
 		}
 
 		/**
