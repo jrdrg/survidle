@@ -27,6 +27,7 @@ app.directive('technology', Directives.Technology.instance);
 // Services
 //////////////////////////////////////////////////////////////////////
 
+app.service('crafting', Services.Crafting);
 app.service('encounters', Services.EncountersManager);
 app.service('game', Services.Game);
 app.service('items', Services.ItemsFactory);
