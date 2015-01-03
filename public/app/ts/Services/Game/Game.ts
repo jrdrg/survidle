@@ -49,6 +49,10 @@ module Services {
 		 * Check if something is unlocked
 		 */
 		isUnlocked(required: string): boolean {
+			if (!required) {
+				return true;
+			}
+
 			if (typeof required === 'object') {
 				return _.filter(required, this.isUnlocked.bind(this)).length === required.length;
 			}
