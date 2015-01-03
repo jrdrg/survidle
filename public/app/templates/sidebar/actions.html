@@ -1,4 +1,4 @@
 <header class="list-group-item">
 	<h4 class="list-group-item-heading">Actions</h4>
 </header>
-<a ng-click="game.getScenery().act(action)" ng-repeat="(key, action) in game.getScenery().getActions()" class="list-group-item">{{ key }} - {{ action.label }}</a>
+<a ng-click="game.getScenery().act(action)" ng-repeat="action in game.getScenery().getActions()" class="list-group-item">{{ action.label }}</a>

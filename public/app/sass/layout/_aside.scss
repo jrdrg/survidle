@@ -18,6 +18,14 @@
 		margin-bottom: 0;
 	}
 
+	.list-group--nested .list-group-item {
+		padding-left: 3rem;
+
+		&:before {
+			content: '> ';
+		}
+	}
+
 	.list-group-item {
 		@extend %clickable;
 		transition: 0.3s backrgound;
