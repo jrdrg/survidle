@@ -40,6 +40,7 @@ module Abstracts {
 		skills = {
 			combat  : 1,
 			tracking: 1,
+			defense : 0,
 		};
 
 		/**
@@ -47,6 +48,36 @@ module Abstracts {
 		 */
 		constructor(public name: string) {
 			super();
+		}
+
+		//////////////////////////////////////////////////////////////////////
+		////////////////////////////// COMBATS ///////////////////////////////
+		//////////////////////////////////////////////////////////////////////
+
+		/**
+		 * Attach an other entitiy
+		 */
+		attack(entity: AbstractEntity) {
+			var combatSpeed = 2;
+			var damages = this.computeDamages(entity);
+			this.updateSkillWithExperience('combat', damages);
+
+			entity.survival.life -= damages * combatSpeed;
+		}
+
+		/**
+		 * Compute the damages of an attack
+		 */
+		computeDamages(entity: AbstractEntity): number {
+			var damages = this.skills.combat * this.getSkillModifier('combat');
+			var defense = Math.max(0, entity.skills.defense - 0.5) * 10;
+			console.log(damages, defense);
+			var counter = chance.bool({likelihood: defense})
+			if (counter) {
+				damages = 0;
+			}
+
+			return damages / 100;
 		}
 
 		//////////////////////////////////////////////////////////////////////
@@ -117,17 +148,6 @@ module Abstracts {
 		//////////////////////////////////////////////////////////////////////
 		/////////////////////////////// SKILLS ///////////////////////////////
 		//////////////////////////////////////////////////////////////////////
-
-		/**
-		 * Attach an other entitiy
-		 */
-		attack(entity: AbstractEntity) {
-			var damages = (this.skills.combat * this.getSkillModifier('combat')) / 100;
-			var combatSpeed = 2;
-			this.updateSkillWithExperience('combat', damages);
-
-			entity.survival.life -= damages * combatSpeed;
-		}
 
 		/**
 		 * Gather something, taking into account

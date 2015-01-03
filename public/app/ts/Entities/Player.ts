@@ -21,6 +21,7 @@ module Entities {
 			gathering: 1,
 			masonry  : 1,
 			tracking : 1,
+			defense  : 0,
 		};
 
 		/**
