@@ -1,7 +1,7 @@
 <div class="layout-container">
 	<main class="layout-content">
 		<div class="technology__category" ng-repeat="(category, categoryTechnologies) in technologies">
-			<h3 class="page-header">{{ category|title }}</h3>
+			<h3 class="page-header">{{ category|ucfirst }}</h3>
 			<technology ng-repeat="technology in categoryTechnologies"></technology>
 		</div>
 	</main>

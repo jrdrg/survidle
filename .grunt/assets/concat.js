@@ -17,6 +17,7 @@ module.exports = {
 				'<%= components %>/angular/angular.js',
 				'<%= components %>/angular-animate/angular-animate.js',
 				'<%= components %>/angular-route/angular-route.js',
+				'<%= components %>/angular-filter/dist/angular-filter.js',
 				'<%= components %>/angular-ui-bootstrap-bower/ui-bootstrap.js',
 				'<%= components %>/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js',
 				'<%= components %>/chance/chance.js',

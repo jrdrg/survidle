@@ -3,6 +3,7 @@
 
 var app = angular.module('survidle', [
 	'ui.bootstrap',
+	'angular.filter',
 	'ngRoute',
 	'ngAnimate',
 ]);
@@ -37,7 +38,6 @@ app.service('world', Services.World);
 // Filters
 //////////////////////////////////////////////////////////////////////
 
-app.filter('title', Filters.Title);
 app.filter('filterByType', Filters.Type);
 
 //////////////////////////////////////////////////////////////////////

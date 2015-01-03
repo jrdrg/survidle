@@ -20,7 +20,7 @@
 			Position
 		</div>
 		<div class="list-group-item">
-			<span class="badge">{{ world.getPlayerCell().type|title }}</span>
+			<span class="badge">{{ world.getPlayerCell().type|ucfirst }}</span>
 			Type
 		</div>
 
@@ -34,9 +34,9 @@
 
 				<div class="media-body">
 					<h4 class="media-heading">{{ entity.name }}</h4>
-					<status label="{{ stat|title }}" max="10" ng-repeat="(stat, current) in entity.survival" value="current"></status>
+					<status label="{{ stat|ucfirst }}" max="10" ng-repeat="(stat, current) in entity.survival" value="current"></status>
 					<div class="enemy__skills">
-						<status label="{{ skill|title }}" rounded="true" ng-repeat="(skill, level) in entity.skills" value="level"></status>
+						<status label="{{ skill|ucfirst }}" rounded="true" ng-repeat="(skill, level) in entity.skills" value="level"></status>
 					</div>
 				</div>
 			</div>
