@@ -206,6 +206,11 @@ module Abstracts {
 		 */
 		onCycle(game: Services.Game) {
 			this.survival.hunger = this.survival.hunger.increment(this.computeNeedGain(30), 1);
+			if (game.technologyTree.hasResearched('cooking')) {
+				while (this.survival.hunger > 0.15 && this.has('food')) {
+					this.eatFood();
+				}
+			}
 
 			// Compute maluses
 			if (this.survival.hunger >= 1) {
@@ -224,6 +229,15 @@ module Abstracts {
 		 */
 		isHungry() {
 			return this.survival.hunger > 0.25;
+		}
+
+		/**
+		 * Eat some food from the inventory
+		 */
+		eatFood() {
+			this.inventory['food'].decrement(1);
+			this.survival.life = this.survival.life.increment(0.2);
+			this.survival.hunger = this.survival.hunger.decrement(0.1);
 		}
 
 		/**

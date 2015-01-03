@@ -5,6 +5,12 @@
       "name": "Agriculture",
       "description": "Allow the creation of fields and crops",
       "unlock": "stage:craftcabin"
+    },
+    {
+      "key": "cooking",
+      "name": "Cooking",
+      "description": "Automatically eat food when hungry.",
+      "unlock": "stage:craftcabin"
     }
   ],
   "science": [
