@@ -13,8 +13,13 @@ module Abstracts {
 		/**
 		 * Get the available actions
 		 */
-		getActions(): Action[] {
-			return this.actions;
+		getActions(disabled: boolean = false): Action[] {
+			return _.filter(this.actions, (action) => {
+				var unlock = action.unlock || 'true';
+				unlock += disabled ? '&& ' +action.condition : '';
+
+				return this.game.$rootScope.$eval(unlock);
+			});
 		}
 
 		/**
@@ -45,16 +50,14 @@ module Abstracts {
 		/**
 		 * Call an action on the scenery
 		 */
-		act(index: number, condition = 'true'): void {
-			if (!this.game.$rootScope.$eval(condition)) {
+		act(action: Action): void {
+			if (!this.game.$rootScope.$eval(action.condition || 'true')) {
 				return;
 			}
 
 			// Remove one-time actions after use
-			var action = this.actions[index];
 			if (action.once) {
-				delete this.actions[index];
-				this.actions = _.values(this.actions);
+				this.actions = _.reject(this.actions, {method: action.method});
 			}
 
 			// Execute action
