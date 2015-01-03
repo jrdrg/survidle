@@ -19,6 +19,7 @@
 - You can no longer build multiple structures on a single cell
 - Fixed a bug where building a wolf trap would crash the game
 - Fixed missing rocks on the map
+- Fixed a bug where you couldn't build structures if your inventory was full
 
 ## 0.1.0
 
