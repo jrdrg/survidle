@@ -8,6 +8,10 @@
 	box-shadow: 0 0 0px 10px rgba(black, 0.25);
 	position: relative;
 
+	&--placing .cell:hover {
+		background: GoldenRod;
+	}
+
 	&__filter {
 		$filter-opacity: 0.2;
 		position: absolute;

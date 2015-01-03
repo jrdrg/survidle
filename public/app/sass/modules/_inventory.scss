@@ -2,6 +2,12 @@
 
 	&__item {
 		cursor: pointer;
+
+		&--placing {
+			$item-placing: hsl(40, 50%, 70%);
+			background: $item-placing;
+			border-color: $item-placing;
+		}
 	}
 
 }

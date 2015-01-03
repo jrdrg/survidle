@@ -1,8 +1,38 @@
 module Controllers {
 	export class MapController {
 
-		constructor(public $rootScope) {
+		/**
+		 * Whether the player is placing a structure or not
+		 */
+		placingStructure: Entities.Item;
 
+		constructor(
+			public $rootScope,
+			public $scope,
+			public game: Services.Game,
+			public crafting: Services.Crafting,
+			public items: Services.ItemsFactory
+		) {
+			$scope.canCraft = this.crafting.canCraft.bind(this.crafting);
+		}
+
+		/**
+		 * Craft an item and place it on the map
+		 */
+		place(itemKey: string) {
+			var item = this.items.getItemByKey(itemKey);
+
+			this.placingStructure = item;
+		}
+
+		/**
+		 * Build the structure the player
+		 * is placing
+		 */
+		build(cell: Entities.Map.Cell) {
+			this.crafting.craft(this.placingStructure, false);
+			cell.add(this.placingStructure);
+			this.placingStructure = null;
 		}
 
 		/**

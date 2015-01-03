@@ -1,8 +1,8 @@
 <div class="layout-container layout-container--map" ng-controller="MapController as map">
-	<table class="map layout-content">
+	<table class="map layout-content" ng-class="{'map--placing': map.placingStructure}">
 		<thead class="map__filter map__filter--{{ world.getDayPhase() }}"></thead>
 		<tr ng-repeat="row in world.map">
-			<td ng-repeat="cell in row" ng-click="map.travel(cell.x, cell.y)" class="cell cell--{{ cell.type }} fog--{{ map.getVisibility(cell) }}">
+			<td ng-repeat="cell in row" ng-click="map.placingStructure ? map.build(cell) : map.travel(cell.x, cell.y)" class="cell cell--{{ cell.type }} fog--{{ map.getVisibility(cell) }}">
 				<span class="entity entity--{{ ::entity.type }}" ng-repeat="entity in world.getEntitiesAt(cell.x, cell.y)">
 					X
 				</span>
@@ -23,6 +23,13 @@
 			<span class="badge" ng-bind="world.getPlayerCell().type|ucfirst"></span>
 			Type
 		</div>
+
+		<header class="list-group-item" ng-show="craftable.length">
+			<h4 class="list-group-item-heading">Craftable</h4>
+		</header>
+		<p ng-click="map.place(item.key)" tooltip-placement="left" tooltip="Place on map" class="inventory__item list-group-item" ng-class="{'inventory__item--placing': map.placingStructure.key == item.key}" ng-repeat="item in items | filterByType:['structure'] | filter:canCraft as craftable">
+			<span ng-bind="item.name"></span> <small ng-bind="item.description"></small>
+		</p>
 
 		<header class="list-group-item">
 			<h4 class="list-group-item-heading">Encounters</h4>

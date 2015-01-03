@@ -9,6 +9,7 @@
 - Added alert for when the cell the player is on is empty
 - Added **Scythe** item that allows you to gather food more quickly from fields
 - Added **Cooking** technology to automatically eat when hungry
+- Added ability to build structures directly on the map
 
 ### Changed
 - Made the starting cell always populated wiht some resources
