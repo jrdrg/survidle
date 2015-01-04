@@ -75,7 +75,7 @@ module Entities.Map {
 			// If an enemy is on the cell, damage structures
 			if (entity.type === 'enemy') {
 				_.each(this.getItemsOfType('structure'), (item: Entities.Item) => {
-					this.inventory[item.key].quantity -= chance.bool() ? 0.025 : 0;
+					this.inventory[item.key].quantity -= chance.bool() ? 0.01 : 0;
 				});
 			}
 
