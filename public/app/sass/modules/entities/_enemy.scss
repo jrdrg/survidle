@@ -5,6 +5,10 @@
 		@include centered-image('sprites/wolf.png');
 	}
 
+	&--bandit &__avatar {
+		@include centered-image('sprites/bandit.png');
+	}
+
 	&__avatar {
 		margin-right: 1rem;
 		background: grey(25);
