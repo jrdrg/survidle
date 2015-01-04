@@ -136,7 +136,6 @@ module Abstracts {
 				return this.travels = [];
 			}
 
-			console.log(step);
 			this.moveTo(step.x, step.y);
 			this.travelStep++;
 		}

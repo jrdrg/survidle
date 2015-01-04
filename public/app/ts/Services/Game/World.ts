@@ -210,7 +210,6 @@ module Services {
 			var easyStar = new EasyStar.js();
 			easyStar.enableDiagonals();
 			easyStar.setGrid(this.getWalkableMatrix());
-			console.log(this.getWalkableMatrix());
 			easyStar.setAcceptableTiles(['forest', 'tree']);
 			easyStar.findPath(entity.x, entity.y, to.x, to.y, function (path) {
 				entity.travelStep = 0;
