@@ -16,7 +16,8 @@
 			<td
 				ng-repeat="cell in row | after:map.fromX | first:map.visible"
 				ng-click="map.placingStructure ? map.build(cell) : map.travel(cell.x, cell.y)"
-				class="cell cell--{{ cell.type }} fog--{{ map.getVisibility(cell) }}"
+				class="cell cell--{{ ::cell.type }}"
+				ng-style="{opacity: map.getVisibility(cell)}"
 				once-style="map.getSpriteSize(cell)">
 				<span class="entity entity--{{ ::entity.key }}" ng-repeat="entity in world.getEntitiesAt(cell.x, cell.y)">
 					X

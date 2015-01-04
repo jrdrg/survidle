@@ -53,10 +53,4 @@
 		background-image: image-url('sprites/water.jpg');
 		animation: water 5s alternate-reverse infinite;
 	}
-
-	@for $i from 0 through 10 {
-		&.fog--#{$i} {
-			opacity: $i / 10;
-		}
-	}
 }

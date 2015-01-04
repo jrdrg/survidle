@@ -138,7 +138,7 @@ module Controllers {
 				visibility -= 9;
 			}
 
-			return Math.max(0, Math.round(visibility));
+			return Math.max(0, Math.round(visibility)) / 10;
 		}
 
 	}
