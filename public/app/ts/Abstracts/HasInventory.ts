@@ -32,11 +32,11 @@ module Abstracts {
 					this.inventory[item.key].remove();
 				}
 
-				if (this.hasInventoryFull()) {
+				if (this.hasFullInventory()) {
 					return;
 				}
 
-				this.inventory[item.key].increment(item.quantity);
+				this.inventory[item.key].increment(item.quantity * multiplier);
 			});
 		}
 
@@ -120,7 +120,7 @@ module Abstracts {
 		/**
 		 * Whether the inventory is full or not
 		 */
-		hasInventoryFull(): boolean {
+		hasFullInventory(): boolean {
 			return this.getInventorySize() >= this.getInventoryCapacity();
 		}
 

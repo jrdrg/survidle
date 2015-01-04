@@ -27,7 +27,7 @@
       "method": "gatherIron",
       "label": "Gather iron",
       "unlock": "game.getScenery().canGather('iron') && player.has('woodenPickaxe')",
-      "condition": "!player.hasInventoryFull()"
+      "condition": "!player.hasFullInventory()"
     },
     {
       "method": "eatFood",

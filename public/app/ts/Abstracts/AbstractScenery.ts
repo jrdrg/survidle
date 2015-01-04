@@ -26,7 +26,7 @@ module Abstracts {
 		 * Check if the player can gather an item
 		 */
 		canGather(item: string) {
-			return this.game.world.getPlayerCell().has(item) && !this.game.player.hasInventoryFull();
+			return this.game.world.getPlayerCell().has(item) && !this.game.player.hasFullInventory();
 		}
 
 		/**

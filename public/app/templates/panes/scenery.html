@@ -11,7 +11,7 @@
 			<ul class="list-unstyled">
 				<li class="alert alert-danger animate--fade-in" ng-show="player.survival.life < 0.5">You are wounded, eat some food to heal yourself</li>
 				<li class="alert alert-danger animate--fade-in" ng-show="player.isHungry()">You feel pretty hungry.</li>
-				<li class="alert alert-danger animate--fade-in" ng-show="player.hasInventoryFull()">Your inventory is full. Try dropping a few things from it.</li>
+				<li class="alert alert-danger animate--fade-in" ng-show="player.hasFullInventory()">Your inventory is full. Try dropping a few things from it.</li>
 				<li class="alert alert-danger animate--fade-in" ng-show="!world.getPlayerCell().hasResources()">You've gathered everything where you're standing, try moving elsewhere.</li>
 				<alert type="{{ ::alert.type }}" close="game.logs.close($index)" ng-repeat="alert in game.logs.alerts" ng-bind="::alert.message"></alert>
 			</ul>
