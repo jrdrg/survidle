@@ -4,3 +4,9 @@
 	background-position: center center;
 	background-size: 100%;
 }
+
+@mixin image-block($image) {
+	@include centered-image($image);
+	width: image-width($image);
+	height: image-height($image);
+}

@@ -6,9 +6,7 @@
 	z-index: 10;
 
 	&--cabin {
-		@include centered-image('sprites/cabin.png');
-		width: image-width('sprites/cabin.png');
-		height: image-height('sprites/cabin.png');
+		@include image-block('sprites/cabin.png');
 	}
 
 	&--field {
