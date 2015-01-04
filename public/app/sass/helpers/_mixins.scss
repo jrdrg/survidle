@@ -2,7 +2,8 @@
 	background-image: image-url($image);
 	background-repeat: no-repeat;
 	background-position: center center;
-	background-size: 100%;
+	background-size: contain;
+	color: transparent;
 }
 
 @mixin image-block($image) {

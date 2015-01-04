@@ -17,3 +17,4 @@ $ grunt
 - http://opengameart.org/content/lpc-wolf-animation
 - http://opengameart.org/content/forest-tiles
 - http://opengameart.org/content/16x16-tileset-water-dirt-forest
+- http://opengameart.org/content/lpc-medieval-fantasy-character-sprites

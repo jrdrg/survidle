@@ -8,18 +8,17 @@
 
 	&--player {
 		@include centered-image('sprites/player.png');
-		background-size: contain;
 		width: 70%;
 		height: 70%;
-		font-size: 0;
 	}
 
 	&--wolf {
 		@include centered-image('sprites/wolf.png');
-		color: transparent;
 	}
 
 	&--bandits {
-		background: red;
+		@include centered-image('sprites/bandit.png');
+		width: 70%;
+		height: 70%;
 	}
 }
