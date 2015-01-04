@@ -82,6 +82,7 @@
     "name": "Small cabin",
     "description": "Should keep you out of danger... for now",
     "type": "structure",
+    "required": ["technology:architecture"],
     "ingredients": {
       "wood": 50
     },
@@ -117,6 +118,17 @@
     },
     "revenues": {
       "food": 1
+    }
+  },
+  {
+    "key": "woodenWall",
+    "name": "Wooden wall",
+    "description": "Wooden barricades",
+    "type": "structure",
+    "multiple": true,
+    "required": ["technology:architecture"],
+    "ingredients": {
+      "wood": 10
     }
   },
   {

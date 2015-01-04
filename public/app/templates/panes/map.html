@@ -75,7 +75,7 @@
 		<header class="list-group-item" ng-show="craftable.length">
 			<h4 class="list-group-item-heading">Craftable structures</h4>
 		</header>
-		<p ng-click="map.place(item.key)" tooltip-placement="left" tooltip="Place on map" class="inventory__item list-group-item" ng-class="{'inventory__item--placing': map.placingStructure.key == item.key}" ng-repeat="item in items | filterByType:['structure'] | filter:canCraft as craftable">
+		<p ng-click="map.place(item.key)" tooltip-placement="left" tooltip="Place on map" class="inventory__item list-group-item" ng-class="{'inventory__item--placing': map.placingStructure.key == item.key}" ng-repeat="item in items | filterByType:['structure'] | filter:canCraft as craftable">
 			<span ng-bind="item.name"></span> <small ng-bind="item.description"></small>
 		</p>
 

@@ -15,6 +15,11 @@
   ],
   "science": [
     {
+      "key": "architecture",
+      "name": "Architecture",
+      "description": "Learn to build structures and houses"
+    },
+    {
       "key": "astronomy",
       "name": "Astronomy",
       "description": "Study the sun and stars",

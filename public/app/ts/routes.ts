@@ -37,7 +37,7 @@ angular.module('survidle').config(function ($routeProvider: ng.route.IRouteProvi
 		order      : 4,
 		key        : 'technologies',
 		label      : 'Technology Tree',
-		unlock     : 'craftcabin',
+		unlock     : 'craftwoodenAxe',
 		templateUrl: templates + '/technologies.html',
 	});
 
