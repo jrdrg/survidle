@@ -21,3 +21,4 @@ $ node_modules/.bin/grunt
 - http://opengameart.org/content/forest-tiles
 - http://opengameart.org/content/16x16-tileset-water-dirt-forest
 - http://opengameart.org/content/lpc-medieval-fantasy-character-sprites
+- http://opengameart.org/content/lots-of-hyptosis-tiles-organized

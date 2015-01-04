@@ -14,9 +14,16 @@ $border-color: grey(40);
 // Variables
 //////////////////////////////////////////////////////////////////////
 
-$sprites : ('player', 'wolf', 'bandits', 'cabin', 'field');
 $map-size: 20;
 $map-transitions-duration: 5s;
+$sprites : (
+	'bandits',
+	'cabin',
+	'field',
+	'player',
+	'wolf',
+	'woodenWall'
+);
 
 // Breakpoints
 //////////////////////////////////////////////////////////////////////
