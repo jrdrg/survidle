@@ -9,6 +9,8 @@
 	&--map {
 		.layout-content {
 			width: auto;
+			display: block;
+			flex: none;
 		}
 	}
 }
