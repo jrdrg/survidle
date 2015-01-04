@@ -48,7 +48,7 @@
 			<h4 class="list-group-item-heading">Player</h4>
 		</header>
 		<div class="map__inventory">
-			<status label="{{ item.name }}" ng-repeat="item in player.getItemsOfType('resource')" value="Math.round(item.quantity)"></status>
+			<status label="{{ ::item.name }}" ng-repeat="item in player.getItemsOfType('resource')" value="Math.round(item.quantity)"></status>
 		</div>
 		<div class="list-group-item">
 			<span class="badge">{{ player.x }}x{{ player.y }}</span>
