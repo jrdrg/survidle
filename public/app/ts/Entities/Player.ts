@@ -38,6 +38,30 @@ module Entities {
 			this.age = Math.floor((Math.random() * 30) + 16);
 		}
 
+		/**
+		 * Repair an item
+		 */
+		repair(item: Entities.Item) {
+			if (item.quantity >= 1) {
+				return;
+			}
+
+			// Compute required material
+			var repaired = (this.skills.masonry * 2) / 100;
+			var required = _.mapValues(item.ingredients, function (quantity: number) {
+				return quantity * repaired;
+			});
+
+			// Cancel if not enough material
+			if (!this.hasMultiple(required)) {
+				return;
+			}
+
+			item.quantity += repaired;
+			this.updateSkillWithExperience('masonry', repaired);
+			this.removeMultipleItems(required);
+		}
+
 		//////////////////////////////////////////////////////////////////////
 		////////////////////////////// INVENTORY /////////////////////////////
 		//////////////////////////////////////////////////////////////////////
