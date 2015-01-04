@@ -4,7 +4,7 @@ module.exports = {
 	},
 
 	dist: {},
-	
+
 	single: {
 		singleRun: true
 	}

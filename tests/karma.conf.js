@@ -21,17 +21,8 @@ module.exports = function (config) {
 			'tests/**/*.coffee'
 		],
 
-		logLevel: config.LOG_INFO,
-		autoWatch: true,
-
 		// Plugins
 		frameworks: ['jasmine'],
-		plugins   : [
-			'karma-coffee-preprocessor',
-			'karma-phantomjs-launcher',
-			'karma-coverage',
-			'karma-jasmine'
-		],
 		browsers  : [
 			'PhantomJS'
 		],
