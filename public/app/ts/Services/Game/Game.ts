@@ -176,7 +176,10 @@ module Services {
 			this.player = new Entities.Player('Herobrine');
 			this.encounters = new Services.EncountersManager(this);
 			this.world = new Services.World(this);
-			this.player.move(this.world.size / 2, this.world.size / 2);
+
+			// Set player position
+			var center = this.world.getCenter();
+			this.player.moveTo(center.x, center.y);
 
 			// Reset services
 			this.logs.events = _.clone(this.$rootScope.events);

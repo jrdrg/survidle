@@ -79,8 +79,9 @@ module Services {
 			}
 
 			// Add some base resources for the player
-			this.map[0][0].type = 'tree';
-			this.map[0][0].addMultipleItems(this.game.items.rebuildByQuantities({wood: 20, food: 20}));
+			var center = this.getCenter();
+			this.map[center.y][center.x].type = 'tree';
+			this.map[center.y][center.x].addMultipleItems(this.game.items.rebuildByQuantities({wood: 15, food: 15}));
 		}
 
 		/**
@@ -169,6 +170,13 @@ module Services {
 		 */
 		getCell(x: number, y: number): Entities.Map.Cell {
 			return this.map[y][x];
+		}
+
+		/**
+		 * Get the center coordinates
+		 */
+		getCenter(): HasCoordinates {
+			return {x: this.size / 2, y: this.size / 2};
 		}
 
 		/**
