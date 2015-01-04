@@ -31,6 +31,10 @@ module.exports = function(grunt) {
 		'uglify'
 	]);
 
+	grunt.registerTask('images', 'Recompress images', [
+		'newer:imagemin',
+	]);
+
 	grunt.registerTask('lint', 'Lint the files', [
 		'tslint',
 		'scsslint',
