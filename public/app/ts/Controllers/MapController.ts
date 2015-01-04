@@ -122,7 +122,7 @@ module Controllers {
 		 */
 		getVisibility(cell: Entities.Map.Cell): number {
 			var distance = cell.distanceWith(this.$rootScope.player);
-			var visibility = this.$rootScope.world.size - distance;
+			var visibility = this.visible - distance;
 			if (this.$rootScope.world.isNighttime()) {
 				visibility -= 9;
 			}
