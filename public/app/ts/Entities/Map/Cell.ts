@@ -75,12 +75,8 @@ module Entities.Map {
 		/**
 		 * Whether the cell is walkable
 		 */
-		isWalkable(): boolean {
-			if (this.type === 'water') {
-				return false;
-			}
-
-			return true;
+		getWalkableType(): string {
+			return this.type;
 		}
 
 		//////////////////////////////////////////////////////////////////////

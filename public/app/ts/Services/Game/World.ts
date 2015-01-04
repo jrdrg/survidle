@@ -197,8 +197,8 @@ module Services {
 		 */
 		getWalkableMatrix() {
 			return _.map(this.map, function(row) {
-				return _.map(row, function (cell: Entities.Map.Cell) {
-					return cell.isWalkable() ? 1 : 0;
+				return _.map(row, function(cell: Entities.Map.Cell) {
+					return cell.getWalkableType();
 				});
 			});
 		}
@@ -210,7 +210,8 @@ module Services {
 			var easyStar = new EasyStar.js();
 			easyStar.enableDiagonals();
 			easyStar.setGrid(this.getWalkableMatrix());
-			easyStar.setAcceptableTiles([1]);
+			console.log(this.getWalkableMatrix());
+			easyStar.setAcceptableTiles(['forest', 'tree']);
 			easyStar.findPath(entity.x, entity.y, to.x, to.y, function (path) {
 				entity.travelStep = 0;
 				entity.travels = path;
