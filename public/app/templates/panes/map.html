@@ -40,6 +40,9 @@
 			<a class="btn btn-default" ng-click="map.offset('down')">Down</a>
 		</div>
 
+		<!-- Alerts -->
+		<alert type="{{ ::alert.type }}" close="game.logs.close($index)" ng-repeat="alert in game.logs.alerts" ng-bind="::alert.message"></alert>
+
 		<!-- Current player infos -->
 		<header class="list-group-item">
 			<h4 class="list-group-item-heading">Map</h4>

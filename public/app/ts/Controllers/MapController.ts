@@ -55,6 +55,32 @@ module Controllers {
 			this.placingStructure = null;
 		}
 
+		/**
+		 * Repair an item
+		 */
+		repair(item: Entities.Item) {
+			if (item.quantity >= 1) {
+				return;
+			}
+
+			// Compute required material
+			var repaired = (this.game.player.skills.masonry * 2) / 100;
+			var required = _.mapValues(item.ingredients, function (quantity: number) {
+				return quantity * repaired;
+			});
+
+			// Cancel if not enough material
+			if (!this.game.player.hasMultiple(required)) {
+				this.game.logs.alert('Not enough resources to repair');
+				return;
+			}
+
+			item.quantity = Math.max(1, item.quantity + repaired);
+			this.game.player.updateSkillWithExperience('masonry', repaired);
+			this.game.player.removeMultipleItems(required);
+
+		}
+
 		//////////////////////////////////////////////////////////////////////
 		////////////////////////////// TRAVEL ////////////////////////////////
 		//////////////////////////////////////////////////////////////////////

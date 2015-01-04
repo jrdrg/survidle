@@ -10,7 +10,7 @@
 	<header class="list-group-item" ng-show="filteredStructures.length">
 		<h4 class="list-group-item-heading">Structures</h4>
 	</header>
-	<p class="inventory__item list-group-item" tooltip-placement="left" tooltip="Repair" ng-click="$parent.$parent.player.repair(item)" ng-repeat="item in entity.getInventoryContents() | filterByType:['structure'] as filteredStructures">
+	<p class="inventory__item list-group-item" tooltip-placement="left" tooltip="Repair" ng-click="$parent.$parent.map.repair(item)" ng-repeat="item in entity.getInventoryContents() | filterByType:['structure'] as filteredStructures">
 		<span class="badge" ng-if="item.multiple">{{ Math.floor(item.quantity) }}</span>
 		<span class="badge" ng-if="!item.multiple">{{ Math.round(item.quantity * 100) }}%</span>
 		<span ng-bind="item.name"></span> <small ng-bind="item.description"></small>
