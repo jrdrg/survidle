@@ -101,6 +101,7 @@ module Services {
 					inventoryCapacity: this.player.inventoryCapacity,
 				},
 				game          : {
+					paused: this.paused,
 					stages: this.stages,
 				},
 				logs          : {
@@ -151,6 +152,7 @@ module Services {
 				},
 			});
 
+			this.paused = state.game.paused;
 			this.stages = state.game.stages;
 			this.createSceneries();
 		}
@@ -202,8 +204,8 @@ module Services {
 			this.cycle = this.$interval(() => {
 				if (!this.paused) {
 					this.newCycle();
-					this.save();
 				}
+				this.save();
 			}, this.world.cycleLength * 1000);
 
 			// Bind to scope
