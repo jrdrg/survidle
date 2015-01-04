@@ -19,7 +19,7 @@ module Abstracts {
 				this.inventory[item.key] = new Entities.Item(_.cloneDeep(item));
 			}
 
-			this.inventory[item.key].quantity++;
+			this.inventory[item.key].increment();
 		}
 
 		/**
@@ -28,14 +28,15 @@ module Abstracts {
 		addMultipleItems(items: Inventory, multiplier: number = 1) {
 			_.each(items, (item: Entities.Item) => {
 				if (typeof this.inventory[item.key] === 'undefined') {
-					this.inventory[item.key] = item;
+					this.inventory[item.key] = new Entities.Item(_.cloneDeep(item));
+					this.inventory[item.key].remove();
 				}
 
 				if (this.hasInventoryFull()) {
 					return;
 				}
 
-				this.inventory[item.key].increment(item.quantity * multiplier);
+				this.inventory[item.key].increment(item.quantity);
 			});
 		}
 

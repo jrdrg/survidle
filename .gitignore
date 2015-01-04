@@ -1,12 +1,13 @@
 # Dependencies
 node_modules
-public/components
 public/app/ts/_definitions
+public/components
 
 # Cached and compiled
 .rocketeer/logs
-.tmp
 .sass-cache
+.tmp
 public/app/css
 public/app/js
 public/builds
+tests/coverage
