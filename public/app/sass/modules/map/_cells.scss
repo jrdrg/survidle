@@ -1,3 +1,12 @@
+@keyframes water {
+	from {
+		background-position: left;
+	}
+	to {
+		background-position: right;
+	}
+}
+
 .cell {
 	@extend %clickable;
 
@@ -22,35 +31,32 @@
 		box-shadow: inset 0 0 25px 4px rgba(black, 0.75);
 	}
 
-	&--forest {
-		background-color: $color-green;
-		background-image: image-url('sprites/forest.jpg');
-	}
-
+	&--forest,
 	&--tree,
 	&--rock {
-		background-color: darken($color-green, 15);
-		background-image: image-url('sprites/tree.png'), image-url('sprites/forest.jpg');
-		background-repeat: no-repeat, repeat;
-		background-position: center center, 0 0;
-	}
-
-	&--rock {
-		background-image: image-url('sprites/rock.png'), image-url('sprites/forest.jpg');
-	}
-
-	@keyframes water {
-		from {
-			background-position: left;
-		}
-		to {
-			background-position: right;
-		}
+		background-color: $color-green;
+		background-image: image-url('sprites/forest.jpg');
 	}
 
 	&--water {
 		background-color: hsl(207, 36%, 29%);
 		background-image: image-url('sprites/water.jpg');
 		animation: water 5s alternate-reverse infinite;
+	}
+
+	.decoration {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+
+		&--tree {
+			@include centered-image('sprites/tree.png');
+		}
+
+		&--rock {
+			@include centered-image('sprites/rock.png');
+		}
 	}
 }

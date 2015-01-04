@@ -117,15 +117,23 @@ module Controllers {
 			}
 		}
 
-		getSpriteSize(cell: Entities.Map.Cell) {
-			if (cell.type === 'tree' || cell.type === 'rock') {
-				return {
-					backgroundSize: chance.integer({min: 30, max: 100}) + '%, auto',
-					transform     : 'scaleX(' + (chance.bool() ? 1 : -1) + ')',
-				};
-			}
+		getCellVariation(cell: Entities.Map.Cell) {
+			switch (cell.type) {
+				case 'tree':
+				case 'rock':
+					var hueRotate = 'sepia(' + chance.integer({min: 0, max: 100}) + '%)';
 
-			return;
+					return {
+						backgroundSize  : chance.integer({min: 30, max: 100}) + '%, auto',
+						transform       : 'scaleX(' + (chance.bool() ? 1 : -1) + ')',
+						'-webkit-filter': hueRotate,
+						'-moz-filter'   : hueRotate,
+						filter          : hueRotate,
+					};
+
+				default:
+					return;
+			}
 		}
 
 		/**
