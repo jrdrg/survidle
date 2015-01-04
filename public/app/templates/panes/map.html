@@ -16,10 +16,10 @@
 			<td
 				ng-repeat="cell in row | after:map.fromX | first:map.visible"
 				ng-click="map.placingStructure ? map.build(cell) : map.travel(cell.x, cell.y)"
-				class="cell cell--{{ ::cell.type }}"
+				class="cell cell--{{ cell.type }}"
 				ng-style="{opacity: map.getVisibility(cell)}"
 				>
-				<span class="decoration decoration--{{ ::cell.type }}" once-style="map.getCellVariation(cell)"></span>
+				<span class="decoration" once-style="map.getCellVariation(cell)"></span>
 				<span class="entity entity--{{ ::entity.key }}" ng-repeat="entity in world.getEntitiesAt(cell.x, cell.y)">
 					X
 				</span>
