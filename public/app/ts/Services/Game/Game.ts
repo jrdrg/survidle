@@ -163,6 +163,7 @@ module Services {
 		reset() {
 			this.$interval.cancel(this.cycle);
 			this.$location.path('/scenery');
+			this.paused = false;
 
 			this.bootWorld();
 			this.save();
