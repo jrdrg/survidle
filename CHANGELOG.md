@@ -11,6 +11,8 @@
 - Added **Cooking** technology to automatically eat when hungry
 - Added ability to build structures directly on the map
 - Added state of current research to status bar
+- Added some shortcuts to the inventory/crafting/actions in the map view
+- Added ability to repair structures if enemies damage them
 
 ### Changed
 - Made the starting cell always populated wiht some resources
@@ -18,6 +20,7 @@
 - Revenues now go to the cell the structure was built on instead of directly to the player
 - Dropped items now go to the cell the player is in instead of being destroyed
 - Allow players to craft items if they'd have enough space in inventory *after* the craft
+- Map is now bigger than visible part and can be navigated in via hotzones or buttons
 
 ### Fixed
 - You can no longer build multiple structures on a single cell
