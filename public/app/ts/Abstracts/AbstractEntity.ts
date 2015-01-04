@@ -8,6 +8,16 @@ module Abstracts {
 		y: number = 0;
 
 		/**
+		 * The travel plan of the entity
+		 */
+		travels = [];
+
+		/**
+		 * The current step in the travel
+		 */
+		travelStep = 0;
+
+		/**
 		 * The type of the entity
 		 */
 		type: string;
@@ -113,22 +123,38 @@ module Abstracts {
 		}
 
 		/**
-		 * Move towards another entity
+		 * Continue traveling on a predefined path
 		 */
-		moveTowards(entity: HasCoordinates) {
-			var directionX = entity.x === this.x ? 0 : (entity.x > this.x ? 1 : -1);
-			var directionY = entity.y === this.y ? 0 : (entity.y > this.y ? 1 : -1);
-			this.move(directionX, directionY);
+		continuePlannedPath() {
+			if (!this.travels.length) {
+				return;
+			}
+
+			// If we reached destination, stop
+			var step = this.travels[this.travelStep];
+			if (typeof step === 'undefined') {
+				return this.travels = [];
+			}
+
+			console.log(step);
+			this.moveTo(step.x, step.y);
+			this.travelStep++;
 		}
 
 		/**
 		 * Track another entity
 		 */
-		track(entity: HasCoordinates) {
+		track(entity: HasCoordinates, game?: Services.Game) {
 			var tracking = this.skills.tracking * 10;
 
 			if (this.distanceWith(entity) <= tracking) {
-				this.moveTowards(entity);
+				if (!this.travels.length && game) {
+					game.world.findPath(this, entity, function(entity) {
+						entity.continuePlannedPath();
+					});
+				} else {
+					this.continuePlannedPath();
+				}
 			} else {
 				this.moveRandomly();
 			}

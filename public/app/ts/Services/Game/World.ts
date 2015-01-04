@@ -189,6 +189,40 @@ module Services {
 		}
 
 		//////////////////////////////////////////////////////////////////////
+		///////////////////////////// PATHFINDING ////////////////////////////
+		//////////////////////////////////////////////////////////////////////
+
+		/**
+		 * Get the walkable matrix from the map
+		 */
+		getWalkableMatrix() {
+			return _.map(this.map, function(row) {
+				return _.map(row, function (cell: Entities.Map.Cell) {
+					return cell.isWalkable() ? 1 : 0;
+				});
+			});
+		}
+
+		/**
+		 *
+		 */
+		findPath(entity: Abstracts.AbstractEntity, to: HasCoordinates, callback?: Function) {
+			var easyStar = new EasyStar.js();
+			easyStar.enableDiagonals();
+			easyStar.setGrid(this.getWalkableMatrix());
+			easyStar.setAcceptableTiles([1]);
+			easyStar.findPath(entity.x, entity.y, to.x, to.y, function (path) {
+				entity.travelStep = 0;
+				entity.travels = path;
+				if (callback) {
+					callback(entity);
+				}
+			});
+
+			easyStar.calculate();
+		}
+
+		//////////////////////////////////////////////////////////////////////
 		////////////////////////////// ENTITIES //////////////////////////////
 		//////////////////////////////////////////////////////////////////////
 
@@ -196,7 +230,7 @@ module Services {
 		 * Get the entities at particular coordinates
 		 */
 		getEntitiesAt(x: number, y: number): Abstracts.AbstractEntity[] {
-			return _.filter(this.entities, function (entity: Abstracts.AbstractEntity, key: number) {
+			return _.filter(this.entities, function (entity: Abstracts.AbstractEntity) {
 				if (entity.isDead()) {
 					return false;
 				}

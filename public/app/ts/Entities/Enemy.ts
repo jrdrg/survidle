@@ -28,7 +28,7 @@ module Entities {
 
 			// Look for the player
 			if (!this.isOnSameCellThan(game.player)) {
-				return this.track(game.player);
+				return this.track(game.player, game);
 			}
 
 			// Attack the player

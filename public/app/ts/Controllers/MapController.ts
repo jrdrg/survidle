@@ -92,10 +92,10 @@ module Controllers {
 			this.game.paused = false;
 
 			var player = this.$rootScope.player;
-			var distance = _.pointsDistance(x, y, player.x, player.y);
+			this.game.world.findPath(player, {x: x, y: y});
 
-			for (var i = 0; i <= distance; i++) {
-				player.moveTowards({x: x, y: y});
+			for (var i = 0; i <= player.travels.length; i++) {
+				player.continuePlannedPath();
 				this.$rootScope.game.newCycle();
 			}
 		}
