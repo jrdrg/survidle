@@ -38,6 +38,11 @@ module Services {
 		 */
 		cycle;
 
+		/**
+		 * Pause the game
+		 */
+		paused = false;
+
 		constructor(
 			public $rootScope,
 			public $interval: ng.IIntervalService,
@@ -195,8 +200,10 @@ module Services {
 
 			// Define interval
 			this.cycle = this.$interval(() => {
-				this.newCycle();
-				this.save();
+				if (!this.paused) {
+					this.newCycle();
+					this.save();
+				}
 			}, this.world.cycleLength * 1000);
 
 			// Bind to scope

@@ -13,6 +13,7 @@
 		<h1>Survidle</h1>
 		<nav class="btn-group">
 			<a class="btn btn-default" href="#/changelog">0.1.0</a>
+			<a class="btn btn-default" ng-click="game.paused = !game.paused" ng-bind="game.paused ? 'Resume' : 'Pause'"></a>
 			<a class="btn btn-default" ng-click="game.reset()">Reset</a>
 		</nav>
 	</header>
