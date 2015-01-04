@@ -5,7 +5,7 @@
 		@include centered-image('sprites/wolf.png');
 	}
 
-	&--bandit &__avatar {
+	&--bandits &__avatar {
 		@include centered-image('sprites/bandit.png');
 	}
 

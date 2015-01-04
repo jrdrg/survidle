@@ -53,6 +53,11 @@ module Abstracts {
 		 * of something
 		 */
 		has(item: string, required: number = 1): boolean {
+			if (!this.inventory[item]) {
+				return false;
+			}
+
+			required = this.inventory[item].type == 'structure' ? 0 : required;
 			return this.inventory[item] && this.inventory[item].quantity >= required;
 		}
 
