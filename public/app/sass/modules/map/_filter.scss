@@ -1,0 +1,20 @@
+&__filter {
+	$filter-opacity: 0.2;
+
+	position: absolute;
+	transition: $map-transitions-duration background-color;
+	z-index: 5;
+	background-image: image-url('map.png');
+	cursor: pointer;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+
+	&--night {
+		background-color: rgba(SteelBlue, $filter-opacity);
+	}
+
+	&--morning {
+		background-color: rgba(Chocolate, $filter-opacity);
+	}
+}
