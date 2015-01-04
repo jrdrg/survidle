@@ -1,6 +1,10 @@
 .enemy {
 	display: flex;
 
+	&--player &__avatar {
+		@include centered-image('sprites/player.png');
+	}
+
 	&--wolf &__avatar {
 		@include centered-image('sprites/wolf.png');
 	}
