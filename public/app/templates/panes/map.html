@@ -57,10 +57,16 @@
 		<div class="list-group list-group--nested" ng-show="show.actions">
 			<a ng-click="game.getScenery().act(action)" ng-repeat="action in game.getScenery().getActions()" class="list-group-item">{{ action.label }}</a>
 		</div>
+		<div class="list-group-item" ng-click="show.craft = !show.craft" ng-class="{dropup: show.craft}">
+			Craft <span class="caret"></span>
+		</div>
+		<div class="list-group list-group--nested" ng-show="show.craft" ng-controller="CraftingController">
+			<a ng-click="crafting.craft(recipe)" ng-show="crafting.isUnlocked(recipe) && crafting.canCraft(recipe)" ng-repeat="recipe in items" class="list-group-item">{{ recipe.name }}</a>
+		</div>
 
 		<!-- Craftables -->
 		<header class="list-group-item" ng-show="craftable.length">
-			<h4 class="list-group-item-heading">Craftable</h4>
+			<h4 class="list-group-item-heading">Craftable structures</h4>
 		</header>
 		<p ng-click="map.place(item.key)" tooltip-placement="left" tooltip="Place on map" class="inventory__item list-group-item" ng-class="{'inventory__item--placing': map.placingStructure.key == item.key}" ng-repeat="item in items | filterByType:['structure'] | filter:canCraft as craftable">
 			<span ng-bind="item.name"></span> <small ng-bind="item.description"></small>

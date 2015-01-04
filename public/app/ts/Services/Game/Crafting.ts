@@ -33,7 +33,7 @@ module Services {
 				return !this.game.player.has(ingredient, required);
 			});
 
-			return !unmet.length && hasSlot;
+			return item.type !== 'resource' && !unmet.length && hasSlot;
 		}
 
 		/**
