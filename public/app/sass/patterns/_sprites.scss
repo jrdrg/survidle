@@ -1,0 +1,6 @@
+@each $sprite in $sprites {
+	%sprite--#{$sprite} {
+		@include centered-image('sprites/#{$sprite}.png');
+	}
+}
+

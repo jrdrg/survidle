@@ -8,16 +8,10 @@
 		height: 7rem;
 		background-size: auto !important;
 
-		&--player {
-			@include centered-image('sprites/player.png');
-		}
-
-		&--wolf {
-			@include centered-image('sprites/wolf.png');
-		}
-
-		&--bandits {
-			@include centered-image('sprites/bandit.png');
+		@each $sprite in $sprites {
+			&--#{$sprite} {
+				@extend %sprite--#{$sprite};
+			}
 		}
 	}
 
