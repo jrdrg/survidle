@@ -7,6 +7,11 @@ module Services {
 		player: Entities.Player;
 
 		/**
+		 * The world
+		 */
+		world: Services.World;
+
+		/**
 		 * The service that manages encounters
 		 */
 		encounters: Services.EncountersManager;
@@ -40,8 +45,7 @@ module Services {
 			public items: Services.ItemsFactory,
 			public technologyTree: Services.TechnologyTree,
 			public logs: Services.LogsHandler,
-			public saves: Services.SaveHandler,
-			public world: Services.World
+			public saves: Services.SaveHandler
 		) {
 
 		}
@@ -171,7 +175,7 @@ module Services {
 			// Define world and player
 			this.player = new Entities.Player('Herobrine');
 			this.encounters = new Services.EncountersManager(this);
-			this.world = new Services.World(this.items);
+			this.world = new Services.World(this);
 			this.player.move(this.world.size / 2, this.world.size / 2);
 
 			// Reset services

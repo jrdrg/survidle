@@ -42,8 +42,8 @@ module Services {
 		 */
 		map = [];
 
-		constructor(public items: Services.ItemsFactory) {
-			if (this.items.isBooted()) {
+		constructor(public game: Services.Game) {
+			if (this.game.items.isBooted()) {
 				this.passDays();
 				this.generateMap();
 			}
@@ -73,7 +73,7 @@ module Services {
 
 			// Add some base resources for the player
 			this.map[0][0].type = 'tree';
-			this.map[0][0].addMultipleItems(this.items.rebuildByQuantities({wood: 20, food: 20}));
+			this.map[0][0].addMultipleItems(this.game.items.rebuildByQuantities({wood: 20, food: 20}));
 		}
 
 		/**
@@ -82,7 +82,7 @@ module Services {
 		generateCell(x: number, y: number) {
 			var type = chance.weighted(Entities.Map.Cell.types, Entities.Map.Cell.probabilities);
 			var cell = new Entities.Map.Cell(x, y, type);
-			cell.inventory = this.items.rebuildByQuantities(cell.getResources());
+			cell.inventory = this.game.items.rebuildByQuantities(cell.getResources());
 
 			return cell;
 		}
@@ -119,7 +119,7 @@ module Services {
 			cells.forEach((column, y) => {
 				column.forEach((data, x) => {
 					var cell = new Entities.Map.Cell(data.x, data.y, data.type);
-					cell.inventory = this.items.rebuildItems(data.inventory);
+					cell.inventory = this.game.items.rebuildItems(data.inventory);
 
 					cells[cell.y][cell.x] = cell;
 				});
@@ -257,12 +257,12 @@ module Services {
 		/**
 		 * Get the current time in a human readable format
 		 */
-		getCurrentTime(hasSundial: boolean, hasCalendar: boolean): any {
-			if (!hasSundial) {
+		getCurrentTime(): any {
+			if (!this.game.player.has('sundial')) {
 				return this.getDayNumber();
 			}
 
-			if (!hasCalendar) {
+			if (!this.game.technologyTree.hasResearched('calendar')) {
 				return this.getDayNumber() + ', ' + this.date.format('HH:MM');
 			}
 

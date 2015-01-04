@@ -17,8 +17,8 @@
 	</header>
 
 	<section class="layout-status animate--fade-in" ng-if="$route.current.key !== 'dead'">
-		<status class="animate--fade-in" ng-show="game.stages.lookUp" label="Day" value="world.getCurrentTime(player.has('sundial'), technologyTree.hasResearched('calendar'))"></status>
-		<status class="animate--fade-in" ng-show="game.stages.gatherFood" label="{{ stat|ucfirst }}" max="10" ng-repeat="(stat, current) in player.survival" value="current"></status>
+		<status class="animate--fade-in" ng-show="game.stages.lookUp" label="Day" value="world.getCurrentTime()"></status>
+		<status class="animate--fade-in" ng-show="game.stages.gatherFood" label="{{ ::stat|ucfirst }}" max="10" ng-repeat="(stat, current) in player.survival" value="current"></status>
 		<status class="animate--fade-in" ng-show="game.stages.gatherFood" label="Inventory" max="player.getInventoryCapacity()" value="player.getInventorySize() / player.getInventoryCapacity()"></status>
 		<status class="animate--fade-in" ng-show="game.technologyTree.current" label="Researching" max="10" value="game.technologyTree.current.progress"></status>
 	</section>
@@ -44,7 +44,6 @@
 
 		ga('create', 'UA-728496-13', 'auto');
 		ga('send', 'pageview');
-
 	</script>
 	<script src="public/builds/js/scripts.js"></script>
 </body>
