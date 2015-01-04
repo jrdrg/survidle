@@ -89,6 +89,8 @@ module Controllers {
 		 * Make the player travel to coordinates
 		 */
 		travel(x: number, y: number) {
+			this.game.paused = false;
+
 			var player = this.$rootScope.player;
 			var distance = _.pointsDistance(x, y, player.x, player.y);
 
