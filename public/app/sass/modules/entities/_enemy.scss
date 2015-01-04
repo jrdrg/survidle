@@ -1,23 +1,24 @@
 .enemy {
 	display: flex;
 
-	&--player &__avatar {
-		@include centered-image('sprites/player.png');
-	}
-
-	&--wolf &__avatar {
-		@include centered-image('sprites/wolf.png');
-	}
-
-	&--bandits &__avatar {
-		@include centered-image('sprites/bandit.png');
-	}
-
 	&__avatar {
 		margin-right: 1rem;
 		background: grey(25);
 		width: 7rem;
 		height: 7rem;
+		background-size: auto !important;
+
+		&--player {
+			@include centered-image('sprites/player.png');
+		}
+
+		&--wolf {
+			@include centered-image('sprites/wolf.png');
+		}
+
+		&--bandits {
+			@include centered-image('sprites/bandit.png');
+		}
 	}
 
 	img {
