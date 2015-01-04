@@ -33,7 +33,7 @@
 
 	@include header-size($header-size);
 
-	@include breakpoint(min-width $screen-md, max-width $screen-wide) {
+	@include breakpoint($screen-md $screen-wide) {
 		@include header-size($header-size * 0.5);
 	}
 	@include breakpoint(max-width $screen-md) {
