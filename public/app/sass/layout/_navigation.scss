@@ -1,6 +1,7 @@
 .layout-navigation {
-	margin: auto;
-	width: 80%;
+	@extend %content;
+	padding: 0;
+	border-bottom: 1px solid grey(15);
 
 	.nav-tabs.nav-justified > li {
 		&.active > a,

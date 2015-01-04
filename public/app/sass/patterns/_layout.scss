@@ -5,4 +5,8 @@
 	padding: 2rem;
 	width: 80%;
 	color: white;
+
+	@include breakpoint(max-width $screen-wide) {
+		width: 100%;
+	}
 }

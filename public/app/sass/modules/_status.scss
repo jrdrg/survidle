@@ -26,3 +26,18 @@
 		box-shadow: inset -2px 0 5px rgba(black, 0.25);
 	}
 }
+
+@include breakpoint(max-width $screen-xs) {
+	status {
+		display: block;
+		margin-bottom: 0.5em;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	.status__label {
+		min-width: 6rem;
+	}
+}

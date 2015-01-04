@@ -1,10 +1,18 @@
+@mixin header-size($size) {
+	height: $size + 3rem;
+
+	h1 {
+		height: 0.95em;
+		font-size: $size;
+	}
+}
+
 .layout-header {
 	$header-size: 12rem;
 
 	display: flex;
 	position: relative;
 	background: grey(20) image-url('header.jpg');
-	height: $header-size + 3rem;
 	overflow: hidden;
 	color: white;
 	justify-content: center;
@@ -12,9 +20,7 @@
 
 	h1 {
 		margin: 0;
-		height: $header-size - 0.75rem;
 		text-transform: uppercase;
-		font-size: $header-size;
 		font-weight: 100;
 	}
 
@@ -23,5 +29,14 @@
 		position: absolute;
 		top: $padding;
 		right: $padding;
+	}
+
+	@include header-size($header-size);
+
+	@include breakpoint(min-width $screen-md, max-width $screen-wide) {
+		@include header-size($header-size * 0.5);
+	}
+	@include breakpoint(max-width $screen-md) {
+		@include header-size(4rem);
 	}
 }

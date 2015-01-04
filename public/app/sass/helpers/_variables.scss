@@ -16,3 +16,10 @@ $border-color: grey(40);
 
 $map-size: 20;
 $map-transitions-duration: 5s;
+
+// Breakpoints
+//////////////////////////////////////////////////////////////////////
+
+@import '../../../components/bootstrap-sass-official/assets/stylesheets/bootstrap/variables';
+
+$screen-wide: 1600px;
