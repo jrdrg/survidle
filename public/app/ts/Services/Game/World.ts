@@ -7,6 +7,13 @@ module Services {
 		size = 40;
 
 		/**
+		 * Generation variables
+		 */
+		generation = {
+			ponds: 3,
+		};
+
+		/**
 		 * The current cycle
 		 *
 		 * @type {number}
@@ -66,7 +73,7 @@ module Services {
 			}
 
 			// Generate water
-			var numberOfPonds = chance.integer({min: 1, max: 3});
+			var numberOfPonds = chance.integer({min: 1, max:(this.size / this.generation.ponds)});
 			for (var i = 0; i <= numberOfPonds; i++) {
 				this.generatePond();
 			}
@@ -91,7 +98,7 @@ module Services {
 		 * Generate a pond
 		 */
 		generatePond() {
-			var size = chance.integer({min: 1, max: 2});
+			var size = chance.integer({min: 1, max: this.generation.ponds});
 			var x = chance.integer({min: 0, max: this.size});
 			var y = chance.integer({min: 0, max: this.size});
 
