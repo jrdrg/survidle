@@ -1,12 +1,21 @@
-language: node_js
+# Use Docker environment
+sudo: false
 
+language: node_js
 node_js:
   - '0.10'
 
+# Build bootstrapping
 before_install:
   - 'bundle install'
-
 before_script:
   - 'npm install'
   - 'node_modules/.bin/bower install'
   - 'node_modules/.bin/grunt'
+  - 'node_modules/.bin/tsd update --overwrite'
+
+# Cache dependencies
+cache:
+  directories:
+    - node_modules
+    - public/components
