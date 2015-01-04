@@ -85,14 +85,13 @@
 		</header>
 		<div class="list-group-item">
 			<div class="media enemy enemy--{{ ::entity.key }}" ng-repeat="entity in world.getEntitiesOnPlayer()">
-				<figure class="media-left enemy__avatar enemy__avatar--{{ ::entity.key }}">
-				</figure>
+				<figure class="media-left enemy__avatar enemy__avatar--{{ ::entity.key }}"></figure>
 
 				<div class="media-body">
 					<h4 class="media-heading" ng-bind="entity.name"></h4>
 					<status label="{{ ::stat|ucfirst }}" max="10" ng-repeat="(stat, current) in entity.survival" value="current"></status>
 					<div class="enemy__skills">
-						<status label="{{ ::skill|ucfirst }}" rounded="true" ng-repeat="(skill, level) in entity.skills" value="level"></status>
+						<status label="{{ ::skill|ucfirst }}" rounded="true" ng-repeat="(skill, level) in entity.skills" value="entity.getSkill(skill)"></status>
 					</div>
 				</div>
 			</div>

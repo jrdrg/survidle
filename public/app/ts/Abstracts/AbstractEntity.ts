@@ -45,7 +45,7 @@ module Abstracts {
 		skills = {
 			combat  : 1,
 			tracking: 1,
-			defense : 0,
+			defense : 0.5,
 		};
 
 		/**
@@ -75,10 +75,9 @@ module Abstracts {
 		 */
 		computeDamages(entity: AbstractEntity): number {
 			var damages = this.skills.combat * this.getSkillModifier('combat');
-			var defense = Math.max(0, entity.skills.defense - 0.5) * 10;
+			var defense = entity.getSkill('defense');
 			var counter = chance.bool({likelihood: defense})
 			if (counter) {
-				entity.updateSkillWithExperience('defense', damages);
 				damages = 0;
 			}
 
@@ -155,15 +154,22 @@ module Abstracts {
 		//////////////////////////////////////////////////////////////////////
 
 		/**
+		 * Get a skill
+		 */
+		getSkill(skill: string): number {
+			if (this.skills[skill] <= 0) {
+				return 0;
+			}
+
+			return Math.min(10, this.skills[skill]);
+		}
+
+		/**
 		 * Gather something, taking into account
 		 * skills and tools
 		 */
 		gatherWithSkill(item: Entities.Item, skill: string): number {
-			if (!this.skills[skill]) {
-				this.skills[skill] = 1;
-			}
-
-			var probability = this.skills[skill] * this.getSkillModifier(skill);
+			var probability = this.getSkill(skill) * this.getSkillModifier(skill);
 			if (typeof this.inventory[item.key] === 'undefined') {
 				this.inventory[item.key] = new Entities.Item(item);
 			}
@@ -180,9 +186,7 @@ module Abstracts {
 		 * Update the experience of a skill
 		 */
 		updateSkillWithExperience(skill: string, experience = 0.01) {
-			var modifier = Math.max(this.skills[skill], 1);
-
-			this.skills[skill] += experience / Math.floor(modifier);
+			this.skills[skill] += experience / Math.floor(this.getSkill(skill));
 		}
 
 		/**
