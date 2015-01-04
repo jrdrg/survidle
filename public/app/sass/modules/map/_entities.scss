@@ -7,7 +7,11 @@
 	font-size: 0.75rem;
 
 	&--player {
-		background-color: green;
+		@include centered-image('sprites/player.png');
+		background-size: contain;
+		width: 70%;
+		height: 70%;
+		font-size: 0;
 	}
 
 	&--wolf {
