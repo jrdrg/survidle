@@ -9,6 +9,11 @@ angular.module('survidle').config(function ($routeProvider: ng.route.IRouteProvi
 		templateUrl: templates + '/changelog.html',
 	});
 
+	$routeProvider.when('/game-over', {
+		key        : 'dead',
+		templateUrl: templates + '/game-over.html',
+	});
+
 	// Game routes
 	//////////////////////////////////////////////////////////////////////
 

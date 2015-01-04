@@ -11,7 +11,8 @@ module Controllers {
 			public items: Services.ItemsFactory,
 			public logs: Services.LogsHandler,
 			public game: Services.Game,
-			public $route: ng.route.IRouteService
+			public $route: ng.route.IRouteService,
+			public $location: ng.ILocationService
 		) {
 			$rootScope.$route = $route;
 			$rootScope.game = this.game;
@@ -30,6 +31,12 @@ module Controllers {
 				if (events) {
 					this.game.bootWorld();
 					this.game.load();
+				}
+			});
+
+			this.$rootScope.$watch('player.survival.life', (value) => {
+				if (value <= 0) {
+					this.$location.path('/game-over');
 				}
 			});
 		}

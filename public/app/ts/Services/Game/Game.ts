@@ -36,6 +36,7 @@ module Services {
 		constructor(
 			public $rootScope,
 			public $interval: ng.IIntervalService,
+			public $location: ng.ILocationService,
 			public items: Services.ItemsFactory,
 			public technologyTree: Services.TechnologyTree,
 			public logs: Services.LogsHandler,
@@ -150,6 +151,7 @@ module Services {
 		 */
 		reset() {
 			this.$interval.cancel(this.cycle);
+			this.$location.path('/scenery');
 
 			this.bootWorld();
 			this.save();

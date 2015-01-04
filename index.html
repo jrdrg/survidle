@@ -16,15 +16,15 @@
 		</nav>
 	</header>
 
-	<section class="layout-status animate--fade-in">
+	<section class="layout-status animate--fade-in" ng-if="$route.current.key !== 'dead'">
 		<status class="animate--fade-in" ng-show="game.stages.lookUp" label="Day" value="world.getCurrentTime(player.has('sundial'), technologyTree.hasResearched('calendar'))"></status>
 		<status class="animate--fade-in" ng-show="game.stages.gatherFood" label="{{ stat|ucfirst }}" max="10" ng-repeat="(stat, current) in player.survival" value="current"></status>
 		<status class="animate--fade-in" ng-show="game.stages.gatherFood" label="Inventory" max="player.getInventoryCapacity()" value="player.getInventorySize() / player.getInventoryCapacity()"></status>
 		<status class="animate--fade-in" ng-show="game.technologyTree.current" label="Researching" max="10" value="game.technologyTree.current.progress"></status>
 	</section>
 
-	<section ng-if="!player.isDead() && app.isBooted()">
-		<nav class="layout-navigation">
+	<section ng-cloak>
+		<nav class="layout-navigation" ng-if="$route.current.key !== 'dead'">
 			<ul class="nav nav-tabs nav-justified">
 				<li ng-if="route.label && (route.unlock === true || game.stages[route.unlock])" ng-repeat="route in app.getAvailableRoutes() | orderBy:'order'" ng-class="{active: $route.current.key == route.key, danger: game.world.getEntitiesOnPlayer().length > 1 && route.key == 'map'}">
 					<a href="#/{{ route.key }}" ng-if="route.key == 'map'" ng-bind="route.label + ' (' +(game.world.getEntitiesOnPlayer().length - 1)+ ')'"></a>
@@ -34,12 +34,6 @@
 		</nav>
 
 		<div ng-view></div>
-	</section>
-
-	<section class="layout-container--game-over" ng-if="player.isDead()">
-		<h2>You have failed miserably at surviving, killed by <strong ng-bind="player.killedBy"></strong></h2>
-		<h3>You are now officially nature's bitch.</h3>
-		<p><a class="btn btn-default btn-lg" ng-click="game.reset()">Try again?</a></p>
 	</section>
 
 	<script>
