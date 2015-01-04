@@ -28,6 +28,10 @@ module Services {
 		 * Check if the player can craft a recipe
 		 */
 		canCraft(item: Entities.Item): boolean {
+			if (!this.isUnlocked(item)) {
+				return false;
+			}
+
 			var hasSlot = item.type === 'structure' ? true : this.hasInventorySpaceToCraft(item);
 			var unmet = _.filter(item.ingredients, (required: number, ingredient: string) => {
 				return !this.game.player.has(ingredient, required);
