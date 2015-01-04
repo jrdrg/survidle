@@ -16,28 +16,7 @@
 		background: GoldenRod;
 	}
 
-	&__hotzone {
-		position: absolute;
-		z-index: 50;
-
-		&--left,
-		&--right {
-			height: 100%;
-			width: $cell-size;
-		}
-
-		&--top,
-		&--bottom {
-			width: 100%;
-			height: $cell-size;
-		}
-
-		@each $corner in ('top', 'left', 'right', 'bottom') {
-			&--#{$corner} {
-				#{$corner}: 0;
-			}
-		}
-	}
+	@import 'map/hotzones';
 
 	&__filter {
 		$filter-opacity: 0.2;

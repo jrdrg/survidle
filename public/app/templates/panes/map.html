@@ -5,10 +5,10 @@
 		<thead class="map__filter map__filter--{{ world.getDayPhase() }}">
 		</thead>
 		<thead>
-			<tr class="map__hotzone map__hotzone--top" ng-mouseover="map.offset('up')"></tr>
-			<tr class="map__hotzone map__hotzone--left" ng-mouseover="map.offset('left')"></tr>
-			<tr class="map__hotzone map__hotzone--bottom" ng-mouseover="map.offset('down')"></tr>
-			<tr class="map__hotzone map__hotzone--right" ng-mouseover="map.offset('right')"></tr>
+			<tr class="map__hotzone map__hotzone--top" ng-click="map.offset('up')"><td>&#9650;</td></tr>
+			<tr class="map__hotzone map__hotzone--left" ng-click="map.offset('left')"><td>&#9664;</td></tr>
+			<tr class="map__hotzone map__hotzone--bottom" ng-click="map.offset('down')"><td>&#9660;</td></tr>
+			<tr class="map__hotzone map__hotzone--right" ng-click="map.offset('right')"><td>&#9654;</td></tr>
 		</thead>
 
 		<!-- Map -->

@@ -1,0 +1,38 @@
+&__hotzone {
+	@extend %clickable;
+
+	position: absolute;
+	z-index: 50;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: transparent;
+
+	td {
+		width: 1em;
+		height: 1em;
+	}
+
+	&--left,
+	&--right {
+		height: 100%;
+		width: $cell-size;
+	}
+
+	&--top,
+	&--bottom {
+		width: 100%;
+		height: $cell-size;
+	}
+
+	&:hover {
+		background: rgba($color-green, 0.5);
+		color: white;
+	}
+
+	@each $corner in ('top', 'left', 'right', 'bottom') {
+		&--#{$corner} {
+			#{$corner}: 0;
+		}
+	}
+}
