@@ -1,7 +1,11 @@
 module.exports = {
-	dist: {
-		options: {
-			configFile: 'tests/karma.conf.js'
-		}
+	options: {
+		configFile: 'tests/karma.conf.js'
+	},
+
+	dist: {},
+	
+	single: {
+		singleRun: true
 	}
 };
