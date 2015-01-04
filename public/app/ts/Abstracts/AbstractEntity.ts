@@ -78,6 +78,7 @@ module Abstracts {
 			var defense = Math.max(0, entity.skills.defense - 0.5) * 10;
 			var counter = chance.bool({likelihood: defense})
 			if (counter) {
+				entity.updateSkillWithExperience('defense', damages);
 				damages = 0;
 			}
 
