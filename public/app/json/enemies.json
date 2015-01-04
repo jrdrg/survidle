@@ -3,7 +3,7 @@
     "key": "wolf",
     "name": "Direwolf",
     "skills": {
-      "combat": 0.5,
+      "combat": 1,
       "defense": 0,
       "tracking": 1.5
     }
