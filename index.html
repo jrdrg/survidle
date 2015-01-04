@@ -26,7 +26,7 @@
 	<section ng-cloak>
 		<nav class="layout-navigation" ng-if="$route.current.key !== 'dead'">
 			<ul class="nav nav-tabs nav-justified">
-				<li ng-if="route.label && (route.unlock === true || game.stages[route.unlock])" ng-repeat="route in app.getAvailableRoutes() | orderBy:'order'" ng-class="{active: $route.current.key == route.key, danger: game.world.getEntitiesOnPlayer().length > 1 && route.key == 'map'}">
+				<li ng-repeat="route in app.getAvailableRoutes() | orderBy:'order'" ng-class="{active: $route.current.key == route.key, danger: game.world.getEntitiesOnPlayer().length > 1 && route.key == 'map'}">
 					<a href="#/{{ route.key }}" ng-if="route.key == 'map'" ng-bind="route.label + ' (' +(game.world.getEntitiesOnPlayer().length - 1)+ ')'"></a>
 					<a href="#/{{ route.key }}" ng-if="route.key !== 'map'" ng-bind="::route.label"></a>
 				</li>

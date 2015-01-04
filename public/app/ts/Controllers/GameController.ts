@@ -45,7 +45,11 @@ module Controllers {
 		 * Get the routes available
 		 */
 		getAvailableRoutes(): ng.route.IRoute[] {
-			return _.values(this.$route.routes);
+			var routes = _.values(this.$route.routes);
+
+			return _.filter(routes, (route) => {
+				return route.label && (route.unlock === true || this.game.stages[route.unlock]);
+			});
 		}
 
 		/**
