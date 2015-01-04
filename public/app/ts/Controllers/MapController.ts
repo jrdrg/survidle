@@ -95,31 +95,34 @@ module Controllers {
 					if (this.fromY > 0) {
 						this.fromY--;
 					}
-				break;
+					break;
 
 				case 'left':
 					if (this.fromX > 0) {
 						this.fromX--;
 					}
-				break;
+					break;
 
 				case 'right':
 					if (this.fromX < limit) {
 						this.fromX++;
 					}
-				break;
+					break;
 
 				case 'down':
 					if (this.fromY < limit) {
 						this.fromY++;
 					}
-				break;
+					break;
 			}
 		}
 
 		getSpriteSize(cell: Entities.Map.Cell) {
 			if (cell.type === 'tree' || cell.type === 'rock') {
-				return chance.integer({min: 30, max: 100}) + '%, auto';
+				return {
+					backgroundSize: chance.integer({min: 30, max: 100}) + '%, auto',
+					transform     : 'scaleX(' + (chance.bool() ? 1 : -1) + ')',
+				};
 			}
 
 			return;

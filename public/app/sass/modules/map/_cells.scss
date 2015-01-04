@@ -8,6 +8,7 @@
 	width: $cell-size;
 	height: $cell-size;
 	text-align: center;
+	transform: translateZ(0);
 
 	.entity,
 	.structure {
@@ -38,9 +39,19 @@
 		background-image: image-url('sprites/rock.png'), image-url('sprites/forest.jpg');
 	}
 
+	@keyframes water {
+		from {
+			background-position: left;
+		}
+		to {
+			background-position: right;
+		}
+	}
+
 	&--water {
 		background-color: hsl(207, 36%, 29%);
 		background-image: image-url('sprites/water.jpg');
+		animation: water 5s alternate-reverse infinite;
 	}
 
 	@for $i from 0 through 10 {
