@@ -20,6 +20,7 @@ module.exports = {
 				'<%= components %>/angular-filter/dist/angular-filter.js',
 				'<%= components %>/angular-ui-bootstrap-bower/ui-bootstrap.js',
 				'<%= components %>/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js',
+				'<%= components %>/angular-once/once.js',
 				'<%= components %>/chance/chance.js',
 				'<%= components %>/lodash/dist/lodash.js',
 				'<%= components %>/markdown/lib/markdown.js',

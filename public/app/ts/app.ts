@@ -6,6 +6,7 @@ var app = angular.module('survidle', [
 	'angular.filter',
 	'ngRoute',
 	'ngAnimate',
+	'once',
 ]);
 
 // Controllers

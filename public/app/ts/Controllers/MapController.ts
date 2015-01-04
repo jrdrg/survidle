@@ -117,6 +117,14 @@ module Controllers {
 			}
 		}
 
+		getSpriteSize(cell: Entities.Map.Cell) {
+			if (cell.type === 'tree' || cell.type === 'rock') {
+				return chance.integer({min: 30, max: 100}) + '%, auto';
+			}
+
+			return;
+		}
+
 		/**
 		 * Get the visibility on the map
 		 */
