@@ -17,5 +17,5 @@ before_script:
 # Cache dependencies
 cache:
   directories:
-    - node_modules
-    - public/components
+    - 'node_modules'
+    - 'public/components'

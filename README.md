@@ -1,15 +1,18 @@
 # Survidle
 
+[![Build Status](https://travis-ci.org/Anahkiasen/survidle.svg?branch=master)](https://travis-ci.org/Anahkiasen/survidle)
+
 Survidle is an incremental survival game. You start off alone in the forest, in a destroyed world, and must survive and slowly rebuild civilization.
 
 ## Contributing
 
 ```bash
-$ git@github.com:Anahkiasen/survidle.git
+$ git clone git@github.com:Anahkiasen/survidle.git
 $ bundle install
 $ npm install
 $ node_modules/.bin/bower install
-$ grunt
+$ node_modules/.bin/tsd reinstall
+$ node_modules/.bin/grunt
 ```
 
 ## Sprites
