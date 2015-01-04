@@ -35,7 +35,7 @@ module Controllers {
 			});
 
 			this.$rootScope.$watch('player.survival.life', (value) => {
-				if (value <= 0) {
+				if (value <= 0 && this.$route.current['key'] !== 'dead') {
 					this.$location.path('/game-over');
 				}
 			});
