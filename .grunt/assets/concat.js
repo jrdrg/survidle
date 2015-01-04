@@ -13,6 +13,7 @@ module.exports = {
 	js: {
 		files: {
 			'<%= paths.compiled.js %>/scripts.js': [
+				'<%= components %>/easystarjs/bin/easystar-0.1.13.min.js',
 				'<%= components %>/jquery/dist/jquery.js',
 				'<%= components %>/angular/angular.js',
 				'<%= components %>/angular-animate/angular-animate.js',

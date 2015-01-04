@@ -28,3 +28,4 @@ declare var chance: {
 };
 
 declare var markdown;
+declare var EasyStar;
