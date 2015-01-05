@@ -110,7 +110,9 @@ module Controllers {
 			this.game.paused = false;
 
 			var player = this.$rootScope.player;
-			this.game.world.findPath(player, {x: x, y: y});
+			this.game.world.findPath(player, {x: x, y: y}, null, () => {
+				this.game.logs.alert('You can\'t go anywhere. You are going to die.');
+			});
 
 			for (var i = 0; i <= player.travels.length; i++) {
 				player.continuePlannedPath();

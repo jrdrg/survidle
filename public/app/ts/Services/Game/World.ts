@@ -204,18 +204,21 @@ module Services {
 		}
 
 		/**
-		 *
+		 * Find the best path to follow
 		 */
-		findPath(entity: Abstracts.AbstractEntity, to: HasCoordinates, callback?: Function) {
+		findPath(entity: Abstracts.AbstractEntity, to: HasCoordinates, callbackFound?: Function, callbackNotFound?: Function) {
 			var easyStar = new EasyStar.js();
-			easyStar.enableDiagonals();
 			easyStar.setGrid(this.getWalkableMatrix());
 			easyStar.setAcceptableTiles(['forest', 'tree']);
 			easyStar.findPath(entity.x, entity.y, to.x, to.y, function (path) {
-				entity.travelStep = 0;
-				entity.travels = path;
-				if (callback) {
-					callback(entity);
+				if (path) {
+					entity.travelStep = 0;
+					entity.travels = path;
+					if (callbackFound) {
+						callbackFound(entity);
+					}
+				} else if (callbackNotFound) {
+					callbackNotFound(entity);
 				}
 			});
 
