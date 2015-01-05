@@ -69,6 +69,10 @@
 			font-size: 0.75em;
 		}
 
+		.badge.active {
+			background: $color-gold;
+		}
+
 		&:hover small {
 			opacity: 1;
 		}

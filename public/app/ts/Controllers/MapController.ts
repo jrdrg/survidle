@@ -7,6 +7,11 @@ module Controllers {
 		placingStructure: Entities.Item;
 
 		/**
+		 * Whether the player is placing multiple structures or not
+		 */
+		placeMultiple = false;
+
+		/**
 		 * The amounts of cells visible
 		 */
 		visible: number = 20;
@@ -39,9 +44,17 @@ module Controllers {
 		/**
 		 * Craft an item and place it on the map
 		 */
-		place(itemKey: string) {
+		place(itemKey: string, multiple = false) {
+			if (this.placingStructure && this.placingStructure.key == itemKey) {
+				this.placeMultiple = false;
+				this.placingStructure = null;
+
+				return;
+			}
+
 			var item = this.items.getItemByKey(itemKey);
 
+			this.placeMultiple = multiple;
 			this.placingStructure = item;
 		}
 
@@ -50,9 +63,14 @@ module Controllers {
 		 * is placing
 		 */
 		build(cell: Entities.Map.Cell) {
-			this.crafting.craft(this.placingStructure, false);
-			cell.add(this.placingStructure);
-			this.placingStructure = null;
+			if (this.crafting.craft(this.placingStructure, cell)) {
+				if (!this.placeMultiple) {
+					this.placingStructure = null;
+				}
+			} else if (!cell.hasStructure()) {
+				this.placingStructure = null;
+				this.placeMultiple = false;
+			}
 		}
 
 		/**

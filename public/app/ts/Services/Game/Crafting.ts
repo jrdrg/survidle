@@ -54,21 +54,23 @@ module Services {
 		/**
 		 * Check if we have space to build something on the cell
 		 */
-		hasSpaceToCraft(item: Entities.Item): boolean {
-			return item.type === 'structure' ? !this.game.world.getPlayerCell().hasStructure() : true;
+		hasSpaceToCraft(item: Entities.Item, cell?: Entities.Map.Cell): boolean {
+			return item.type === 'structure' ? !cell.hasStructure() : true;
 		}
 
 		/**
 		 * Craft a recipe
 		 */
-		craft(item: Entities.Item, place: boolean = true): void {
+		craft(item: Entities.Item, cell?: Entities.Map.Cell): boolean {
+			cell = cell || this.game.world.getPlayerCell();
 			if (!this.canCraft(item)) {
-				return;
+				this.logs.alert('Not enough resources');
+				return false;
 			}
 
-			if (!this.hasSpaceToCraft(item)) {
+			if (cell && !this.hasSpaceToCraft(item, cell)) {
 				this.logs.alert('You can\'t build two structures on the same cell');
-				return;
+				return false;
 			}
 
 			// Remove ingredients from inventory
@@ -76,15 +78,13 @@ module Services {
 
 			// Add to map
 			if (item.type === 'structure') {
-				if (place) {
-					this.game.world.getPlayerCell().add(item);
-				}
+				cell.add(item);
 			} else {
 				this.game.player.add(item);
 			}
 
 			// Mark event
-			this.game.stages['craft' + item.key] = true;
+			return this.game.stages['craft' + item.key] = true;
 		}
 
 		/**
