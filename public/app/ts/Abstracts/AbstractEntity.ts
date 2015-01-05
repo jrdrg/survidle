@@ -85,7 +85,6 @@ module Abstracts {
 		 */
 		computeDamages(entity: AbstractEntity): number {
 			var damages = this.getSkill('combat') * this.getSkillModifier('combat');
-			console.log(damages, this.getSkill('combat'), this.getSkillModifier('combat'));
 			var defense = entity.getSkill('defense');
 			var counter = chance.bool({likelihood: defense})
 			if (counter) {
