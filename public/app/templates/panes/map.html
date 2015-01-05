@@ -41,7 +41,7 @@
 		</div>
 
 		<!-- Alerts -->
-		<alert type="{{ ::alert.type }}" close="game.logs.close($index)" ng-repeat="alert in game.logs.alerts" ng-bind="::alert.message"></alert>
+		<alert type="{{ ::alert.type }}" close="game.logs.close($index)" ng-repeat="alert in game.logs.alerts">{{ ::alert.message }}</alert>
 
 		<!-- Current player infos -->
 		<header class="list-group-item">
