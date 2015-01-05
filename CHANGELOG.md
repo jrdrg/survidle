@@ -13,6 +13,8 @@
 - Added state of current research to status bar
 - Added some shortcuts to the inventory/crafting/actions in the map view
 - Added ability to repair structures if enemies damage them
+- Added pause button
+- Added **Wooden walls** and ability to place multiple structures at once on the map
 
 ### Changed
 - Made the starting cell always populated with some resources
@@ -27,6 +29,8 @@
 - Fixed a bug where building a wolf trap would crash the game
 - Fixed missing rocks on the map
 - Fixed a bug where you couldn't build structures if your inventory was full
+- Fixed defense skill never going up
+- Fixed a bug where enemies would drown while trying to get to you (which was hilarous tho)
 
 ## 0.1.0
 
