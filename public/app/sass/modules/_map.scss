@@ -13,7 +13,7 @@
 	}
 
 	&--placing .cell:hover {
-		background: GoldenRod;
+		background: $color-gold;
 	}
 
 	@import 'map/hotzones';
