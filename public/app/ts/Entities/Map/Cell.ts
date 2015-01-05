@@ -76,6 +76,10 @@ module Entities.Map {
 		 * Whether the cell is walkable
 		 */
 		getWalkableType(): string {
+			if (this.has('woodenWall')) {
+				return 'woodenWall';
+			}
+
 			return this.type;
 		}
 
